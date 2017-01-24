@@ -7,7 +7,6 @@ use Gallib\Macope\App\Account;
 use Gallib\Macope\App\JournalEntry;
 use Excel;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\DB;
 
 class ImportPostFinanceData implements ImportDataInterface
 {
@@ -102,43 +101,40 @@ class ImportPostFinanceData implements ImportDataInterface
         array_splice($data, -3);
         $data = array_reverse($data);
 
+        $start = Carbon::now();
 
-        DB::transaction(function () use ($data, $account) {
-            $start = Carbon::now();
-
-            foreach ($data as $key => $value) {
-                try {
-                    $date = Carbon::createFromFormat('Y-m-d', $value[0]);
-                } catch (\InvalidArgumentException $e) {
-                    continue;
-                }
-
-                $entryData = [
-                    'date'       => $date->toDateString(),
-                    'text'       => $value[1],
-                    'credit'     => $value[2],
-                    'debit'      => is_null($value[3]) ? null : abs($value[3]),
-                    'account_id' => $account->id
-                ];
-
-                $entry = JournalEntry::where($entryData)->first();
-
-                if (is_null($entry) || $start->lt($entry->created_at)) {
-                    $withBalance = JournalEntry::whereNotNull('balance')
-                        ->where(['date' => $date->toDateString(), 'account_id' => $account->id])
-                        ->first();
-
-                    if ($withBalance) {
-                        $withBalance->balance = null;
-                        $withBalance->save();
-                    }
-
-                    $entryData['balance'] = $value[5];
-
-                    $entry = JournalEntry::create($entryData);
-                }
+        foreach ($data as $key => $value) {
+            try {
+                $date = Carbon::createFromFormat('Y-m-d', $value[0]);
+            } catch (\InvalidArgumentException $e) {
+                continue;
             }
-        });
+
+            $entryData = [
+                'date'       => $date->toDateString(),
+                'text'       => $value[1],
+                'credit'     => $value[2],
+                'debit'      => is_null($value[3]) ? null : abs($value[3]),
+                'account_id' => $account->id
+            ];
+
+            $entry = JournalEntry::where($entryData)->first();
+
+            if (is_null($entry) || $start->lt($entry->created_at)) {
+                $withBalance = JournalEntry::whereNotNull('balance')
+                    ->where(['date' => $date->toDateString(), 'account_id' => $account->id])
+                    ->first();
+
+                if ($withBalance) {
+                    $withBalance->balance = null;
+                    $withBalance->save();
+                }
+
+                $entryData['balance'] = $value[5];
+
+                $entry = JournalEntry::create($entryData);
+            }
+        }
 
         // Reset config
         \Config::set('excel.csv.delimiter', $delimiter);
