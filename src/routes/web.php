@@ -26,4 +26,5 @@ Route::group(
         Route::post('/account', [
             'uses' => 'AccountController@add'
         ]);
-});
+    }
+);
