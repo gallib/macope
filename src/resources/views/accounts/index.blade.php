@@ -33,7 +33,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     @include('macope::helpers.form-message')
-                    {{ Form::open(['url' => route('account')]) }}
+                    {{ Form::open(['url' => route('accounts.store')]) }}
                     <div class="form-group">
                         {{ Form::label('name', 'Name') }}
                         {{ Form::text('name', '', ['class' => 'form-control']) }}

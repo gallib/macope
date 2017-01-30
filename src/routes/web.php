@@ -19,12 +19,8 @@ Route::group(
             'uses' => 'JournalController@index'
         ])->name('journal');
 
-        Route::get('/account', [
-            'uses' => 'AccountController@index'
-        ])->name('account');
-
-        Route::post('/account', [
-            'uses' => 'AccountController@add'
-        ]);
+        Route::resource('accounts', 'AccountController', ['except' => [
+            'create'
+        ]]);
     }
 );
