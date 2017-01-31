@@ -24,7 +24,7 @@ class AccountRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'        => ['required', 'max:255'],
+            'name'        => ['required', 'unique:accounts', 'max:255'],
             'description' => ['max:255'],
             'iban'        => ['required', 'unique:accounts', 'max:255'],
             'currency'    => ['required', 'max:3']

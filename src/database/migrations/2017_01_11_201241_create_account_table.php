@@ -15,7 +15,7 @@ class CreateAccountTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('description')->nullable();
             $table->string('iban')->unique();
             $table->string('currency', 3);
