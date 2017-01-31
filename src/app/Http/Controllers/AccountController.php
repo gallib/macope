@@ -53,11 +53,11 @@ class AccountController extends Controller
             ];
             Account::create($data);
             return redirect()
-                ->route('account')
+                ->route('accounts.index')
                 ->withSuccess(['success' => 'The account has been added']);
         } catch (\Exception $e) {
             return redirect()
-                ->route('account')
+                ->route('accounts.index')
                 ->withErrors(['error' => $e->getMessage()]);
         }
     }
