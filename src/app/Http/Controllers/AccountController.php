@@ -5,9 +5,25 @@ namespace Gallib\Macope\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Gallib\Macope\App\Account;
 use Gallib\Macope\App\Http\Requests\AccountRequest;
+use Gallib\Macope\App\Queries\JournalEntryQuery;
 
 class AccountController extends Controller
 {
+    /**
+     * @var \Gallib\Macope\App\Queries\JournalEntryQuery
+     */
+    protected $journalEntryQuery;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(JournalEntryQuery $journalEntryQuery)
+    {
+        $this->journalEntryQuery = $journalEntryQuery;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -54,7 +70,10 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        //
+        $account  = Account::findOrFail($id);
+        $balances = $this->journalEntryQuery->getMonthlyBalances($account->id);
+
+        return view('macope::accounts.show', compact(array('account', 'balances')));
     }
 
     /**
