@@ -62,7 +62,6 @@
 @push('scripts')
 <script>
 $(function() {
-
     $('#account-table').DataTable({
         pageLength: 25
     });
