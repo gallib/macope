@@ -64,16 +64,7 @@
 $(function() {
 
     $('#account-table').DataTable({
-        //order: [[0, 'desc']],
-        pageLength: 25,
-        /*columnDefs: [
-            {
-                render: function (data, type, row) {
-                    return moment(new Date(data)).format('DD/MM/YYYY');
-                },
-                targets: 0
-            }
-        ]*/
+        pageLength: 25
     });
 });
 </script>
