@@ -26,7 +26,7 @@ class AccountRequest extends FormRequest
         return [
             'name'        => ['required', 'max:255'],
             'description' => ['max:255'],
-            'iban'        => ['required', 'max:255'],
+            'iban'        => ['required', 'unique:accounts', 'max:255'],
             'currency'    => ['required', 'max:3']
         ];
     }
