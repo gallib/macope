@@ -19,8 +19,6 @@ Route::group(
             'uses' => 'JournalController@index'
         ])->name('journal');
 
-        Route::resource('accounts', 'AccountController', ['except' => [
-            'create'
-        ]]);
+        Route::resource('accounts', 'AccountController');
     }
 );

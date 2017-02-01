@@ -37,6 +37,16 @@ class AccountController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('macope::accounts.create');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Gallib\Macope\App\Http\Requests\AccountRequest  $request
@@ -51,13 +61,15 @@ class AccountController extends Controller
                 'iban'        => $request->get('iban'),
                 'currency'    => $request->get('currency')
             ];
+
             Account::create($data);
+
             return redirect()
                 ->route('accounts.index')
                 ->withSuccess(['success' => 'The account has been added']);
         } catch (\Exception $e) {
             return redirect()
-                ->route('accounts.index')
+                ->route('accounts.create')
                 ->withErrors(['error' => $e->getMessage()]);
         }
     }
