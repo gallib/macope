@@ -13,15 +13,26 @@
                                 <th>Description</th>
                                 <th>Iban</th>
                                 <th>Currency</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                         @foreach ($accounts as $account)
                             <tr>
-                                <td><a href="{{ route('accounts.show', ['account' => $account->id]) }}" title="View details">{{ $account->name }}</a></td>
+                                <td>
+                                    <a href="{{ route('accounts.show', $account->id) }}" title="View details">{{ $account->name }}</a>
+                                </td>
                                 <td>{{ $account->description }}</td>
                                 <td>{{ $account->iban }}</td>
                                 <td>{{ $account->currency }}</td>
+                                <td>
+                                    <a class="btn btn-primary" href="{{ route('accounts.edit', $account->id) }}">Edit</a>
+                                    @if ($account->journalEntries()->count() === 0)
+                                        {{ Form::open(['method' => 'DELETE','route' => ['accounts.destroy', $account->id], 'style'=>'display:inline']) }}
+                                        {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                        {{ Form::close() }}
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
