@@ -17,6 +17,16 @@ class Category extends Model
     ];
 
     /**
+     * Define the one-to-many relationship with JournalEntry
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function journalEntries()
+    {
+        return $this->hasMany(JournalEntry::class);
+    }
+
+    /**
      * Define the inverse one-to-many relationship with TypeCategory.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
