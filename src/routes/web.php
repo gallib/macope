@@ -20,5 +20,7 @@ Route::group(
         ])->name('journal');
 
         Route::resource('accounts', 'AccountController');
+
+        Route::resource('type-categories', 'TypeCategoryController');
     }
 );
