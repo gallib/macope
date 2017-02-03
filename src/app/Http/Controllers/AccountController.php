@@ -55,14 +55,7 @@ class AccountController extends Controller
     public function store(AccountRequest $request)
     {
         try {
-            $data = [
-                'name'        => $request->get('name'),
-                'description' => $request->get('description', null),
-                'iban'        => $request->get('iban'),
-                'currency'    => $request->get('currency')
-            ];
-
-            Account::create($data);
+            Account::create($request->all());
 
             return redirect()
                 ->route('accounts.index')
