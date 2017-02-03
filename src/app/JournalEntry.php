@@ -17,8 +17,19 @@ class JournalEntry extends Model
         'credit',
         'debit',
         'balance',
+        'category_id',
         'account_id'
     ];
+
+    /**
+     * Define the inverse one-to-many relationship with Category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     /**
      * Define the inverse one-to-many relationship with Account.
