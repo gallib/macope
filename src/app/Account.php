@@ -25,6 +25,6 @@ class Account extends Model
      */
     public function journalEntries()
     {
-        return $this->hasMany(journalEntry::class);
+        return $this->hasMany(JournalEntry::class);
     }
 }
