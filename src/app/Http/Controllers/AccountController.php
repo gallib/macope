@@ -54,17 +54,12 @@ class AccountController extends Controller
      */
     public function store(AccountRequest $request)
     {
-        try {
-            Account::create($request->all());
+        Account::create($request->all());
 
-            return redirect()
-                ->route('accounts.index')
-                ->withSuccess(['success' => 'The account has been added']);
-        } catch (\Exception $e) {
-            return redirect()
-                ->route('accounts.create')
-                ->withErrors(['error' => $e->getMessage()]);
-        }
+        return redirect()
+            ->route('accounts.index')
+            ->withSuccess(['success' => 'The account has been added']);
+
     }
 
     /**
