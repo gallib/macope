@@ -15,8 +15,8 @@ class CreateCategorizationsTable extends Migration
     {
         Schema::create('categorizations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('search')->unique();
-            $table->string('type')->unique();
+            $table->string('search');
+            $table->string('type');
             $table->integer('category_id')->unsigned();
             $table->timestamps();
 
