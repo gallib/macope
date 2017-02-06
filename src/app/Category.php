@@ -27,6 +27,16 @@ class Category extends Model
     }
 
     /**
+     * Define the one-to-many relationship with Categorization
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function categorizations()
+    {
+        return $this->hasMany(Categorization::class);
+    }
+
+    /**
      * Define the inverse one-to-many relationship with TypeCategory.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
