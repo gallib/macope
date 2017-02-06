@@ -58,7 +58,7 @@
 @push('scripts')
 <script>
 $(function() {
-    $('#type-categories-table').DataTable({
+    $('#categories-table').DataTable({
         pageLength: 25
     });
 });
