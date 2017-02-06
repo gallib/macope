@@ -73,7 +73,6 @@ class CategoryController extends Controller
         $category       = Category::findOrFail($id);
         $typeCategories = TypeCategory::pluck('name', 'id')->all();
 
-
         return view('macope::categories.edit', compact(['category', 'typeCategories']));
     }
 
