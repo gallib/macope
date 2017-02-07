@@ -17,6 +17,16 @@ class Categorization extends Model
         'category_id'
     ];
 
+    protected $types = [
+        'match',
+        'contains'
+    ];
+
+    public function getTypes()
+    {
+        return $this->types;
+    }
+
     /**
      * Define the inverse one-to-many relationship with Category.
      *

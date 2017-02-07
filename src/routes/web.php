@@ -21,6 +21,8 @@ Route::group(
 
         Route::resource('accounts', 'AccountController');
 
+        Route::resource('categorizations', 'CategorizationController');
+
         Route::resource('categories', 'CategoryController');
 
         Route::resource('type-categories', 'TypeCategoryController');
