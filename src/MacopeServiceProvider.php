@@ -2,6 +2,8 @@
 
 namespace Gallib\Macope;
 
+use Gallib\Macope\App\JournalEntry;
+use Gallib\Macope\App\Observers\JournalEntryObserver;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +25,8 @@ class MacopeServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'macope');
 
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+
+        $this->loadObservers();
     }
 
     /**
@@ -72,5 +76,15 @@ class MacopeServiceProvider extends ServiceProvider
     protected function loadRoutes()
     {
         include __DIR__ . '/routes/web.php';
+    }
+
+    /**
+     * Load observers
+     *
+     * @return void
+     */
+    protected function loadObservers()
+    {
+        JournalEntry::observe(JournalEntryObserver::class);
     }
 }
