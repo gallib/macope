@@ -38,7 +38,7 @@ class ImportPostFinanceData implements ImportDataInterface
             throw new \InvalidArgumentException("$filename is not a valid file.");
         }
 
-        $this->uploadedFile     = $uploadedFile;
+        $this->uploadedFile = $uploadedFile;
     }
 
     /**
