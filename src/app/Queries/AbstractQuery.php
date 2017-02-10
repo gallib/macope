@@ -18,7 +18,7 @@ abstract class AbstractQuery
     protected $model;
 
     /**
-     * Create a new Repository instance
+     * Create a new Query instance
      *
      * @param \Illuminate\Container\Container $app
      * @return  void
