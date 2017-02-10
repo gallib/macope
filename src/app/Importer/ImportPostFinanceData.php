@@ -105,7 +105,8 @@ class ImportPostFinanceData implements ImportDataInterface
 
         foreach ($data as $key => $value) {
             try {
-                $date = Carbon::createFromFormat('Y-m-d', $value[0]);
+                $format = strpos($value[0], '-') !== false ? 'Y-m-d' : 'd.m.Y';
+                $date   = Carbon::createFromFormat($format, $value[0]);
             } catch (\InvalidArgumentException $e) {
                 continue;
             }
