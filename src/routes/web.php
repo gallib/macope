@@ -7,6 +7,8 @@ Route::group(
         'middleware' => ['web']
     ],
     function() {
+        Route::get('/dashboard', 'DashboardController@index')->name('importFile');
+
         Route::get('/import-file', [
             'uses' => 'ImportFileController@index'
         ])->name('importFile');
