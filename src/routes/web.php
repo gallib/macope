@@ -7,19 +7,13 @@ Route::group(
         'middleware' => ['web']
     ],
     function() {
-        Route::get('/dashboard', 'DashboardController@index')->name('importFile');
+        Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
-        Route::get('/import-file', [
-            'uses' => 'ImportFileController@index'
-        ])->name('importFile');
+        Route::get('/import-file', 'ImportFileController@index')->name('import-file.index');
 
-        Route::post('/import-file', [
-            'uses' => 'ImportFileController@importFile'
-        ]);
+        Route::post('/import-file', 'ImportFileController@importFile')->name('import-file.import');
 
-        Route::get('/journal', [
-            'uses' => 'JournalController@index'
-        ])->name('journal');
+        Route::get('/journal', 'JournalController@index');
 
         Route::resource('accounts', 'AccountController');
 

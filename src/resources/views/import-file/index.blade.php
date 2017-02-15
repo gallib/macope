@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     @include('macope::helpers.form-message')
-                    {{ Form::open(['url' => route('importFile'), 'files' => true]) }}
+                    {{ Form::open(['url' => route('import-file.import'), 'files' => true]) }}
                     <div class="form-group">
                         {{ Form::label('file', 'File') }}
                         {{ Form::file('file') }}
