@@ -1,18 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="containe-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col">
             <h1>{{ $category->name }}</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <p>Name: {{ $category->name }}</p>
-                    <p>Type category: {{ $category->typeCategory->name }}</p>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <div class="header-block">
+                        Informations
+                    </div>
+                </div>
+                <div class="card-block">
+                    <p><span class="font-weight-bold">Name: </span>{{ $category->name }}</p>
+                    <p><span class="font-weight-bold">Type category: </span>{{ $category->typeCategory->name }}</p>
                 </div>
             </div>
         </div>
