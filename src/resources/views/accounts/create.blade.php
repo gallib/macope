@@ -3,14 +3,19 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col">
             <h1>Create an account</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-body">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <div class="header-block">
+                        Create an account
+                    </div>
+                </div>
+                <div class="card-block">
                     @include('macope::helpers.form-message')
                     {{ Form::open(['url' => route('accounts.store')]) }}
                     <div class="form-group">
