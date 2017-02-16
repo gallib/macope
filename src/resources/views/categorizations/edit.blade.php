@@ -1,16 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
-            <h1>{{ $categorization->name }}</h1>
+        <div class="col">
+            <h1>Edit a categorization</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-body">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <div class="header-block">
+                        Edit a categorization
+                    </div>
+                </div>
+                <div class="card-block">
                     @include('macope::helpers.form-message')
                     {{ Form::model($categorization, ['url' => route('categorizations.update', $categorization->id), 'method' => 'PUT']) }}
                     <div class="form-group">
