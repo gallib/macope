@@ -1,19 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col">
             <h1>Dashboard</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-body">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <div class="header-block">
+                        Yearly billing
+                    </div>
+                </div>
+                <div class="card-block">
                     @foreach ($billing as $year => $yearly)
                         <h2>{{ $year }}</h2>
-                        <table class="table table-bordered table-condensed">
+                        <table id="yearly-billing-table" class="table table-bordered table-condensed">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -34,8 +39,20 @@
                             <tbody>
                                 @foreach ($yearly as $typeCategory => $byCategories)
                                     <tr>
-                                        <td>{{ $typeCategory }}</td>
-                                        <td colspan="12"></td>
+                                        <td class="font-weight-bold text-decoration-underline">{{ $typeCategory }}</td>
+                                        <!--<td colspan="12"></td>-->
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                         @foreach ($byCategories as $category => $monthly)
                                             <tr>
@@ -55,3 +72,14 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+$(function() {
+    $('#yearly-billing-table').DataTable({
+        ordering: false,
+        paging: false
+    });
+});
+</script>
+@endpush
