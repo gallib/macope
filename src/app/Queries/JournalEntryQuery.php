@@ -45,15 +45,20 @@ class JournalEntryQuery extends AbstractQuery
     /**
      * Getter for the yearly billing
      *
+     * @param integer|null $year
      * @return \Illuminate\Support\Collection
      */
-    public function getYearlyBilling()
+    public function getYearlyBilling($year = null)
     {
         $query = \DB::table('journal_entries')
             ->select('categories.name as category_name', 'type_categories.name as type_category_name', \DB::raw('YEAR(journal_entries.date) as year'), \DB::raw('MONTH(journal_entries.date) as month'), \DB::raw('SUM(journal_entries.credit) as credit'), \DB::raw('SUM(journal_entries.debit) as debit'))
             ->join('categories', 'categories.id', '=', 'journal_entries.category_id')
             ->join('type_categories', 'type_categories.id', '=', 'categories.type_category_id')
             ->groupBy(\DB::raw('categories.name, YEAR(journal_entries.date), MONTH(journal_entries.date)'));
+
+        if (!is_null($year)) {
+            $query->whereYear('journal_entries.date', '=', $year);
+        }
 
         return $query->get();
     }

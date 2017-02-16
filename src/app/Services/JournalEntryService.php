@@ -11,6 +11,11 @@ class JournalEntryService
      */
     protected $journalEntryQuery;
 
+    /**
+     * The constructor
+     *
+     * @param \Gallib\Macope\App\Queries\JournalEntryQuery $journalEntryQuery
+     */
     public function __construct(JournalEntryQuery $journalEntryQuery)
     {
         $this->journalEntryQuery = $journalEntryQuery;
@@ -19,11 +24,12 @@ class JournalEntryService
     /**
      * Get the yearly billing and format results
      *
+     * @param integer|null $year
      * @return  string
      */
-    public function getYearlyBilling()
+    public function getYearlyBilling($year = null)
     {
-        $results = $this->journalEntryQuery->getYearlyBilling();
+        $results = $this->journalEntryQuery->getYearlyBilling($year);
 
         $billing = [];
 
