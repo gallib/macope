@@ -40,7 +40,6 @@
                                 @foreach ($yearly as $typeCategory => $byCategories)
                                     <tr>
                                         <td class="font-weight-bold text-decoration-underline">{{ $typeCategory }}</td>
-                                        <!--<td colspan="12"></td>-->
                                         <td></td>
                                         <td></td>
                                         <td></td>
