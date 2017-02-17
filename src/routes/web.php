@@ -7,7 +7,9 @@ Route::group(
         'middleware' => ['web']
     ],
     function() {
-        Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+        Route::get('/dashboard/{year?}', 'DashboardController@index')
+            ->name('dashboard.index')
+            ->where('year', '[0-9]+');
 
         Route::get('/import-file', 'ImportFileController@index')->name('import-file.index');
 
