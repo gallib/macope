@@ -3,6 +3,7 @@
 namespace Gallib\Macope\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Gallib\Macope\App\Services\JournalEntryService;
 
 class DashboardController extends Controller
@@ -25,12 +26,18 @@ class DashboardController extends Controller
     /**
      * Show the dashboard.
      *
+     * @param integer $currentYear
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($currentYear = null)
     {
-        $billing = $this->journalEntryService->getYearlyBilling();
+        if (is_null($currentYear)) {
+            $currentYear = Carbon::now()->format('Y');
+        }
 
-        return view('macope::dashboard.index', compact(['billing']));
+        $billing = $this->journalEntryService->getYearlyBilling($currentYear);
+        $years   = $this->journalEntryService->getAvailableYears();
+
+        return view('macope::dashboard.index', compact(['billing', 'currentYear', 'years']));
     }
 }

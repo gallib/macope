@@ -13,6 +13,13 @@
                 <div class="card-header">
                     <div class="header-block">
                         Yearly billing
+                        <ul class="nav nav-tabs card-header-tabs pull-right">
+                            @foreach ($years as $year)
+                                <li class="nav-item">
+                                    <a class="nav-link @if($year->year == $currentYear) active @endif" href="{{ route('dashboard.index', ['year' => $year->year]) }}">{{ $year->year }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
                 <div class="card-block">
