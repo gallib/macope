@@ -62,4 +62,18 @@ class JournalEntryQuery extends AbstractQuery
 
         return $query->get();
     }
+
+    /**
+     * Returns years that have at least one entry
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function getAvailableYears()
+    {
+        $query = \DB::table('journal_entries')
+            ->select(\DB::raw('YEAR(journal_entries.date) as year'))
+            ->groupBy('year');
+
+        return $query->get();
+    }
 }
