@@ -22,21 +22,29 @@ class JournalController extends Controller
     /**
      * Show the journal.
      *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $account  = null;
+        $entries  = JournalEntry::all();
+        $accounts = ['' => 'All'] + Account::pluck('name', 'id')->toArray();
+
+        return view('macope::journal.index', compact(['entries', 'accounts', 'account']));
+    }
+
+    /**
+     * Apply filters and show the journal.
+     *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function filter(Request $request)
     {
-        $account = $request->get('account', null);
-
-        if ($account) {
-            $entries = JournalEntry::where('account_id', $account)->get();
-        } else {
-            $entries = JournalEntry::get();
-        }
-
+        $account  = $request->get('account', null);
+        $entries  = JournalEntry::where('account_id', $account)->get();
         $accounts = ['' => 'All'] + Account::pluck('name', 'id')->toArray();
 
-        return view('macope::journal.index', ['entries' => $entries, 'accounts' => $accounts, 'account' => $account]);
+        return view('macope::journal.index', compact(['entries', 'accounts', 'account']));
     }
 }
