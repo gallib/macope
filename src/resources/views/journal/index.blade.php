@@ -26,6 +26,7 @@
                             <tr>
                                 <th>Date</th>
                                 <th>Text</th>
+                                <th>Category</th>
                                 <th>Credit</th>
                                 <th>Debit</th>
                                 <th>Balance</th>
@@ -36,6 +37,11 @@
                             <tr>
                                 <td>{{ $entry->date }}</td>
                                 <td>{{ $entry->text }}</td>
+                                <td>
+                                @if ($entry->category)
+                                    {{ $entry->category->name }}
+                                @endif
+                                </td>
                                 <td>{{ $entry->credit }}</td>
                                 <td>{{ $entry->debit }}</td>
                                 <td>{{ $entry->balance }}</td>
