@@ -47,11 +47,11 @@ class ImportFileController extends Controller
             $importer->import();
 
             return redirect()
-                ->route('importFile')
+                ->route('import-file.index')
                 ->withSuccess(['success' => 'The file has been imported successfully']);
         } catch (\Exception $e) {
             return redirect()
-                ->route('importFile')
+                ->route('import-file.index')
                 ->withErrors(['file' => $e->getMessage()]);
         }
     }
