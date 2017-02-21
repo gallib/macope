@@ -7,23 +7,26 @@ Route::group(
         'middleware' => ['web']
     ],
     function() {
-        Route::get('/import-file', [
-            'uses' => 'ImportFileController@index'
-        ])->name('importFile');
+        Route::get('/dashboard/{year?}', 'DashboardController@index')
+            ->name('dashboard.index')
+            ->where('year', '[0-9]+');
 
-        Route::post('/import-file', [
-            'uses' => 'ImportFileController@importFile'
-        ]);
+        Route::get('/import-file', 'ImportFileController@index')->name('import-file.index');
 
-        Route::get('/journal', [
-            'uses' => 'JournalController@index'
-        ])->name('journal');
+        Route::post('/import-file', 'ImportFileController@importFile')->name('import-file.import');
 
-        Route::get('/account', [
-            'uses' => 'AccountController@index'
-        ])->name('account');
+        Route::get('/journal', 'JournalController@index')
+            ->name('journal.index');
 
-        Route::post('/account', [
-            'uses' => 'AccountController@add'
-        ]);
-});
+        Route::post('/journal', 'JournalController@filter')
+            ->name('journal.filter');
+
+        Route::resource('accounts', 'AccountController');
+
+        Route::resource('categorizations', 'CategorizationController');
+
+        Route::resource('categories', 'CategoryController');
+
+        Route::resource('type-categories', 'TypeCategoryController');
+    }
+);

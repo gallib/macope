@@ -1,25 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    @include('macope::helpers.filter')
-                </div>
-            </div>
+        <div class="col">
+            <h1>Journal</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-body">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <div class="header-block">
+                        Journal
+                    </div>
+                </div>
+                <div class="card-block">
+                    {{ Form::open(['url' => route('journal.filter'), 'class' => 'form-inline']) }}
+                        {{ Form::label('account', 'Account', ['class' => 'mb-2 mr-sm-2']) }}
+                        {{ Form::select('account', $accounts, $account, ['class' => 'form-control mb-2 mr-sm-2']) }}
+                        {{ Form::submit('Filter', ['class' => 'btn btn-primary mb-2 mr-sm-2']) }}
+                    {{ Form::close() }}
                     <table class="table table-bordered table-condensed" id="journal-table">
                         <thead>
                             <tr>
                                 <th>Date</th>
                                 <th>Text</th>
+                                <th>Category</th>
                                 <th>Credit</th>
                                 <th>Debit</th>
                                 <th>Balance</th>
@@ -30,6 +37,11 @@
                             <tr>
                                 <td>{{ $entry->date }}</td>
                                 <td>{{ $entry->text }}</td>
+                                <td>
+                                @if ($entry->category)
+                                    {{ $entry->category->name }}
+                                @endif
+                                </td>
                                 <td>{{ $entry->credit }}</td>
                                 <td>{{ $entry->debit }}</td>
                                 <td>{{ $entry->balance }}</td>

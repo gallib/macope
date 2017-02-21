@@ -4,7 +4,7 @@ namespace Gallib\Macope\App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Account extends Model
+class TypeCategory extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,18 +13,15 @@ class Account extends Model
      */
     protected $fillable = [
         'name',
-        'description',
-        'iban',
-        'currency'
     ];
 
     /**
-     * Define the one-to-many relationship with JournalEntry
+     * Define the one-to-many relationship with Category
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function journalEntries()
+    public function categories()
     {
-        return $this->hasMany(JournalEntry::class);
+        return $this->hasMany(Category::class);
     }
 }

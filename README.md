@@ -1,6 +1,8 @@
 #Macope
 
-## Installations
+Macope is a Laravel A package to manage your online finance.
+
+## Installation
 
 Using Composer
 
@@ -22,3 +24,16 @@ then run
 ```
 php artisan vendor:publish
 ```
+
+## Import files
+
+For now, only PostFinance is supported.
+
+### PostFinance
+
+Once connected to your PostFinance account, go on the transaction page and click on export button.
+Import this file on Macope and... that's all!
+
+## Note
+
+The package has been (basically) designed to work with [Bootstrap 4](https://v4-alpha.getbootstrap.com/). [Datatables](https://datatables.net/) and [Moment.js](https://momentjs.com/) are also required if you want use default views.

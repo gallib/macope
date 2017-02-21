@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>Import a file</h1>
+            <h1>{{ $typeCategory->name }}</h1>
         </div>
     </div>
     <div class="row">
@@ -12,17 +12,17 @@
             <div class="card">
                 <div class="card-header">
                     <div class="header-block">
-                        Import a file
+                        {{ $typeCategory->name }}
                     </div>
                 </div>
                 <div class="card-block">
                     @include('macope::helpers.form-message')
-                    {{ Form::open(['url' => route('import-file.import'), 'files' => true]) }}
+                    {{ Form::model($typeCategory, ['url' => route('type-categories.update', $typeCategory->id), 'method' => 'PUT']) }}
                     <div class="form-group">
-                        {{ Form::label('file', 'File') }}
-                        {{ Form::file('file') }}
+                        {{ Form::label('name', 'Name') }}
+                        {{ Form::text('name', null, ['class' => 'form-control']) }}
                     </div>
-                    {{ Form::submit('Import', ['class' => 'btn btn-primary']) }}
+                    {{ Form::submit('Edit', ['class' => 'btn btn-primary']) }}
                     {{ Form::close() }}
                 </div>
             </div>
