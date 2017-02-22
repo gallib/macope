@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::with('typeCategory')->get();
 
         return view('macope::categories.index', compact(['categories']));
     }
