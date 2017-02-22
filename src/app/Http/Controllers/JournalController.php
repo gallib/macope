@@ -27,7 +27,7 @@ class JournalController extends Controller
     public function index()
     {
         $account  = null;
-        $entries  = JournalEntry::all();
+        $entries  = JournalEntry::with('category')->get();
         $accounts = ['' => 'All'] + Account::pluck('name', 'id')->toArray();
 
         return view('macope::journal.index', compact(['entries', 'accounts', 'account']));
