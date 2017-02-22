@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>Dashboard</h1>
+            <h1>Yearly billing</h1>
         </div>
     </div>
     <div class="row">
@@ -16,7 +16,7 @@
                         <ul class="nav nav-tabs card-header-tabs pull-right">
                             @foreach ($years as $year)
                                 <li class="nav-item">
-                                    <a class="nav-link @if($year->year == $currentYear) active @endif" href="{{ route('dashboard.index', ['year' => $year->year]) }}">{{ $year->year }}</a>
+                                    <a class="nav-link @if($year->year == $currentYear) active @endif" href="{{ route('yearly-billing.index', ['year' => $year->year]) }}">{{ $year->year }}</a>
                                 </li>
                             @endforeach
                         </ul>
