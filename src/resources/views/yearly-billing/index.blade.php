@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>Dashboard</h1>
+            <h1>Yearly billing</h1>
         </div>
     </div>
     <div class="row">
@@ -16,7 +16,7 @@
                         <ul class="nav nav-tabs card-header-tabs pull-right">
                             @foreach ($years as $year)
                                 <li class="nav-item">
-                                    <a class="nav-link @if($year->year == $currentYear) active @endif" href="{{ route('dashboard.index', ['year' => $year->year]) }}">{{ $year->year }}</a>
+                                    <a class="nav-link @if($year->year == $currentYear) active @endif" href="{{ route('yearly-billing.index', ['year' => $year->year]) }}">{{ $year->year }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -29,18 +29,18 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>January</th>
-                                    <th>February</th>
-                                    <th>March</th>
-                                    <th>April</th>
+                                    <th>Jan.</th>
+                                    <th>Feb.</th>
+                                    <th>Mar.</th>
+                                    <th>Apr.</th>
                                     <th>May</th>
-                                    <th>June</th>
-                                    <th>July</th>
-                                    <th>August</th>
-                                    <th>September</th>
-                                    <th>October</th>
-                                    <th>November</th>
-                                    <th>December</th>
+                                    <th>Jun.</th>
+                                    <th>Jul.</th>
+                                    <th>Aug.</th>
+                                    <th>Sep.</th>
+                                    <th>Oct.</th>
+                                    <th>Nov.</th>
+                                    <th>Dec.</th>
                                 </tr>
                             </thead>
                             <tbody>

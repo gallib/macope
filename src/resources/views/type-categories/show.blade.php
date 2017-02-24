@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col-6">
             <div class="card">
                 <div class="card-header">
                     <div class="header-block">
@@ -17,6 +17,20 @@
                 </div>
                 <div class="card-block">
                     <p><span class="font-weight-bold">Name: </span>{{ $typeCategory->name }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="header-block">
+                        Related categories
+                    </div>
+                </div>
+                <div class="card-block">
+                    @foreach ($typeCategory->categories as $category)
+                        <a href="{{ route('categories.show', $category->id) }}"><span class="badge badge-pill badge-primary">{{ $category->name }}</span></a>
+                    @endforeach
                 </div>
             </div>
         </div>

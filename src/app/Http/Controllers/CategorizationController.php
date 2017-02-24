@@ -16,7 +16,7 @@ class CategorizationController extends Controller
      */
     public function index()
     {
-        $categorizations = Categorization::all();
+        $categorizations = Categorization::with('category')->get();
 
         return view('macope::categorizations.index', compact(['categorizations']));
     }

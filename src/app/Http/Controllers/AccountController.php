@@ -73,7 +73,7 @@ class AccountController extends Controller
         $account  = Account::findOrFail($id);
         $balances = $this->journalEntryQuery->getMonthlyBalances($account->id);
 
-        return view('macope::accounts.show', compact(array('account', 'balances')));
+        return view('macope::accounts.show', compact(['account', 'balances']));
     }
 
     /**
@@ -86,7 +86,7 @@ class AccountController extends Controller
     {
         $account = Account::findOrFail($id);
 
-        return view('macope::accounts.edit', compact(array('account')));
+        return view('macope::accounts.edit', compact(['account']));
     }
 
     /**
