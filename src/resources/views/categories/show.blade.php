@@ -17,7 +17,10 @@
                 </div>
                 <div class="card-block">
                     <p><span class="font-weight-bold">Name: </span>{{ $category->name }}</p>
-                    <p><span class="font-weight-bold">Type category: </span>{{ $category->typeCategory->name }}</p>
+                    <p>
+                        <span class="font-weight-bold">Type category: </span>
+                        <a href="{{ route('type-categories.show', $category->typeCategory->id) }}" title="View type category detail">{{ $category->typeCategory->name }}</a>
+                    </p>
                 </div>
             </div>
         </div>
