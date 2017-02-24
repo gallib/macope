@@ -28,9 +28,7 @@
                         <tbody>
                         @foreach ($typeCategories as $typeCategory)
                             <tr>
-                                <td>
-                                    <a href="{{ route('type-categories.show', $typeCategory->id) }}" title="View details">{{ $typeCategory->name }}</a>
-                                </td>
+                                <td>{{ $typeCategory->name }}</td>
                                 <td>
                                     <a href="{{ route('type-categories.show', $typeCategory->id) }}" title="View details">
                                         <i class="fa fa-eye"></i>
