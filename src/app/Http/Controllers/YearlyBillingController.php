@@ -20,6 +20,8 @@ class YearlyBillingController extends Controller
      */
     public function __construct(JournalEntryService $journalEntryService)
     {
+        $this->middleware('auth');
+
         $this->journalEntryService = $journalEntryService;
     }
 

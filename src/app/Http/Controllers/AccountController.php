@@ -21,6 +21,8 @@ class AccountController extends Controller
      */
     public function __construct(JournalEntryQuery $journalEntryQuery)
     {
+        $this->middleware('auth');
+
         $this->journalEntryQuery = $journalEntryQuery;
     }
 
