@@ -18,8 +18,8 @@ class Categorization extends Model
     ];
 
     protected $types = [
-        'match',
-        'contains'
+        'contains',
+        'match'
     ];
 
     public function getTypes()
