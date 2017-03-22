@@ -54,7 +54,7 @@ class Categorizer
     }
 
     /**
-     * Check if the categorization contains is found the journal entry
+     * Check if the categorization search string is found in the journal entry text
      *
      * @param  \Gallib\Macope\App\JournalEntry   $entry
      * @param  \Gallib\Macope\App\Categorization $categorization
