@@ -8,16 +8,6 @@ use Gallib\Macope\App\JournalEntry;
 class Categorizer
 {
     /**
-     * @var \Illuminate\Database\Eloquent\Collection
-     */
-    protected $categorizations;
-
-    public function __construct()
-    {
-        $this->categorizations = Categorization::all();
-    }
-
-    /**
      * Try to categorize the given journal entry
 
      * @param  \Gallib\Macope\App\JournalEntry $entry
@@ -25,7 +15,9 @@ class Categorizer
      */
     public function categorize(JournalEntry $entry)
     {
-        foreach ($this->categorizations as $categorization) {
+        $categorizations = Categorization::all();
+
+        foreach ($categorizations as $categorization) {
             if (!method_exists($this, $categorization->type)) {
                 throw new \Exception("$categorization->type is not a valid categorization type");
             }
