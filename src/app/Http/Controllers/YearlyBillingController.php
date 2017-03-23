@@ -9,7 +9,7 @@ use Gallib\Macope\App\Services\JournalEntryService;
 class YearlyBillingController extends Controller
 {
     /**
-     * @var \Gallib\Macope\App\Queries\JournalEntryQuery
+     * @var \Gallib\Macope\App\Service\JournalEntryService
      */
     protected $journalEntryQuery;
 
