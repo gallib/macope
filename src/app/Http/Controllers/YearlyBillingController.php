@@ -11,7 +11,7 @@ class YearlyBillingController extends Controller
     /**
      * @var \Gallib\Macope\App\Service\JournalEntryService
      */
-    protected $journalEntryQuery;
+    protected $journalEntryService;
 
     /**
      * Create a new controller instance.
