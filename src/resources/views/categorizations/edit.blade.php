@@ -30,10 +30,6 @@
                         {{ Form::label('category_id', 'Category') }}
                         {{ Form::select('category_id', $categories, null, ['class' => 'form-control']) }}
                     </div>
-                    <div class="form-group">
-                        {{ Form::label('apply_to_existing', 'Apply to existing entries') }}
-                        {{ Form::checkbox('apply_to_existing', '1', true) }}
-                    </div>
                     {{ Form::submit('Edit', ['class' => 'btn btn-primary']) }}
                     {{ Form::close() }}
                 </div>

@@ -5,11 +5,11 @@ namespace Gallib\Macope\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Gallib\Macope\App\Categorization;
 use Gallib\Macope\App\Category;
-use Gallib\Macope\App\Categorize\Categorizer;
 use Gallib\Macope\App\Http\Requests\CategorizationRequest;
 
 class CategorizationController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -55,12 +55,6 @@ class CategorizationController extends Controller
     public function store(CategorizationRequest $request)
     {
         $categorization = Categorization::create($request->all());
-
-        $applyToExisting = $request->input('apply_to_existing', false);
-
-        if ($applyToExisting) {
-            (new Categorizer)->applyCategorization($categorization);
-        }
 
         return redirect()
             ->route('categorizations.index')

@@ -2,7 +2,9 @@
 
 namespace Gallib\Macope;
 
+use Gallib\Macope\App\Categorization;
 use Gallib\Macope\App\JournalEntry;
+use Gallib\Macope\App\Observers\CategorizationObserver;
 use Gallib\Macope\App\Observers\JournalEntryObserver;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
@@ -87,6 +89,7 @@ class MacopeServiceProvider extends ServiceProvider
      */
     protected function loadObservers()
     {
+        Categorization::observe(CategorizationObserver::class);
         JournalEntry::observe(JournalEntryObserver::class);
     }
 }
