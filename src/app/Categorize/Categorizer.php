@@ -34,22 +34,17 @@ class Categorizer
      * Try to apply given categorization to journal entries
      *
      * @param  \Gallib\Macope\App\Categorization $categorization
+     * @param  \Gallib\Macope\App\JournalEntry $entry
      * @return void
      */
-    public function applyCategorization(Categorization $categorization)
+    public function applyCategorization(Categorization $categorization, JournalEntry $entry)
     {
-        $journalEntries = JournalEntry::whereNull('category_id')->get();
+        if (!method_exists($this, $categorization->type)) {
+            throw new \Exception("$categorization->type is not a valid categorization type");
+        }
 
-        foreach ($journalEntries as $entry) {
-            if (!method_exists($this, $categorization->type)) {
-                throw new \Exception("$categorization->type is not a valid categorization type");
-            }
-
-            if ($this->{$categorization->type}($entry, $categorization)) {
-                $entry->category_id = $categorization->category_id;
-
-                $entry->save();
-            }
+        if ($this->{$categorization->type}($entry, $categorization)) {
+            $entry->category_id = $categorization->category_id;
         }
     }
 
