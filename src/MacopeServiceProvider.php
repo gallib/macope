@@ -44,6 +44,7 @@ class MacopeServiceProvider extends ServiceProvider
 
         $this->registerAliases();
 
+        $this->app->bind('CategorizationService', \Gallib\Macope\App\Services\CategorizationService::class);
         $this->app->bind('JournalEntryService', \Gallib\Macope\App\Services\JournalEntryService::class);
     }
 
