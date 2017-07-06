@@ -15,16 +15,10 @@ class Categorizer
      */
     public function categorize(JournalEntry $entry)
     {
-        $categorizations = Categorization::all();
+        $categorizations = Categorization::all()->sortByDesc('amount');
 
         foreach ($categorizations as $categorization) {
-            if (!method_exists($this, $categorization->type)) {
-                throw new \Exception("$categorization->type is not a valid categorization type");
-            }
-
-            if ($this->{$categorization->type}($entry, $categorization)) {
-                $entry->category_id = $categorization->category_id;
-
+            if ($this->applyCategorization($categorization, $entry)) {
                 break;
             }
         }
@@ -35,7 +29,7 @@ class Categorizer
      *
      * @param  \Gallib\Macope\App\Categorization $categorization
      * @param  \Gallib\Macope\App\JournalEntry $entry
-     * @return void
+     * @return boolean
      */
     public function applyCategorization(Categorization $categorization, JournalEntry $entry)
     {
@@ -43,9 +37,17 @@ class Categorizer
             throw new \Exception("$categorization->type is not a valid categorization type");
         }
 
-        if ($this->{$categorization->type}($entry, $categorization)) {
-            $entry->category_id = $categorization->category_id;
+        if (!$this->checkAmount($entry, $categorization)) {
+            return false;
         }
+
+        if (!$this->{$categorization->type}($entry, $categorization)) {
+            return false;
+        }
+
+        $entry->category_id = $categorization->category_id;
+
+        return true;
     }
 
     /**
@@ -70,5 +72,25 @@ class Categorizer
     protected function match(JournalEntry $entry, Categorization $categorization)
     {
         return mb_strtolower($entry->text) === mb_strtolower($categorization->search);
+    }
+
+    /**
+     * Check if the amount match between the journal entry and the categorization
+     *
+     * @param  \Gallib\Macope\App\JournalEntry   $entry
+     * @param  \Gallib\Macope\App\Categorization $categorization
+     * @return boolean
+     */
+    protected function checkAmount(JournalEntry $entry, Categorization $categorization)
+    {
+        if ($categorization->amount === null) {
+            return true;
+        }
+
+        if ($categorization->amount < 0) {
+            return abs($categorization->amount) == $entry->debit;
+        }
+
+        return $categorization->amount == $entry->credit;
     }
 }
