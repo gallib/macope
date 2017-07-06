@@ -23,6 +23,7 @@
                             <tr>
                                 <th>Search</th>
                                 <th>Type</th>
+                                <th>Amount</th>
                                 <th>Category</th>
                                 <th></th>
                             </tr>
@@ -30,8 +31,9 @@
                         <tbody>
                         @foreach ($categorizations as $categorization)
                             <tr>
-                                <td>{{ $categorization->search }}</td>
+                                <td width="60%">{{ $categorization->search }}</td>
                                 <td>{{ $categorization->type }}</td>
+                                <td>{{ $categorization->amount }}</td>
                                 <td>{{ $categorization->category->name }}</td>
                                 <td>
                                     <a href="{{ route('categorizations.show', $categorization->id) }}" title="View details">
