@@ -14,6 +14,7 @@ class Categorization extends Model
     protected $fillable = [
         'search',
         'type',
+        'amount',
         'category_id'
     ];
 
@@ -22,6 +23,11 @@ class Categorization extends Model
         'match'
     ];
 
+    /**
+     * Getter for types
+     *
+     * @return array
+     */
     public function getTypes()
     {
         return $this->types;

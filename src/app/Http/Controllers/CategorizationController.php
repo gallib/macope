@@ -39,9 +39,9 @@ class CategorizationController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('name', 'id')->all();
-        $types      = (new Categorization())->getTypes();
-        $types      = array_combine($types, $types);
+        $categories     = Category::pluck('name', 'id')->all();
+        $categorization = new Categorization();
+        $types          = array_combine($categorization->getTypes(), $categorization->getTypes());
 
         return view('macope::categorizations.create', compact(['categories', 'types']));
     }
@@ -85,8 +85,7 @@ class CategorizationController extends Controller
     {
         $categorization = Categorization::findOrFail($id);
         $categories     = Category::pluck('name', 'id')->all();
-        $types          = (new Categorization())->getTypes();
-        $types          = array_combine($types, $types);
+        $types          = array_combine($categorization->getTypes(), $categorization->getTypes());
 
         return view('macope::categorizations.edit', compact(['categorization', 'categories', 'types']));
     }
