@@ -24,10 +24,10 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        $uniqueName = Rule::unique('categories', 'name');
+        $uniqueName = 'unique_with:categories,type_category_id';
 
         if (!is_null($this->route('category'))) {
-            $uniqueName->ignore($this->route('category'));
+            $uniqueName .= ',' . $this->route('category');
         }
 
         return [
