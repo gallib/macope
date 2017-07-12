@@ -56,6 +56,7 @@ class MacopeServiceProvider extends ServiceProvider
     protected function registerProviders()
     {
         $this->app->register(\Collective\Html\HtmlServiceProvider::class);
+        $this->app->register(\Felixkiss\UniqueWithValidator\ServiceProvider::class);
         $this->app->register(\Maatwebsite\Excel\ExcelServiceProvider::class);
     }
 
