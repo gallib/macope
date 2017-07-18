@@ -34,7 +34,7 @@
                                 <td width="60%">{{ $categorization->search }}</td>
                                 <td>{{ $categorization->type }}</td>
                                 <td>{{ $categorization->amount }}</td>
-                                <td>{{ $categorization->category->name }}</td>
+                                <td>{{ $categorization->category->name }} ({{$categorization->category->typeCategory->name}})</td>
                                 <td>
                                     <a href="{{ route('categorizations.show', $categorization->id) }}" title="View details">
                                         <i class="fa fa-eye"></i>
