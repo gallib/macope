@@ -45,4 +45,14 @@ class Category extends Model
     {
         return $this->belongsTo(TypeCategory::class);
     }
+
+    /**
+     * Getter for category name with typ ecategory name
+     *
+     * @return string
+     */
+    public function getNameWithTypeCategoryAttribute()
+    {
+        return $this->name . ' (' . $this->typeCategory->name . ')';
+    }
 }
