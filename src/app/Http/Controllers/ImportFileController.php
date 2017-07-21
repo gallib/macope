@@ -10,6 +10,16 @@ use Gallib\Macope\App\Http\Requests\ImportFileRequest;
 class ImportFileController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Show the import file form.
      *
      * @return \Illuminate\Http\Response

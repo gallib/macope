@@ -17,6 +17,7 @@ class CreateCategorizationsTable extends Migration
             $table->increments('id');
             $table->string('search');
             $table->string('type');
+            $table->decimal('amount', 10, 2)->nullable();
             $table->integer('category_id')->unsigned();
             $table->timestamps();
 

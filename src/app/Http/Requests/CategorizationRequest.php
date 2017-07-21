@@ -28,6 +28,7 @@ class CategorizationRequest extends FormRequest
         return [
             'search' => ['required', 'max:255'],
             'type' => ['required', Rule::in((new Categorization())->getTypes()), 'max:255'],
+            'amount' => ['nullable', 'numeric'],
             'category_id' => ['required', 'exists:categories,id']
         ];
     }

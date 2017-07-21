@@ -9,6 +9,17 @@ use Gallib\Macope\App\Http\Requests\CategorizationRequest;
 
 class CategorizationController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +27,7 @@ class CategorizationController extends Controller
      */
     public function index()
     {
-        $categorizations = Categorization::with('category')->get();
+        $categorizations = Categorization::with('category.typeCategory')->get();
 
         return view('macope::categorizations.index', compact(['categorizations']));
     }
@@ -28,9 +39,9 @@ class CategorizationController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('name', 'id')->all();
-        $types      = (new Categorization())->getTypes();
-        $types      = array_combine($types, $types);
+        $categories     = Category::with('typeCategory')->get()->pluck('name_with_type_category', 'id');
+        $categorization = new Categorization();
+        $types          = array_combine($categorization->getTypes(), $categorization->getTypes());
 
         return view('macope::categorizations.create', compact(['categories', 'types']));
     }
@@ -43,7 +54,7 @@ class CategorizationController extends Controller
      */
     public function store(CategorizationRequest $request)
     {
-        Categorization::create($request->all());
+        $categorization = Categorization::create($request->all());
 
         return redirect()
             ->route('categorizations.index')
@@ -73,9 +84,8 @@ class CategorizationController extends Controller
     public function edit($id)
     {
         $categorization = Categorization::findOrFail($id);
-        $categories     = Category::pluck('name', 'id')->all();
-        $types          = (new Categorization())->getTypes();
-        $types          = array_combine($types, $types);
+        $categories     = Category::with('typeCategory')->get()->pluck('name_with_type_category', 'id');
+        $types          = array_combine($categorization->getTypes(), $categorization->getTypes());
 
         return view('macope::categorizations.edit', compact(['categorization', 'categories', 'types']));
     }

@@ -2,7 +2,9 @@
 
 namespace Gallib\Macope;
 
+use Gallib\Macope\App\Categorization;
 use Gallib\Macope\App\JournalEntry;
+use Gallib\Macope\App\Observers\CategorizationObserver;
 use Gallib\Macope\App\Observers\JournalEntryObserver;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
@@ -42,6 +44,7 @@ class MacopeServiceProvider extends ServiceProvider
 
         $this->registerAliases();
 
+        $this->app->bind('CategorizationService', \Gallib\Macope\App\Services\CategorizationService::class);
         $this->app->bind('JournalEntryService', \Gallib\Macope\App\Services\JournalEntryService::class);
     }
 
@@ -53,6 +56,7 @@ class MacopeServiceProvider extends ServiceProvider
     protected function registerProviders()
     {
         $this->app->register(\Collective\Html\HtmlServiceProvider::class);
+        $this->app->register(\Felixkiss\UniqueWithValidator\ServiceProvider::class);
         $this->app->register(\Maatwebsite\Excel\ExcelServiceProvider::class);
     }
 
@@ -87,6 +91,7 @@ class MacopeServiceProvider extends ServiceProvider
      */
     protected function loadObservers()
     {
+        Categorization::observe(CategorizationObserver::class);
         JournalEntry::observe(JournalEntryObserver::class);
     }
 }

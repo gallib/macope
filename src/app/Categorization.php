@@ -14,14 +14,20 @@ class Categorization extends Model
     protected $fillable = [
         'search',
         'type',
+        'amount',
         'category_id'
     ];
 
     protected $types = [
-        'match',
-        'contains'
+        'contains',
+        'match'
     ];
 
+    /**
+     * Getter for types
+     *
+     * @return array
+     */
     public function getTypes()
     {
         return $this->types;

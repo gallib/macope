@@ -25,6 +25,8 @@ then run
 php artisan vendor:publish
 ```
 
+Macope is also using [laravel authentication](https://laravel.com/docs/5.4/authentication) to secure your data against visitors.
+
 ## Import files
 
 For now, only PostFinance is supported.
