@@ -39,7 +39,7 @@
                                 <td>{{ $entry->text }}</td>
                                 <td>
                                 @if ($entry->category)
-                                    {{ $entry->category->name }}
+                                    {{ $entry->category->name }} ({{$entry->category->typeCategory->name}})
                                 @endif
                                 </td>
                                 <td>{{ $entry->credit }}</td>
