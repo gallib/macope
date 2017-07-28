@@ -37,7 +37,7 @@ class YearlyBillingController extends Controller
             $currentYear = Carbon::now()->format('Y');
         }
 
-        $billing = $this->journalEntryService->getYearlyBilling($currentYear);
+        $billing = $this->journalEntryService->getYearlyBilling('debit', $currentYear);
         $years   = $this->journalEntryService->getAvailableYears();
 
         return view('macope::yearly-billing.index', compact(['billing', 'currentYear', 'years']));
