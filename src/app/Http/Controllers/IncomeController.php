@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Gallib\Macope\App\Services\JournalEntryService;
 
-class YearlyBillingController extends Controller
+class IncomeController extends Controller
 {
     /**
      * @var \Gallib\Macope\App\Service\JournalEntryService
@@ -26,7 +26,7 @@ class YearlyBillingController extends Controller
     }
 
     /**
-     * Show the yearly billing.
+     * Show the yearly income.
      *
      * @param integer $currentYear
      * @return \Illuminate\Http\Response
@@ -37,9 +37,9 @@ class YearlyBillingController extends Controller
             $currentYear = Carbon::now()->format('Y');
         }
 
-        $billing = $this->journalEntryService->getYearlyBilling('debit', $currentYear);
+        $incomes = $this->journalEntryService->getYearlyBilling('credit', $currentYear);
         $years   = $this->journalEntryService->getAvailableYears();
 
-        return view('macope::yearly-billing.index', compact(['billing', 'currentYear', 'years']));
+        return view('macope::incomes.index', compact(['incomes', 'currentYear', 'years']));
     }
 }

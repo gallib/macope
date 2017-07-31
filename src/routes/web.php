@@ -7,8 +7,12 @@ Route::group(
         'middleware' => ['web']
     ],
     function() {
-        Route::get('/yearly-billing/{year?}', 'YearlyBillingController@index')
-            ->name('yearly-billing.index')
+        Route::get('/expenses/{year?}', 'ExpenseController@index')
+            ->name('expenses.index')
+            ->where('year', '[0-9]+');
+
+        Route::get('/incomes/{year?}', 'IncomeController@index')
+            ->name('incomes.index')
             ->where('year', '[0-9]+');
 
         Route::get('/import-file', 'ImportFileController@index')->name('import-file.index');

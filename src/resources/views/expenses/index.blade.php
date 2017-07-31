@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>Yearly billing</h1>
+            <h1>Expenses</h1>
         </div>
     </div>
     <div class="row">
@@ -12,11 +12,11 @@
             <div class="card">
                 <div class="card-header">
                     <div class="header-block">
-                        Yearly billing
+                        Expenses
                         <ul class="nav nav-tabs card-header-tabs pull-right">
                             @foreach ($years as $year)
                                 <li class="nav-item">
-                                    <a class="nav-link @if($year->year == $currentYear) active @endif" href="{{ route('yearly-billing.index', ['year' => $year->year]) }}">{{ $year->year }}</a>
+                                    <a class="nav-link @if($year->year == $currentYear) active @endif" href="{{ route('expenses.index', ['year' => $year->year]) }}">{{ $year->year }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -25,7 +25,7 @@
                 <div class="card-block">
                     @foreach ($billing as $year => $yearly)
                         <h2>{{ $year }}</h2>
-                        <table id="yearly-billing-table" class="table table-bordered table-condensed">
+                        <table id="expenses-table" class="table table-bordered table-condensed">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -82,7 +82,7 @@
 @push('scripts')
 <script>
 $(function() {
-    $('#yearly-billing-table').DataTable({
+    $('#expenses-table').DataTable({
         ordering: false,
         paging: false
     });
