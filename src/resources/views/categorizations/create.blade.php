@@ -23,8 +23,8 @@
                         {{ Form::text('search', null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        {{ Form::label('type', 'Type') }}
-                        {{ Form::select('type', $types, null, ['class' => 'form-control']) }}
+                        {{ Form::label('search_type', 'Search type') }}
+                        {{ Form::select('search_type', $searchTypes, null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
                         {{ Form::label('entry_type', 'Entry type') }}

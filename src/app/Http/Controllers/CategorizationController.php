@@ -41,10 +41,10 @@ class CategorizationController extends Controller
     {
         $categories     = Category::with('typeCategory')->get()->pluck('name_with_type_category', 'id');
         $categorization = new Categorization();
-        $types          = array_combine($categorization->getTypes(), $categorization->getTypes());
+        $searchTypes    = array_combine($categorization->getSearchTypes(), $categorization->getSearchTypes());
         $entryTypes     = array_combine($categorization->getEntryTypes(), $categorization->getEntryTypes());
 
-        return view('macope::categorizations.create', compact(['categories', 'types', 'entryTypes']));
+        return view('macope::categorizations.create', compact(['categories', 'searchTypes', 'entryTypes']));
     }
 
     /**
@@ -86,10 +86,10 @@ class CategorizationController extends Controller
     {
         $categorization = Categorization::findOrFail($id);
         $categories     = Category::with('typeCategory')->get()->pluck('name_with_type_category', 'id');
-        $types          = array_combine($categorization->getTypes(), $categorization->getTypes());
+        $searchTypes    = array_combine($categorization->getSearchTypes(), $categorization->getSearchTypes());
         $entryTypes     = array_combine($categorization->getEntryTypes(), $categorization->getEntryTypes());
 
-        return view('macope::categorizations.edit', compact(['categorization', 'categories', 'types', 'entryTypes']));
+        return view('macope::categorizations.edit', compact(['categorization', 'categories', 'searchTypes', 'entryTypes']));
     }
 
     /**

@@ -16,7 +16,7 @@ class CreateCategorizationsTable extends Migration
         Schema::create('categorizations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('search');
-            $table->string('type');
+            $table->string('search_type');
             $table->string('entry_type');
             $table->decimal('amount', 10, 2)->nullable();
             $table->integer('category_id')->unsigned();

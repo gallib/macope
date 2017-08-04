@@ -33,8 +33,8 @@ class Categorizer
      */
     public function applyCategorization(Categorization $categorization, JournalEntry $entry)
     {
-        if (!method_exists($this, $categorization->type)) {
-            throw new \Exception("$categorization->type is not a valid categorization type");
+        if (!method_exists($this, $categorization->search_type)) {
+            throw new \Exception("$categorization->search_type is not a valid categorization type");
         }
 
         if (!$this->checkEntryType($entry, $categorization)) {
@@ -45,7 +45,7 @@ class Categorizer
             return false;
         }
 
-        if (!$this->{$categorization->type}($entry, $categorization)) {
+        if (!$this->{$categorization->search_type}($entry, $categorization)) {
             return false;
         }
 

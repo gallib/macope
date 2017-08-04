@@ -13,18 +13,18 @@ class Categorization extends Model
      */
     protected $fillable = [
         'search',
-        'type',
+        'search_type',
         'entry_type',
         'amount',
         'category_id'
     ];
 
     /**
-     * The types values
+     * The search types values
      *
      * @var array
      */
-    protected $types = [
+    protected $searchTypes = [
         'contains',
         'match'
     ];
@@ -40,13 +40,13 @@ class Categorization extends Model
     ];
 
     /**
-     * Getter for types
+     * Getter for search types
      *
      * @return array
      */
-    public function getTypes()
+    public function getSearchTypes()
     {
-        return $this->types;
+        return $this->searchTypes;
     }
 
     /**

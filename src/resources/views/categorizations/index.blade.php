@@ -22,7 +22,7 @@
                         <thead>
                             <tr>
                                 <th>Search</th>
-                                <th>Type</th>
+                                <th>Search type</th>
                                 <th>Entry type</th>
                                 <th>Amount</th>
                                 <th>Category</th>
@@ -33,7 +33,7 @@
                         @foreach ($categorizations as $categorization)
                             <tr>
                                 <td width="40%">{{ $categorization->search }}</td>
-                                <td>{{ $categorization->type }}</td>
+                                <td>{{ $categorization->search_type }}</td>
                                 <td>{{ $categorization->entry_type }}</td>
                                 <td>{{ $categorization->amount }}</td>
                                 <td>{{ $categorization->category->name }} ({{$categorization->category->typeCategory->name}})</td>
