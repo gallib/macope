@@ -18,6 +18,7 @@
                 <div class="card-block">
                     <p><span class="font-weight-bold">Search: </span>{{ $categorization->search }}</p>
                     <p><span class="font-weight-bold">Type: </span>{{ $categorization->type }}</p>
+                    <p><span class="font-weight-bold">Entry type: </span>{{ $categorization->entry_type }}</p>
                     <p><span class="font-weight-bold">Amount: </span>{{ $categorization->amount }}</p>
                     <p>
                         <span class="font-weight-bold">Category: </span>

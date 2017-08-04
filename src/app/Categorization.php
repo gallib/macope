@@ -14,6 +14,7 @@ class Categorization extends Model
     protected $fillable = [
         'search',
         'type',
+        'entry_type',
         'amount',
         'category_id'
     ];
@@ -29,6 +30,16 @@ class Categorization extends Model
     ];
 
     /**
+     * The entry types values
+     *
+     * @var array
+     */
+    protected $entryTypes = [
+        'debit',
+        'credit'
+    ];
+
+    /**
      * Getter for types
      *
      * @return array
@@ -36,6 +47,16 @@ class Categorization extends Model
     public function getTypes()
     {
         return $this->types;
+    }
+
+    /**
+     * Getter for entry types
+     *
+     * @return array
+     */
+    public function getEntryTypes()
+    {
+        return $this->entryTypes;
     }
 
     /**

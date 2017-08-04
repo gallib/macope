@@ -27,6 +27,10 @@
                         {{ Form::select('type', $types, null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
+                        {{ Form::label('entry_type', 'Entry type') }}
+                        {{ Form::select('entry_type', $entryTypes, null, ['class' => 'form-control']) }}
+                    </div>
+                    <div class="form-group">
                         {{ Form::label('amount', 'Amount') }}
                         {{ Form::text('amount', null, ['class' => 'form-control']) }}
                     </div>
