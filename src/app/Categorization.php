@@ -18,6 +18,11 @@ class Categorization extends Model
         'category_id'
     ];
 
+    /**
+     * The types values
+     *
+     * @var array
+     */
     protected $types = [
         'contains',
         'match'
