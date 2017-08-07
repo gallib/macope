@@ -24,19 +24,22 @@ class AccountRequest extends FormRequest
      */
     public function rules()
     {
-        $uniqueName = Rule::unique('accounts', 'name');
-        $uniqueIban = Rule::unique('accounts', 'iban');
+        $uniqueName          = Rule::unique('accounts', 'name');
+        $uniqueAccountNumber = Rule::unique('accounts', 'account_number');
+        $uniqueIban          = Rule::unique('accounts', 'iban');
 
         if (!is_null($this->route('account'))) {
             $uniqueName->ignore($this->route('account'));
+            $uniqueAccountNumber->ignore($this->route('account_number'));
             $uniqueIban->ignore($this->route('account'));
         }
 
         return [
-            'name'        => ['required', $uniqueName, 'max:255'],
-            'description' => ['max:255'],
-            'iban'        => ['required', $uniqueIban, 'max:255'],
-            'currency'    => ['required', 'max:3']
+            'name'           => ['required', $uniqueName, 'max:255'],
+            'description'    => ['max:255'],
+            'account_number' => ['required', $uniqueAccountNumber, 'max:255'],
+            'iban'           => ['required', $uniqueIban, 'max:255'],
+            'currency'       => ['required', 'max:3']
         ];
     }
 }
