@@ -13,24 +13,50 @@ class Categorization extends Model
      */
     protected $fillable = [
         'search',
-        'type',
+        'search_type',
+        'entry_type',
         'amount',
         'category_id'
     ];
 
-    protected $types = [
+    /**
+     * The search types values
+     *
+     * @var array
+     */
+    protected $searchTypes = [
         'contains',
         'match'
     ];
 
     /**
-     * Getter for types
+     * The entry types values
+     *
+     * @var array
+     */
+    protected $entryTypes = [
+        'debit',
+        'credit'
+    ];
+
+    /**
+     * Getter for search types
      *
      * @return array
      */
-    public function getTypes()
+    public function getSearchTypes()
     {
-        return $this->types;
+        return $this->searchTypes;
+    }
+
+    /**
+     * Getter for entry types
+     *
+     * @return array
+     */
+    public function getEntryTypes()
+    {
+        return $this->entryTypes;
     }
 
     /**

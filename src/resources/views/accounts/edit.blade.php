@@ -27,6 +27,10 @@
                         {{ Form::text('description', null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
+                        {{ Form::label('account_number', 'Account number') }}
+                        {{ Form::text('account_number', null, ['class' => 'form-control']) }}
+                    </div>
+                    <div class="form-group">
                         {{ Form::label('iban', 'Iban') }}
                         {{ Form::text('iban', null, ['class' => 'form-control']) }}
                     </div>

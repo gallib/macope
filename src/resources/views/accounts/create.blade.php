@@ -27,10 +27,14 @@
                         {{ Form::text('description', '', ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
+                        {{ Form::label('account_number', 'Account number') }}
+                        {{ Form::text('account_number', null, ['class' => 'form-control']) }}
+                    </div>
+                    <div class="form-group">
+                    <div class="form-group">
                         {{ Form::label('iban', 'Iban') }}
                         {{ Form::text('iban', '', ['class' => 'form-control']) }}
                     </div>
-                    <div class="form-group">
                         {{ Form::label('currency', 'Currency') }}
                         {{ Form::text('currency', '', ['class' => 'form-control']) }}
                     </div>

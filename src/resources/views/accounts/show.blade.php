@@ -17,6 +17,7 @@
                 </div>
                 <div class="card-block">
                     <p><span class="font-weight-bold">Description: </span>{{ $account->description }}</p>
+                    <p><span class="font-weight-bold">Account number: </span>{{ $account->account_number }}</p>
                     <p><span class="font-weight-bold">Iban: </span>{{ $account->iban }}</p>
                     <p><span class="font-weight-bold">Currency: </span>{{ $account->currency }}</p>
                 </div>

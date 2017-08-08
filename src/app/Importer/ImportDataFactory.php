@@ -18,6 +18,8 @@ class ImportDataFactory
 
         if (ImportPostFinanceData::isFileValid($uploadedFile)) {
             $factory = new ImportPostFinanceData($uploadedFile);
+        } elseif (ImportMigrosBankData::isFileValid($uploadedFile)) {
+            $factory = new ImportMigrosBankData($uploadedFile);
         } else {
             $filename = $uploadedFile->getClientOriginalName();
             throw new \InvalidArgumentException("$filename is not a valid file");

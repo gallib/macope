@@ -33,15 +33,19 @@ class Categorizer
      */
     public function applyCategorization(Categorization $categorization, JournalEntry $entry)
     {
-        if (!method_exists($this, $categorization->type)) {
-            throw new \Exception("$categorization->type is not a valid categorization type");
+        if (!method_exists($this, $categorization->search_type)) {
+            throw new \Exception("$categorization->search_type is not a valid categorization type");
+        }
+
+        if (!$this->checkEntryType($entry, $categorization)) {
+            return false;
         }
 
         if (!$this->checkAmount($entry, $categorization)) {
             return false;
         }
 
-        if (!$this->{$categorization->type}($entry, $categorization)) {
+        if (!$this->{$categorization->search_type}($entry, $categorization)) {
             return false;
         }
 
@@ -87,10 +91,18 @@ class Categorizer
             return true;
         }
 
-        if ($categorization->amount < 0) {
-            return abs($categorization->amount) == $entry->debit;
-        }
+        return $categorization->amount == $entry->{$categorization->entry_type};
+    }
 
-        return $categorization->amount == $entry->credit;
+    /**
+     * Check if the given entry match with the categorization entry type
+     *
+     * @param  \Gallib\Macope\App\JournalEntry   $entry
+     * @param  \Gallib\Macope\App\Categorization $categorization
+     * @return boolean
+     */
+    protected function checkEntryType(JournalEntry $entry, Categorization $categorization)
+    {
+        return $entry->{$categorization->entry_type} !== null;
     }
 }

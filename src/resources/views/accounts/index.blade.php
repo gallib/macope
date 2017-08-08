@@ -23,6 +23,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
+                                <th>Account number</th>
                                 <th>Iban</th>
                                 <th>Currency</th>
                                 <th></th>
@@ -33,6 +34,7 @@
                             <tr>
                                 <td>{{ $account->name }}</td>
                                 <td>{{ $account->description }}</td>
+                                <td>{{ $account->account_number }}</td>
                                 <td>{{ $account->iban }}</td>
                                 <td>{{ $account->currency }}</td>
                                 <td>
@@ -67,7 +69,7 @@ $(function() {
     $('#account-table').DataTable({
         pageLength: 25,
         columnDefs: [
-            {orderable: false, targets: 4}
+            {orderable: false, targets: 5}
         ]
     });
 });

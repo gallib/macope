@@ -17,6 +17,7 @@ class CreateAccountTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('description')->nullable();
+            $table->string('account_number')->unique();
             $table->string('iban')->unique();
             $table->string('currency', 3);
             $table->timestamps();

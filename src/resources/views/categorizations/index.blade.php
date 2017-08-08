@@ -22,7 +22,8 @@
                         <thead>
                             <tr>
                                 <th>Search</th>
-                                <th>Type</th>
+                                <th>Search type</th>
+                                <th>Entry type</th>
                                 <th>Amount</th>
                                 <th>Category</th>
                                 <th></th>
@@ -31,8 +32,9 @@
                         <tbody>
                         @foreach ($categorizations as $categorization)
                             <tr>
-                                <td width="60%">{{ $categorization->search }}</td>
-                                <td>{{ $categorization->type }}</td>
+                                <td width="40%">{{ $categorization->search }}</td>
+                                <td>{{ $categorization->search_type }}</td>
+                                <td>{{ $categorization->entry_type }}</td>
                                 <td>{{ $categorization->amount }}</td>
                                 <td>{{ $categorization->category->name }} ({{$categorization->category->typeCategory->name}})</td>
                                 <td>
@@ -65,7 +67,7 @@ $(function() {
     $('#categorizations-table').DataTable({
         pageLength: 25,
         columnDefs: [
-            {orderable: false, targets: 3}
+            {orderable: false, targets: 5}
         ]
     });
 });
