@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="card-block">
-                    @foreach ($billing as $year => $yearly)
+                    @foreach ($expenses as $year => $yearly)
                         @foreach ($yearly as $typeCategory => $byCategories)
                             <h2>{{ $typeCategory }}</h2>
                             <table class="table table-bordered table-condensed">
