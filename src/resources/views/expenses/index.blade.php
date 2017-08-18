@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>Expenses</h1>
+            <h1>{{ $currentYear }} expenses</h1>
         </div>
     </div>
     <div class="row">
@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="header-block">
-                        Expenses
+                        {{ $currentYear }} expenses
                         <ul class="nav nav-tabs card-header-tabs pull-right">
                             @foreach ($years as $year)
                                 <li class="nav-item">
@@ -23,54 +23,39 @@
                     </div>
                 </div>
                 <div class="card-block">
-                    @foreach ($billing as $year => $yearly)
-                        <h2>{{ $year }}</h2>
-                        <table id="expenses-table" class="table table-bordered table-condensed">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Jan.</th>
-                                    <th>Feb.</th>
-                                    <th>Mar.</th>
-                                    <th>Apr.</th>
-                                    <th>May</th>
-                                    <th>Jun.</th>
-                                    <th>Jul.</th>
-                                    <th>Aug.</th>
-                                    <th>Sep.</th>
-                                    <th>Oct.</th>
-                                    <th>Nov.</th>
-                                    <th>Dec.</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($yearly as $typeCategory => $byCategories)
+                    @foreach ($expenses as $year => $yearly)
+                        @foreach ($yearly as $typeCategory => $byCategories)
+                            <h2>{{ $typeCategory }}</h2>
+                            <table class="table table-bordered table-condensed">
+                                <thead>
                                     <tr>
-                                        <td class="font-weight-bold text-decoration-underline">{{ $typeCategory }}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <th></th>
+                                        <th>Jan.</th>
+                                        <th>Feb.</th>
+                                        <th>Mar.</th>
+                                        <th>Apr.</th>
+                                        <th>May</th>
+                                        <th>Jun.</th>
+                                        <th>Jul.</th>
+                                        <th>Aug.</th>
+                                        <th>Sep.</th>
+                                        <th>Oct.</th>
+                                        <th>Nov.</th>
+                                        <th>Dec.</th>
                                     </tr>
-                                        @foreach ($byCategories as $category => $monthly)
-                                            <tr>
-                                                <td>{{ $category }}</td>
-                                                @foreach ($monthly as $month => $amount)
-                                                    <td>{{ $amount['debit'] }}</td>
-                                                @endforeach
-                                            </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($byCategories as $category => $monthly)
+                                    <tr>
+                                        <td>{{ $category }}</td>
+                                        @foreach ($monthly as $month => $amount)
+                                            <td>{{ $amount['debit'] }}</td>
                                         @endforeach
+                                    </tr>
                                 @endforeach
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        @endforeach
                     @endforeach
                 </div>
             </div>
@@ -78,14 +63,3 @@
     </div>
 </div>
 @endsection
-
-@push('scripts')
-<script>
-$(function() {
-    $('#expenses-table').DataTable({
-        ordering: false,
-        paging: false
-    });
-});
-</script>
-@endpush

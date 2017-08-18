@@ -37,9 +37,9 @@ class ExpenseController extends Controller
             $currentYear = Carbon::now()->format('Y');
         }
 
-        $billing = $this->journalEntryService->getYearlyBilling('debit', $currentYear);
-        $years   = $this->journalEntryService->getAvailableYears();
+        $expenses = $this->journalEntryService->getYearlyBilling('debit', $currentYear);
+        $years    = $this->journalEntryService->getAvailableYears();
 
-        return view('macope::expenses.index', compact(['billing', 'currentYear', 'years']));
+        return view('macope::expenses.index', compact(['expenses', 'currentYear', 'years']));
     }
 }
