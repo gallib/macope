@@ -15,7 +15,7 @@
                         Informations
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     <p><span class="font-weight-bold">Name: </span>{{ $category->name }}</p>
                     <p>
                         <span class="font-weight-bold">Type category: </span>

@@ -15,7 +15,7 @@
                         Journal
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     {{ Form::open(['url' => route('journal.filter'), 'class' => 'form-inline']) }}
                         {{ Form::label('account', 'Account', ['class' => 'mb-2 mr-sm-2']) }}
                         {{ Form::select('account', $accounts, $account, ['class' => 'form-control mb-2 mr-sm-2']) }}

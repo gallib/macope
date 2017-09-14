@@ -15,7 +15,7 @@
                         Create an account
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @include('macope::helpers.form-message')
                     {{ Form::open(['url' => route('accounts.store')]) }}
                     <div class="form-group">

@@ -15,7 +15,7 @@
                         Create a type category
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @include('macope::helpers.form-message')
                     {{ Form::open(['url' => route('type-categories.store')]) }}
                     <div class="form-group">

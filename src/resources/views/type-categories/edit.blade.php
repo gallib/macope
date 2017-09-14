@@ -15,7 +15,7 @@
                         {{ $typeCategory->name }}
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @include('macope::helpers.form-message')
                     {{ Form::model($typeCategory, ['url' => route('type-categories.update', $typeCategory->id), 'method' => 'PUT']) }}
                     <div class="form-group">

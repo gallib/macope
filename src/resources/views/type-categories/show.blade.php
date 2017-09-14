@@ -15,7 +15,7 @@
                         Informations
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     <p><span class="font-weight-bold">Name: </span>{{ $typeCategory->name }}</p>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                         Related categories
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @foreach ($typeCategory->categories as $category)
                         <a href="{{ route('categories.show', $category->id) }}"><span class="badge badge-pill badge-primary">{{ $category->name }}</span></a>
                     @endforeach

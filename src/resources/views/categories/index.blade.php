@@ -16,7 +16,7 @@
                         <a href="{{ route('categories.create') }}" title="Add a category" class="btn btn-primary btn-sm pull-right">Add</a>
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @include('macope::helpers.form-message')
                     <table class="table table-bordered table-condensed" id="categories-table">
                         <thead>

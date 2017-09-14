@@ -15,7 +15,7 @@
                         {{ $category->name }}
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @include('macope::helpers.form-message')
                     {{ Form::model($category, ['url' => route('categories.update', $category->id), 'method' => 'PUT']) }}
                     <div class="form-group">
