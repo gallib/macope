@@ -15,7 +15,7 @@
                         Edit a categorization
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @include('macope::helpers.form-message')
                     {{ Form::model($categorization, ['url' => route('categorizations.update', $categorization->id), 'method' => 'PUT']) }}
                     <div class="form-group">
