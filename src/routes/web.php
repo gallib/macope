@@ -7,9 +7,15 @@ Route::group(
         'middleware' => ['web']
     ],
     function() {
+        Route::get('/', 'DashboardController@index')->name('dashboard.index');
+
         Route::get('/expenses/{year?}', 'ExpenseController@index')
             ->name('expenses.index')
             ->where('year', '[0-9]+');
+
+        Route::post('/expenses-last-sum/{months?}', 'ExpenseController@lastSum')
+            ->name('expenses.lastsum')
+            ->where('months', '[0-9]+');
 
         Route::get('/incomes/{year?}', 'IncomeController@index')
             ->name('incomes.index')
