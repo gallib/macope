@@ -1,6 +1,6 @@
 # Macope
 
-Macope is a Laravel A package to manage your online finance.
+Macope is a Laravel package to manage your online finance.
 
 ## Installation
 
@@ -25,7 +25,7 @@ then run
 php artisan vendor:publish
 ```
 
-Macope is also using [laravel authentication](https://laravel.com/docs/5.4/authentication) to secure your data against visitors.
+Macope is also using [laravel authentication](https://laravel.com/docs/authentication) to secure your data against visitors.
 
 ## Import files
 
