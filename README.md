@@ -23,6 +23,7 @@ then run
 
 ```
 php artisan vendor:publish
+php artisan migrate
 ```
 
 Macope is also using [laravel authentication](https://laravel.com/docs/authentication) to secure your data against visitors.
