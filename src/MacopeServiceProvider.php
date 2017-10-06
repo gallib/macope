@@ -26,6 +26,12 @@ class MacopeServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'macope');
 
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/resources/assets/js/components' => base_path('resources/assets/js/components/macope'),
+            ], 'macope-components');
+        }
+
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
 
         $this->loadObservers();
