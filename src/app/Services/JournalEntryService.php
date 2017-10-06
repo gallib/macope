@@ -60,4 +60,15 @@ class JournalEntryService
     {
         return $this->journalEntryQuery->getAvailableYears();
     }
+
+    /**
+     * Getter sum of last expenses group by month
+     *
+     * @param  integer $limit
+     * @return \Illuminate\Support\Collection
+     */
+    public function getLastExpensesSum($limit = 12)
+    {
+        return $this->journalEntryQuery->getLastExpensesSum($limit);
+    }
 }

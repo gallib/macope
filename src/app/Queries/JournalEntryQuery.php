@@ -81,4 +81,20 @@ class JournalEntryQuery extends AbstractQuery
 
         return $query->get();
     }
+
+    /**
+     * Getter sum of last expenses group by month
+     *
+     * @param  integer $limit
+     * @return \Illuminate\Support\Collection
+     */
+    public function getLastExpensesSum($limit = 12)
+    {
+        $query = \DB::table('journal_entries')
+            ->select(\DB::raw('YEAR(journal_entries.date) as year'), \DB::raw('MONTH(journal_entries.date) as month'), \DB::raw('SUM(journal_entries.debit) as debit'))
+            ->groupBy(\DB::raw('YEAR(journal_entries.date), MONTH(journal_entries.date)'))
+            ->limit($limit);
+
+        return $query->get();
+    }
 }
