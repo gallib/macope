@@ -23,9 +23,18 @@ then run
 
 ```
 php artisan vendor:publish
+php artisan vendor:publish --tag=macope-components
 php artisan migrate
 ```
 
+next you have to register components by copying the following lines on `resources/assets/js/app.js`
+
+```javascript
+Vue.component(
+    'macope-last-expenses',
+    require('./components/macope/LastExpenses.vue')
+);
+```
 Macope is also using [laravel authentication](https://laravel.com/docs/authentication) to secure your data against visitors.
 
 ## Import files
@@ -44,4 +53,4 @@ Import this file on Macope and... that's all!
 
 ## Note
 
-The package has been (basically) designed to work with [Bootstrap 4](https://v4-alpha.getbootstrap.com/). [Datatables](https://datatables.net/) and [Moment.js](https://momentjs.com/) are also required if you want use default views.
+The package has been (basically) designed to work with [Bootstrap 4](https://v4-alpha.getbootstrap.com/). [Datatables](https://datatables.net/), [Chart.js](http://www.chartjs.org/) and [Moment.js](https://momentjs.com/) are also required if you want use default views.
