@@ -26,6 +26,13 @@
                         {{ Form::label('type_category_id', 'Type category') }}
                         {{ Form::select('type_category_id', $typeCategories, null, ['class' => 'form-control']) }}
                     </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                {{ Form::checkbox('is_ignored', 1, null, ['class' => 'form-check-input']) }} Ignore category
+                            </label>
+                        </div>
+                    </div>
                     {{ Form::submit('Edit', ['class' => 'btn btn-primary']) }}
                     {{ Form::close() }}
                 </div>

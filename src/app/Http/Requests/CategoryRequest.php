@@ -32,7 +32,8 @@ class CategoryRequest extends FormRequest
 
         return [
             'name' => ['required', $uniqueName, 'max:255'],
-            'type_category_id' => ['required', 'exists:type_categories,id']
+            'type_category_id' => ['required', 'exists:type_categories,id'],
+            'is_ignored' => 'boolean',
         ];
     }
 }
