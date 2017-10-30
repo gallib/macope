@@ -29,7 +29,6 @@
                                 <th>Category</th>
                                 <th>Credit</th>
                                 <th>Debit</th>
-                                <th>Balance</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,7 +43,6 @@
                                 </td>
                                 <td>{{ $entry->credit }}</td>
                                 <td>{{ $entry->debit }}</td>
-                                <td>{{ $entry->balance }}</td>
                             </tr>
                         @endforeach
                         </tbody>

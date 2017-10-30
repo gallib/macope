@@ -17,32 +17,6 @@ class JournalEntryQuery extends AbstractQuery
     }
 
     /**
-     * Getter for monthly balances
-     *
-     * @param  integer $accountId
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getMonthlyBalances($accountId)
-    {
-        $query = $this->model->newQuery();
-
-        $query
-            ->whereIn('date', function($query) use ($accountId){
-                $query
-                    ->select(\DB::raw('MAX(date)'))
-                    ->from($this->model->getTable())
-                    ->whereNotNull('balance')
-                    ->where('account_id', '=', $accountId)
-                    ->distinct()
-                    ->groupBy(\DB::raw('YEAR(date), MONTH(date)'));
-            })
-            ->whereNotNull('balance')
-            ->where('account_id', '=', $accountId);
-
-        return $query->get();
-    }
-
-    /**
      * Getter for the yearly billing
      *
      * @param string       $type
