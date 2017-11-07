@@ -25,8 +25,7 @@ Route::group(
 
         Route::post('/import-file', 'ImportFileController@importFile')->name('import-file.import');
 
-        Route::get('/journal', 'JournalController@index')
-            ->name('journal.index');
+        Route::resource('/journal', 'JournalController');
 
         Route::post('/journal', 'JournalController@filter')
             ->name('journal.filter');

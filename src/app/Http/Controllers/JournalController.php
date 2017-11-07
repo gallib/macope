@@ -4,8 +4,9 @@ namespace Gallib\Macope\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Gallib\Macope\App\Account;
+use Gallib\Macope\App\Category;
 use Gallib\Macope\App\JournalEntry;
-use Illuminate\Http\Request;
+use Gallib\Macope\App\Http\Requests\JournalEntryRequest;
 
 class JournalController extends Controller
 {
@@ -31,6 +32,38 @@ class JournalController extends Controller
         $accounts = ['' => 'All'] + Account::pluck('name', 'id')->toArray();
 
         return view('macope::journal.index', compact(['entries', 'accounts', 'account']));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $journalEntry = JournalEntry::findOrFail($id);
+        $categories   = Category::with('typeCategory')->get()->sortBy('name')->pluck('name_with_type_category', 'id');
+
+        return view('macope::journal.edit', compact(['journalEntry', 'categories']));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Gallib\Macope\App\Http\Requests\JournalEntryRequest  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(JournalEntryRequest $request, $id)
+    {
+        $entry = JournalEntry::findOrFail($id);
+
+        $entry->update($request->all());
+
+        return redirect()
+                ->route('journal.index')
+                ->withSuccess(['success' => 'The journal entry has been successfully updated.']);
     }
 
     /**
