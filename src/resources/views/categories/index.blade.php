@@ -38,7 +38,7 @@
                                     <a href="{{ route('categories.edit', $category->id) }}" title="Edit">
                                         <i class="fa fa-pencil"></i>
                                     </a>
-                                    @if ($category->journalEntries()->count() === 0)
+                                    @if ($category->journal_entries_count === 0)
                                         {{ Form::open(['method' => 'DELETE','route' => ['categories.destroy', $category->id], 'style'=>'display:inline']) }}
                                             <button class="macope-delete" type="submit">
                                                 <i class="fa fa-trash"></i>
