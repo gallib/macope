@@ -7,6 +7,7 @@ use Gallib\Macope\App\Account;
 use Gallib\Macope\App\Category;
 use Gallib\Macope\App\JournalEntry;
 use Gallib\Macope\App\Http\Requests\JournalEntryRequest;
+use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {
