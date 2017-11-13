@@ -3,8 +3,10 @@
 namespace Gallib\Macope;
 
 use Gallib\Macope\App\Categorization;
+use Gallib\Macope\App\Category;
 use Gallib\Macope\App\JournalEntry;
 use Gallib\Macope\App\Observers\CategorizationObserver;
+use Gallib\Macope\App\Observers\CategoryObserver;
 use Gallib\Macope\App\Observers\JournalEntryObserver;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
@@ -25,6 +27,12 @@ class MacopeServiceProvider extends ServiceProvider
         ]);
 
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'macope');
+
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/resources/assets/js/components' => base_path('resources/assets/js/components/macope'),
+            ], 'macope-components');
+        }
 
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
 
@@ -92,6 +100,7 @@ class MacopeServiceProvider extends ServiceProvider
     protected function loadObservers()
     {
         Categorization::observe(CategorizationObserver::class);
+        Category::observe(CategoryObserver::class);
         JournalEntry::observe(JournalEntryObserver::class);
     }
 }

@@ -15,7 +15,8 @@
                         Journal
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
+                    @include('macope::helpers.form-message')
                     {{ Form::open(['url' => route('journal.filter'), 'class' => 'form-inline']) }}
                         {{ Form::label('account', 'Account', ['class' => 'mb-2 mr-sm-2']) }}
                         {{ Form::select('account', $accounts, $account, ['class' => 'form-control mb-2 mr-sm-2']) }}
@@ -29,7 +30,7 @@
                                 <th>Category</th>
                                 <th>Credit</th>
                                 <th>Debit</th>
-                                <th>Balance</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,7 +45,11 @@
                                 </td>
                                 <td>{{ $entry->credit }}</td>
                                 <td>{{ $entry->debit }}</td>
-                                <td>{{ $entry->balance }}</td>
+                                <td>
+                                    <a href="{{ route('journal.edit', $entry->id) }}" title="Edit">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -70,7 +75,8 @@ $(function() {
                     return moment(new Date(data)).format('DD/MM/YYYY');
                 },
                 targets: 0
-            }
+            },
+            {orderable: false, targets: 5}
         ]
     });
 });

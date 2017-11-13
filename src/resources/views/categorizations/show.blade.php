@@ -15,7 +15,7 @@
                         Informations
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     <p><span class="font-weight-bold">Search: </span>{{ $categorization->search }}</p>
                     <p><span class="font-weight-bold">Search type: </span>{{ $categorization->search_type }}</p>
                     <p><span class="font-weight-bold">Entry type: </span>{{ $categorization->entry_type }}</p>

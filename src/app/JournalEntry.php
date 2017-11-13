@@ -16,7 +16,6 @@ class JournalEntry extends Model
         'text',
         'credit',
         'debit',
-        'balance',
         'category_id',
         'account_id'
     ];

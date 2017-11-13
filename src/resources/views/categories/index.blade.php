@@ -16,7 +16,7 @@
                         <a href="{{ route('categories.create') }}" title="Add a category" class="btn btn-primary btn-sm pull-right">Add</a>
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @include('macope::helpers.form-message')
                     <table class="table table-bordered table-condensed" id="categories-table">
                         <thead>
@@ -38,7 +38,7 @@
                                     <a href="{{ route('categories.edit', $category->id) }}" title="Edit">
                                         <i class="fa fa-pencil"></i>
                                     </a>
-                                    @if ($category->journalEntries()->count() === 0)
+                                    @if ($category->journal_entries_count === 0)
                                         {{ Form::open(['method' => 'DELETE','route' => ['categories.destroy', $category->id], 'style'=>'display:inline']) }}
                                             <button class="macope-delete" type="submit">
                                                 <i class="fa fa-trash"></i>

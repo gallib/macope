@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::with('typeCategory')->get();
+        $categories = Category::with('typeCategory')->withCount('journalEntries')->get();
 
         return view('macope::categories.index', compact(['categories']));
     }

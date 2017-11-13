@@ -16,6 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->boolean('is_ignored')->default(0);
             $table->integer('type_category_id')->unsigned();
             $table->timestamps();
 
@@ -23,7 +24,7 @@ class CreateCategoriesTable extends Migration
         });
 
         Schema::table('journal_entries', function (Blueprint $table) {
-           $table->integer('category_id')->nullable()->unsigned()->after('balance');
+           $table->integer('category_id')->nullable()->unsigned()->after('debit');
 
            $table->foreign('category_id')->references('id')->on('categories');
        });

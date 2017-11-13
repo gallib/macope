@@ -15,7 +15,7 @@
                         Import a file
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @include('macope::helpers.form-message')
                     {{ Form::open(['url' => route('import-file.import'), 'files' => true]) }}
                     <div class="form-group">

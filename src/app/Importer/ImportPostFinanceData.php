@@ -122,17 +122,6 @@ class ImportPostFinanceData implements ImportDataInterface
             $entry = JournalEntry::where($entryData)->first();
 
             if (is_null($entry) || $start->lt($entry->created_at)) {
-                $withBalance = JournalEntry::whereNotNull('balance')
-                    ->where(['date' => $date->toDateString(), 'account_id' => $account->id])
-                    ->first();
-
-                if ($withBalance) {
-                    $withBalance->balance = null;
-                    $withBalance->save();
-                }
-
-                $entryData['balance'] = $value[5];
-
                 $entry = JournalEntry::create($entryData);
             }
         }

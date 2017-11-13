@@ -15,7 +15,7 @@
                         Create a categorization
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @include('macope::helpers.form-message')
                     {{ Form::open(['url' => route('categorizations.store')]) }}
                     <div class="form-group">

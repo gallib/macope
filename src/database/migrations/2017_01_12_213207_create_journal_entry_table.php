@@ -19,7 +19,6 @@ class CreateJournalEntryTable extends Migration
             $table->text('text')->nullable();
             $table->decimal('credit', 10, 2)->nullable();
             $table->decimal('debit', 10, 2)->nullable();
-            $table->decimal('balance', 10, 2)->nullable();
             $table->integer('account_id')->unsigned();
             $table->timestamps();
 

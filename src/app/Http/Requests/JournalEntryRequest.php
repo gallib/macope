@@ -5,7 +5,7 @@ namespace Gallib\Macope\App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CategoryRequest extends FormRequest
+class JournalEntryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,8 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        $uniqueName = 'unique_with:categories,type_category_id';
-
-        if (!is_null($this->route('category'))) {
-            $uniqueName .= ',' . $this->route('category');
-        }
-
         return [
-            'name' => ['required', $uniqueName, 'max:255'],
-            'type_category_id' => ['required', 'exists:type_categories,id'],
-            'is_ignored' => 'boolean',
+            'category_id' => 'nullable|exists:categories,id'
         ];
     }
 }

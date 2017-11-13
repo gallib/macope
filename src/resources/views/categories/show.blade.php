@@ -15,12 +15,13 @@
                         Informations
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     <p><span class="font-weight-bold">Name: </span>{{ $category->name }}</p>
                     <p>
                         <span class="font-weight-bold">Type category: </span>
                         <a href="{{ route('type-categories.show', $category->typeCategory->id) }}" title="View type category detail">{{ $category->typeCategory->name }}</a>
                     </p>
+                    <p><span class="font-weight-bold">Is ignored: </span>{{ $category->is_ignored ? 'Yes' : 'No' }}</p>
                 </div>
             </div>
         </div>

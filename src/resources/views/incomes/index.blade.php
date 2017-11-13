@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @foreach ($incomes as $year => $yearly)
                         @foreach ($yearly as $typeCategory => $byCategories)
                         <h2>{{ $typeCategory }}</h2>

@@ -17,32 +17,6 @@ class JournalEntryQuery extends AbstractQuery
     }
 
     /**
-     * Getter for monthly balances
-     *
-     * @param  integer $accountId
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getMonthlyBalances($accountId)
-    {
-        $query = $this->model->newQuery();
-
-        $query
-            ->whereIn('date', function($query) use ($accountId){
-                $query
-                    ->select(\DB::raw('MAX(date)'))
-                    ->from($this->model->getTable())
-                    ->whereNotNull('balance')
-                    ->where('account_id', '=', $accountId)
-                    ->distinct()
-                    ->groupBy(\DB::raw('YEAR(date), MONTH(date)'));
-            })
-            ->whereNotNull('balance')
-            ->where('account_id', '=', $accountId);
-
-        return $query->get();
-    }
-
-    /**
      * Getter for the yearly billing
      *
      * @param string       $type
@@ -55,6 +29,7 @@ class JournalEntryQuery extends AbstractQuery
             ->select('categories.name as category_name', 'type_categories.name as type_category_name', \DB::raw('YEAR(journal_entries.date) as year'), \DB::raw('MONTH(journal_entries.date) as month'), \DB::raw('SUM(journal_entries.credit) as credit'), \DB::raw('SUM(journal_entries.debit) as debit'))
             ->join('categories', 'categories.id', '=', 'journal_entries.category_id')
             ->join('type_categories', 'type_categories.id', '=', 'categories.type_category_id')
+            ->where('categories.is_ignored', '=', 0)
             ->groupBy(\DB::raw('type_categories.name, categories.name, YEAR(journal_entries.date), MONTH(journal_entries.date)'));
 
         if (!is_null($type)) {
@@ -78,6 +53,24 @@ class JournalEntryQuery extends AbstractQuery
         $query = \DB::table('journal_entries')
             ->select(\DB::raw('YEAR(journal_entries.date) as year'))
             ->groupBy('year');
+
+        return $query->get();
+    }
+
+    /**
+     * Getter sum of last expenses group by month
+     *
+     * @param  integer $limit
+     * @return \Illuminate\Support\Collection
+     */
+    public function getLastExpensesSum($limit = 12)
+    {
+        $query = \DB::table('journal_entries')
+            ->select(\DB::raw('YEAR(journal_entries.date) as year'), \DB::raw('MONTH(journal_entries.date) as month'), \DB::raw('SUM(journal_entries.debit) as debit'))
+            ->join('categories', 'categories.id', '=', 'journal_entries.category_id')
+            ->where('categories.is_ignored', '=', 0)
+            ->groupBy(\DB::raw('YEAR(journal_entries.date) desc, MONTH(journal_entries.date) desc'))
+            ->limit($limit);
 
         return $query->get();
     }

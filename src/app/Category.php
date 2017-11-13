@@ -13,6 +13,7 @@ class Category extends Model
      */
     protected $fillable = [
         'name',
+        'is_ignored',
         'type_category_id'
     ];
 

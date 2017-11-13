@@ -42,4 +42,15 @@ class ExpenseController extends Controller
 
         return view('macope::expenses.index', compact(['expenses', 'currentYear', 'years']));
     }
+
+    /**
+     * Return last sum
+     *
+     * @param  integer $months
+     * @return array
+     */
+    public function lastSum($months = 12)
+    {
+        return $this->journalEntryService->getLastExpensesSum($months);
+    }
 }
