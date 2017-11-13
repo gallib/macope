@@ -69,6 +69,6 @@ class JournalEntryService
      */
     public function getLastExpensesSum($limit = 12)
     {
-        return $this->journalEntryQuery->getLastExpensesSum($limit);
+        return $this->journalEntryQuery->getLastExpensesSum($limit)->reverse()->values();
     }
 }

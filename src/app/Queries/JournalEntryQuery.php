@@ -69,7 +69,7 @@ class JournalEntryQuery extends AbstractQuery
             ->select(\DB::raw('YEAR(journal_entries.date) as year'), \DB::raw('MONTH(journal_entries.date) as month'), \DB::raw('SUM(journal_entries.debit) as debit'))
             ->join('categories', 'categories.id', '=', 'journal_entries.category_id')
             ->where('categories.is_ignored', '=', 0)
-            ->groupBy(\DB::raw('YEAR(journal_entries.date), MONTH(journal_entries.date)'))
+            ->groupBy(\DB::raw('YEAR(journal_entries.date) desc, MONTH(journal_entries.date) desc'))
             ->limit($limit);
 
         return $query->get();
