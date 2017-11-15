@@ -53,4 +53,15 @@ class ExpenseController extends Controller
     {
         return $this->journalEntryService->getLastExpensesSum($months);
     }
+
+    /**
+     * Return expenses group by type category
+     *
+     * @param  integer $months
+     * @return array
+     */
+    public function expensesByTypeCategory($months = 12)
+    {
+        return $this->journalEntryService->getExpensesByTypeCategory($months);
+    }
 }

@@ -17,6 +17,10 @@ Route::group(
             ->name('expenses.lastsum')
             ->where('months', '[0-9]+');
 
+        Route::post('/expenses-by-type-category/{months?}', 'ExpenseController@expensesByTypeCategory')
+            ->name('expenses.by-type-category')
+            ->where('months', '[0-9]+');
+
         Route::get('/incomes/{year?}', 'IncomeController@index')
             ->name('incomes.index')
             ->where('year', '[0-9]+');

@@ -71,4 +71,15 @@ class JournalEntryService
     {
         return $this->journalEntryQuery->getLastExpensesSum($limit)->reverse()->values();
     }
+
+    /**
+     * Get expenses by type category
+     *
+     * @param  integer $months
+     * @return \Illuminate\Support\Collection
+     */
+    public function getExpensesByTypeCategory($months = 12)
+    {
+        return $this->journalEntryQuery->getExpensesByTypeCategory($months);
+    }
 }
