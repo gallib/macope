@@ -34,6 +34,11 @@ Vue.component(
     'macope-last-expenses',
     require('./components/macope/LastExpenses.vue')
 );
+
+Vue.component(
+    'macope-expenses-by-type-category',
+    require('./components/macope/ExpensesByTypeCategory.vue')
+);
 ```
 Macope is also using [laravel authentication](https://laravel.com/docs/authentication) to secure your data against visitors.
 
