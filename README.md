@@ -14,7 +14,6 @@ then run
 
 ```
 php artisan vendor:publish
-php artisan vendor:publish --tag=macope-components
 php artisan migrate
 ```
 
