@@ -4,6 +4,7 @@ namespace Gallib\Macope\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Gallib\Macope\App\Account;
 use Gallib\Macope\App\Importer\ImportDataFactory;
 use Gallib\Macope\App\Http\Requests\ImportFileRequest;
 
@@ -26,7 +27,9 @@ class ImportFileController extends Controller
      */
     public function index()
     {
-        return view('macope::import-file.index');
+        $accounts = Account::get();
+
+        return view('macope::import-file.index', compact('accounts'));
     }
 
     /**

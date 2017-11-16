@@ -16,6 +16,13 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    @if ($accounts->count() == 0)
+                        <div class="alert alert-warning">
+                            <ul>
+                                <li>Warning: no account has been set. <a href="{{ route('accounts.create') }}">Set up an account</a></li>
+                            </ul>
+                        </div>
+                    @endif
                     @include('macope::helpers.form-message')
                     {{ Form::open(['url' => route('import-file.import'), 'files' => true]) }}
                     <div class="form-group">
