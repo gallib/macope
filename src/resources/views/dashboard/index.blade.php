@@ -7,6 +7,31 @@
             <h1>Dashboard</h1>
         </div>
     </div>
+    <div class="row mb-4">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4>{{ $currentMonthExpenses->debit }}</h4>
+                    <p>expenses this month</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4>{{ $lastMonthIncomes->credit }}</h4>
+                    <p>incomes last month</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    test
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-6">
             <div class="card">
