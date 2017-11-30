@@ -45,17 +45,17 @@ class ExpenseController extends Controller
     }
 
     /**
-     * Return last sum
+     * Return expenses sum group by month
      *
      * @param  \Illuminate\Http\Request $request
      * @return array
      */
-    public function lastSum(Request $request)
+    public function sumByMonth(Request $request)
     {
         $dateFrom = $request->has('date_from') ? new Carbon($request->get('date_from')) : null;
         $dateTo   = $request->has('date_to') ? new Carbon($request->get('date_to')) : null;
 
-        return $this->journalEntryService->getLastExpensesSum($dateFrom, $dateTo);
+        return $this->journalEntryService->getExpensesSumByMonth($dateFrom, $dateTo);
     }
 
     /**

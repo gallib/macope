@@ -13,8 +13,8 @@ Route::group(
             ->name('expenses.index')
             ->where('year', '[0-9]+');
 
-        Route::post('/expenses-last-sum', 'ExpenseController@lastSum')
-            ->name('expenses.lastsum');
+        Route::post('/expenses-sum-by-month', 'ExpenseController@sumByMonth')
+            ->name('expenses.sumbymonth');
 
         Route::post('/expenses-by-type-category/{months?}', 'ExpenseController@expensesByTypeCategory')
             ->name('expenses.by-type-category')

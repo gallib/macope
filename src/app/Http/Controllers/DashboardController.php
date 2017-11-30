@@ -34,7 +34,7 @@ class DashboardController extends Controller
     public function index()
     {
         $startOfMonth         = Carbon::now()->startOfMonth();
-        $currentMonthExpenses = $this->journalEntryService->getLastExpensesSum($startOfMonth);
+        $currentMonthExpenses = $this->journalEntryService->getExpensesSumByMonth($startOfMonth);
         $currentMonthExpenses = !empty($currentMonthExpenses) ? $currentMonthExpenses[0] : 0;
         $lastMonthIncomes     = $this->journalEntryService->getIncomesSumByMonth($startOfMonth->subMonth());
         $lastMonthIncomes     = !empty($lastMonthIncomes) ? $lastMonthIncomes[0] : 0;

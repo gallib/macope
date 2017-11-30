@@ -1,6 +1,6 @@
 <template>
     <div>
-        <canvas id="last-expenses"></canvas>
+        <canvas id="expenses-sum-by-month"></canvas>
     </div>
 </template>
 
@@ -37,7 +37,7 @@
              */
             getExpenses() {
                 axios
-                    .post('/macope/expenses-last-sum', {
+                    .post('/macope/expenses-sum-by-month', {
                         date_from: moment().subtract(12, 'M').format('Y-M-01'),
                         date_to: moment().format('Y-M-D')
                     })
@@ -46,14 +46,14 @@
                         this.buildChart();
                     })
                     .catch(error => {
-                        document.getElementById("last-expenses").parentNode.innerHTML  = 'Oups, an error occured.';
+                        document.getElementById("expenses-sum-by-month").parentNode.innerHTML  = 'Oups, an error occured.';
                     });
             },
             /*
              * Build the chart
              */
             buildChart() {
-                var myBarChart = new Chart(document.getElementById("last-expenses"), {
+                var myBarChart = new Chart(document.getElementById("expenses-sum-by-month"), {
                     type: 'bar',
                     data: {
                         labels: this.getDates,
