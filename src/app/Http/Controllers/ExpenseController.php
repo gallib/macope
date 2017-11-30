@@ -47,7 +47,7 @@ class ExpenseController extends Controller
     /**
      * Return last sum
      *
-     * @param  integer $months
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function lastSum(Request $request)
