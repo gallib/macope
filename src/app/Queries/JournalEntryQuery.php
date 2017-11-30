@@ -59,16 +59,19 @@ class JournalEntryQuery extends AbstractQuery
     }
 
     /**
-     * Getter sum of last expenses group by month
+     * Get sum of expenses or incomes group by month
      *
+     * @param  string $type
      * @param  \DateTime $dateStart
      * @param  \DateTime $dateEnd
      * @return \Illuminate\Support\Collection
      */
-    public function getLastExpensesSum(DateTime $dateStart = null, DateTime $dateEnd = null)
+    public function getSumByMonth($type, DateTime $dateStart = null, DateTime $dateEnd = null)
     {
+        $type = $type == 'debit' ? 'debit' : 'credit';
+
         $query = \DB::table('journal_entries')
-            ->select(\DB::raw('YEAR(journal_entries.date) as year'), \DB::raw('MONTH(journal_entries.date) as month'), \DB::raw('SUM(journal_entries.debit) as debit'))
+            ->select(\DB::raw('YEAR(journal_entries.date) as year'), \DB::raw('MONTH(journal_entries.date) as month'), \DB::raw('SUM(journal_entries.' . $type . ') as ' . $type))
             ->join('categories', 'categories.id', '=', 'journal_entries.category_id')
             ->where('categories.is_ignored', '=', 0)
             ->groupBy(\DB::raw('YEAR(journal_entries.date) desc, MONTH(journal_entries.date) desc'));
