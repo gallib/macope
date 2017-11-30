@@ -71,7 +71,19 @@ class JournalEntryService
      */
     public function getLastExpensesSum(DateTime $dateFrom = null, DateTime $dateTo = null)
     {
-        return $this->journalEntryQuery->getLastExpensesSum($dateFrom, $dateTo)->reverse()->values();
+        return $this->journalEntryQuery->getSumByMonth('debit', $dateFrom, $dateTo)->reverse()->values();
+    }
+
+    /**
+     * Get incomes sum group by month
+     *
+     * @param  \DateTime $dateStart
+     * @param  \DateTime $dateEnd
+     * @return \Illuminate\Support\Collection
+     */
+    public function getIncomesSumByMonth(DateTime $dateFrom = null, DateTime $dateTo = null)
+    {
+        return $this->journalEntryQuery->getSumByMonth('credit', $dateFrom, $dateTo)->reverse()->values();
     }
 
     /**
