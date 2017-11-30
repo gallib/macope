@@ -2,6 +2,7 @@
 
 namespace Gallib\Macope\App\Services;
 
+use DateTime;
 use Gallib\Macope\App\Queries\JournalEntryQuery;
 
 class JournalEntryService
@@ -64,12 +65,13 @@ class JournalEntryService
     /**
      * Getter sum of last expenses group by month
      *
-     * @param  integer $limit
+     * @param  \DateTime $dateStart
+     * @param  \DateTime $dateEnd
      * @return \Illuminate\Support\Collection
      */
-    public function getLastExpensesSum($limit = 12)
+    public function getLastExpensesSum(DateTime $dateFrom = null, DateTime $dateTo = null)
     {
-        return $this->journalEntryQuery->getLastExpensesSum($limit)->reverse()->values();
+        return $this->journalEntryQuery->getLastExpensesSum($dateFrom, $dateTo)->reverse()->values();
     }
 
     /**

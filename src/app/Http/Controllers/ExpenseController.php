@@ -5,6 +5,7 @@ namespace Gallib\Macope\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Gallib\Macope\App\Services\JournalEntryService;
+use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
@@ -49,9 +50,12 @@ class ExpenseController extends Controller
      * @param  integer $months
      * @return array
      */
-    public function lastSum($months = 12)
+    public function lastSum(Request $request)
     {
-        return $this->journalEntryService->getLastExpensesSum($months);
+        $dateFrom = $request->has('date_from') ? new Carbon($request->get('date_from')) : null;
+        $dateTo   = $request->has('date_to') ? new Carbon($request->get('date_to')) : null;
+
+        return $this->journalEntryService->getLastExpensesSum($dateFrom, $dateTo);
     }
 
     /**

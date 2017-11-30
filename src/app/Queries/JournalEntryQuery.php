@@ -2,6 +2,7 @@
 
 namespace Gallib\Macope\App\Queries;
 
+use DateTime;
 use Gallib\Macope\App\JournalEntry;
 
 class JournalEntryQuery extends AbstractQuery
@@ -60,17 +61,25 @@ class JournalEntryQuery extends AbstractQuery
     /**
      * Getter sum of last expenses group by month
      *
-     * @param  integer $limit
+     * @param  \DateTime $dateStart
+     * @param  \DateTime $dateEnd
      * @return \Illuminate\Support\Collection
      */
-    public function getLastExpensesSum($limit = 12)
+    public function getLastExpensesSum(DateTime $dateStart = null, DateTime $dateEnd = null)
     {
         $query = \DB::table('journal_entries')
             ->select(\DB::raw('YEAR(journal_entries.date) as year'), \DB::raw('MONTH(journal_entries.date) as month'), \DB::raw('SUM(journal_entries.debit) as debit'))
             ->join('categories', 'categories.id', '=', 'journal_entries.category_id')
             ->where('categories.is_ignored', '=', 0)
-            ->groupBy(\DB::raw('YEAR(journal_entries.date) desc, MONTH(journal_entries.date) desc'))
-            ->limit($limit);
+            ->groupBy(\DB::raw('YEAR(journal_entries.date) desc, MONTH(journal_entries.date) desc'));
+
+        if (!is_null($dateStart)) {
+            $query->where('journal_entries.date', '>=' , $dateStart->format('Y-m-d H:i:s'));
+        }
+
+        if (!is_null($dateEnd)) {
+            $query->where('journal_entries.date', '<=' , $dateEnd->format('Y-m-d H:i:s'));
+        }
 
         return $query->get();
     }

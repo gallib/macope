@@ -37,10 +37,16 @@
              */
             getExpenses() {
                 axios
-                    .post('/macope/expenses-last-sum')
+                    .post('/macope/expenses-last-sum', {
+                        date_from: moment().subtract(12, 'M').format('Y-M-01'),
+                        date_to: moment().format('Y-M-D')
+                    })
                     .then(response => {
                         this.expenses = response.data;
                         this.buildChart();
+                    })
+                    .catch(error => {
+                        document.getElementById("last-expenses").parentNode.innerHTML  = 'Oups, an error occured.';
                     });
             },
             /*
