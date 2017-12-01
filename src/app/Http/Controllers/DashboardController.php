@@ -35,9 +35,9 @@ class DashboardController extends Controller
     {
         $startOfMonth         = Carbon::now()->startOfMonth();
         $currentMonthExpenses = $this->journalEntryService->getExpensesSumByMonth($startOfMonth);
-        $currentMonthExpenses = !empty($currentMonthExpenses) ? $currentMonthExpenses[0] : 0;
+        $currentMonthExpenses = $currentMonthExpenses->isNotEmpty() ? $currentMonthExpenses->first()->debit : 0;
         $lastMonthIncomes     = $this->journalEntryService->getIncomesSumByMonth($startOfMonth->subMonth());
-        $lastMonthIncomes     = !empty($lastMonthIncomes) ? $lastMonthIncomes[0] : 0;
+        $lastMonthIncomes     = $lastMonthIncomes->isNotEmpty() ? $lastMonthIncomes->first()->credit : 0;
 
         return view('macope::dashboard.index', compact(['currentMonthExpenses', 'lastMonthIncomes']));
     }

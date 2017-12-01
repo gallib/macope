@@ -11,7 +11,7 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-body">
-                    <h4>{{ $currentMonthExpenses->debit }}</h4>
+                    <h4>{{ $currentMonthExpenses }}</h4>
                     <p>expenses this month</p>
                 </div>
             </div>
@@ -19,7 +19,7 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-body">
-                    <h4>{{ $lastMonthIncomes->credit }}</h4>
+                    <h4>{{ $lastMonthIncomes }}</h4>
                     <p>incomes last month</p>
                 </div>
             </div>
