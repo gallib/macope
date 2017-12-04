@@ -5,6 +5,7 @@ namespace Gallib\Macope\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Gallib\Macope\App\Services\JournalEntryService;
+use Illuminate\Http\Request;
 
 class IncomeController extends Controller
 {
@@ -41,5 +42,19 @@ class IncomeController extends Controller
         $years   = $this->journalEntryService->getAvailableYears();
 
         return view('macope::incomes.index', compact(['incomes', 'currentYear', 'years']));
+    }
+
+    /**
+     * Return incomes sum group by month
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return array
+     */
+    public function sumByMonth(Request $request)
+    {
+        $dateFrom = $request->has('date_from') ? new Carbon($request->get('date_from')) : null;
+        $dateTo   = $request->has('date_to') ? new Carbon($request->get('date_to')) : null;
+
+        return $this->journalEntryService->getIncomesSumByMonth($dateFrom, $dateTo);
     }
 }

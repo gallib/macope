@@ -24,6 +24,9 @@ Route::group(
             ->name('incomes.index')
             ->where('year', '[0-9]+');
 
+        Route::post('/incomes-sum-by-month', 'IncomeController@sumByMonth')
+            ->name('incomes.sumbymonth');
+
         Route::get('/import-file', 'ImportFileController@index')->name('import-file.index');
 
         Route::post('/import-file', 'ImportFileController@importFile')->name('import-file.import');
