@@ -63,6 +63,26 @@ class JournalEntryService
     }
 
     /**
+     * Get sum group by month
+     *
+     * @param  \DateTime $dateFrom
+     * @param  \DateTime $dateTo
+     * @return \Illuminate\Support\Collection
+     */
+    public function getSumByMonth(DateTime $dateFrom = null, DateTime $dateTo = null)
+    {
+        return $this->journalEntryQuery->getSumByMonth(null, $dateFrom, $dateTo)->each(function($entry){
+            if (is_null($entry->debit)) {
+                $entry->debit = 0;
+            }
+
+            if (is_null($entry->credit)) {
+                $entry->credit = 0;
+            }
+        })->reverse()->values();
+    }
+
+    /**
      * Get expenses sum group by month
      *
      * @param  \DateTime $dateFrom

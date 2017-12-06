@@ -3,22 +3,32 @@
 namespace Gallib\Macope\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Gallib\Macope\App\Account;
 use Gallib\Macope\App\Category;
 use Gallib\Macope\App\JournalEntry;
 use Gallib\Macope\App\Http\Requests\JournalEntryRequest;
+use Gallib\Macope\App\Services\JournalEntryService;
 use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {
     /**
+     * @var \Gallib\Macope\App\Service\JournalEntryService
+     */
+    protected $journalEntryService;
+
+    /**
      * Create a new controller instance.
      *
+     * @param \Gallib\Macope\App\Services\JournalEntryService $journalEntryService
      * @return void
      */
-    public function __construct()
+    public function __construct(JournalEntryService $journalEntryService)
     {
         $this->middleware('auth');
+
+        $this->journalEntryService = $journalEntryService;
     }
 
     /**
@@ -80,5 +90,19 @@ class JournalController extends Controller
         $accounts = ['' => 'All'] + Account::pluck('name', 'id')->toArray();
 
         return view('macope::journal.index', compact(['entries', 'accounts', 'account']));
+    }
+
+    /**
+     * Return expenses sum group by month
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Support\Collection
+     */
+    public function sumByMonth(Request $request)
+    {
+        $dateFrom = $request->has('date_from') ? new Carbon($request->get('date_from')) : null;
+        $dateTo   = $request->has('date_to') ? new Carbon($request->get('date_to')) : null;
+
+        return $this->journalEntryService->getSumByMonth($dateFrom, $dateTo);
     }
 }
