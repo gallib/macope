@@ -1,6 +1,6 @@
 <template>
     <div>
-        <canvas id="expenses-sum-by-month"></canvas>
+        <canvas id="entries-by-month"></canvas>
     </div>
 </template>
 
@@ -8,62 +8,54 @@
     export default {
         data() {
             return {
-                expenses: []
+                dates: [],
+                expenses: [],
+                incomes: []
             };
         },
         mounted() {
-            this.getExpenses();
-            this.buildChart();
-        },
-        computed: {
-            getDates: function () {
-                var dates = [];
-                this.expenses.forEach(function (data) {
-                    dates.push(data.year + '-' + data.month);
-                });
-                return dates;
-            },
-            getAmounts: function () {
-                var amounts = [];
-                this.expenses.forEach(function (data) {
-                    amounts.push(data.debit);
-                });
-                return amounts;
-            }
+            this.getEntries();
         },
         methods: {
             /**
-             * Get latest expenses
+             * Get entries
              */
-            getExpenses() {
+            getEntries() {
                 axios
-                    .post('/macope/expenses-sum-by-month', {
-                        date_from: moment().subtract(12, 'M').format('Y-M-01'),
+                    .post('/macope/journal/sum-by-month', {
+                        date_from: moment().subtract(11, 'M').format('Y-M-01'),
                         date_to: moment().format('Y-M-D')
                     })
                     .then(response => {
-                        this.expenses = response.data;
+                        response.data.forEach(data => {
+                            this.dates.push(moment(data.year + '-' + data.month, 'Y-M').format('MM/Y'));
+                            this.expenses.push(data.debit);
+                            this.incomes.push(data.credit);
+                        });
                         this.buildChart();
                     })
                     .catch(error => {
-                        document.getElementById("expenses-sum-by-month").parentNode.innerHTML  = 'Oups, an error occured.';
+                        document.getElementById("entries-by-month").parentNode.innerHTML  = 'Oups, an error occured.'
                     });
             },
             /*
              * Build the chart
              */
             buildChart() {
-                var myBarChart = new Chart(document.getElementById("expenses-sum-by-month"), {
+                var chart = new Chart(document.getElementById("entries-by-month"), {
                     type: 'bar',
                     data: {
-                        labels: this.getDates,
+                        labels: this.dates,
                         datasets: [{
                             label: 'Expenses',
-                            data: this.getAmounts
-                            backgroundColor: 'rgba(0, 54, 48, 1)',
-                            borderWidth: 1
+                            data: this.expenses,
+                            backgroundColor: 'rgba(27, 12, 232, 0.8)'
+                        }, {
+                            label: 'Incomes',
+                            data: this.incomes,
+                            backgroundColor: 'rgba(13, 255, 163, 0.8)'
                         }]
-                    }
+                    },
                 });
             }
         }
