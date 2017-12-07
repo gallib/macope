@@ -27,7 +27,8 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-body">
-                    test
+                    <h4>{{ $entryToCategorize }}</h4>
+                    <p>{{ str_plural('entry', $entryToCategorize) }} to categorize</p>
                 </div>
             </div>
         </div>
