@@ -21,8 +21,8 @@ next you have to register components by copying the following lines on `resource
 
 ```javascript
 Vue.component(
-    'macope-last-expenses',
-    require('./components/macope/LastExpenses.vue')
+    'macope-entries-sum-by-month',
+    require('./components/macope/EntriesSumByMonth.vue')
 );
 
 Vue.component(

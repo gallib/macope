@@ -37,11 +37,11 @@
             <div class="card">
                 <div class="card-header">
                     <div class="header-block">
-                        Latest expenses
+                        Sum of expenses/incomes by month
                     </div>
                 </div>
                 <div class="card-body">
-                    <macope-last-expenses></macope-last-expenses>
+                    <macope-entries-sum-by-month></macope-entries-sum-by-month>
                 </div>
             </div>
         </div>
