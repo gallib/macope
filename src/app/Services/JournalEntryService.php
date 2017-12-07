@@ -91,7 +91,11 @@ class JournalEntryService
      */
     public function getExpensesSumByMonth(DateTime $dateFrom = null, DateTime $dateTo = null)
     {
-        return $this->journalEntryQuery->getSumByMonth('debit', $dateFrom, $dateTo)->reverse()->values();
+        return $this->journalEntryQuery->getSumByMonth('debit', $dateFrom, $dateTo)->each(function($entry){
+            if (is_null($entry->debit)) {
+                $entry->debit = 0;
+            }
+        })->reverse()->values();
     }
 
     /**
@@ -103,7 +107,11 @@ class JournalEntryService
      */
     public function getIncomesSumByMonth(DateTime $dateFrom = null, DateTime $dateTo = null)
     {
-        return $this->journalEntryQuery->getSumByMonth('credit', $dateFrom, $dateTo)->reverse()->values();
+        return $this->journalEntryQuery->getSumByMonth('credit', $dateFrom, $dateTo)->each(function($entry){
+            if (is_null($entry->credit)) {
+                $entry->credit = 0;
+            }
+        })->reverse()->values();
     }
 
     /**
