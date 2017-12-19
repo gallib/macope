@@ -25,11 +25,11 @@ class JournalEntryService
     /**
      * Get the yearly billing and format results
      *
-     * @param string       $type
-     * @param integer|null $year
-     * @return  string
+     * @param  string  $type
+     * @param  integer $year
+     * @return string
      */
-    public function getYearlyBilling($type = 'debit', $year = null)
+    public function getYearlyBilling($type = 'debit', $year)
     {
         $results = $this->journalEntryQuery->getYearlyBilling($type, $year);
 
@@ -37,14 +37,14 @@ class JournalEntryService
 
         foreach ($results as $result) {
             foreach (range(1, 12) as $month) {
-                if (!isset($billing[$result->year][$result->type_category_name][$result->category_name][$month])) {
-                    $billing[$result->year][$result->type_category_name][$result->category_name][$month] = [
+                if (!isset($billing[$result->type_category_name][$result->category_name][$month])) {
+                    $billing[$result->type_category_name][$result->category_name][$month] = [
                         $type => 0
                     ];
                 }
             }
 
-            $billing[$result->year][$result->type_category_name][$result->category_name][$result->month] = [
+            $billing[$result->type_category_name][$result->category_name][$result->month] = [
                 $type => $result->{$type}
             ];
         }

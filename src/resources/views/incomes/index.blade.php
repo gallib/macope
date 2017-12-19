@@ -23,8 +23,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    @foreach ($incomes as $year => $yearly)
-                        @foreach ($yearly as $typeCategory => $byCategories)
+                    @foreach ($incomes as $typeCategory => $byCategories)
                         <h2>{{ $typeCategory }}</h2>
                         <table class="table table-bordered table-condensed">
                             <thead>
@@ -55,7 +54,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        @endforeach
                     @endforeach
                 </div>
             </div>
