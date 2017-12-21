@@ -10,20 +10,10 @@ Using Composer
 composer require gallib/macope
 ```
 
-Add the service provider to `config/app.php`
-
-```php
-'providers' => [
-    // ...
-    Gallib\Macope\MacopeServiceProvider::class,
-]
-```
-
 then run
 
 ```
 php artisan vendor:publish
-php artisan vendor:publish --tag=macope-components
 php artisan migrate
 ```
 
@@ -31,8 +21,13 @@ next you have to register components by copying the following lines on `resource
 
 ```javascript
 Vue.component(
-    'macope-last-expenses',
-    require('./components/macope/LastExpenses.vue')
+    'macope-entries-sum-by-month',
+    require('./components/macope/EntriesSumByMonth.vue')
+);
+
+Vue.component(
+    'macope-expenses-by-type-category',
+    require('./components/macope/ExpensesByTypeCategory.vue')
 );
 ```
 Macope is also using [laravel authentication](https://laravel.com/docs/authentication) to secure your data against visitors.

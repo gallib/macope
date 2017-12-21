@@ -25,7 +25,11 @@ class JournalEntryRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => 'nullable|exists:categories,id'
+            'date' => ['required', 'date_format:Y-m-d'],
+            'text' => ['required'],
+            'category_id' => 'nullable|exists:categories,id',
+            'credit' => ['nullable', 'numeric'],
+            'debit' => ['nullable', 'numeric']
         ];
     }
 }

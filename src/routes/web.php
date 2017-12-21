@@ -13,13 +13,19 @@ Route::group(
             ->name('expenses.index')
             ->where('year', '[0-9]+');
 
-        Route::post('/expenses-last-sum/{months?}', 'ExpenseController@lastSum')
-            ->name('expenses.lastsum')
+        Route::post('/expenses-sum-by-month', 'ExpenseController@sumByMonth')
+            ->name('expenses.sumbymonth');
+
+        Route::post('/expenses-by-type-category/{months?}', 'ExpenseController@expensesByTypeCategory')
+            ->name('expenses.by-type-category')
             ->where('months', '[0-9]+');
 
         Route::get('/incomes/{year?}', 'IncomeController@index')
             ->name('incomes.index')
             ->where('year', '[0-9]+');
+
+        Route::post('/incomes-sum-by-month', 'IncomeController@sumByMonth')
+            ->name('incomes.sumbymonth');
 
         Route::get('/import-file', 'ImportFileController@index')->name('import-file.index');
 
@@ -29,6 +35,9 @@ Route::group(
 
         Route::post('/journal', 'JournalController@filter')
             ->name('journal.filter');
+
+        Route::post('/journal/sum-by-month', 'JournalController@sumByMonth')
+            ->name('journal.sumbymonth');
 
         Route::resource('accounts', 'AccountController');
 

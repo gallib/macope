@@ -101,8 +101,6 @@ class ImportPostFinanceData implements ImportDataInterface
         array_splice($data, -3);
         $data = array_reverse($data);
 
-        $start = Carbon::now();
-
         foreach ($data as $key => $value) {
             try {
                 $format = strpos($value[0], '-') !== false ? 'Y-m-d' : 'd.m.Y';
@@ -114,16 +112,12 @@ class ImportPostFinanceData implements ImportDataInterface
             $entryData = [
                 'date'       => $date->toDateString(),
                 'text'       => $value[1],
-                'credit'     => $value[2],
-                'debit'      => is_null($value[3]) ? null : abs($value[3]),
+                'credit'     => is_null($value[2]) ? null : number_format($value[2], 2, '.', ''),
+                'debit'      => is_null($value[3]) ? null : number_format(abs($value[3]), 2, '.', ''),
                 'account_id' => $account->id
             ];
 
-            $entry = JournalEntry::where($entryData)->first();
-
-            if (is_null($entry) || $start->lt($entry->created_at)) {
-                $entry = JournalEntry::create($entryData);
-            }
+            $entry = JournalEntry::findByHashOrCreate($entryData);
         }
 
         // Reset config

@@ -73,16 +73,12 @@ class ImportMigrosBankData implements ImportDataInterface
             $entryData = [
                 'date'       => $date->toDateString(),
                 'text'       => $value[1],
-                'credit'     => $value[2] >= 0 ? abs($value[2]) : null,
-                'debit'      => $value[2] < 0 ? abs($value[2]) : null,
+                'credit'     => $value[2] >= 0 ? number_format(abs($value[2]), 2, '.', '') : null,
+                'debit'      => $value[2] < 0 ? number_format(abs($value[2]), 2, '.', '') : null,
                 'account_id' => $account->id
             ];
 
-            $entry = JournalEntry::where($entryData)->first();
-
-            if (is_null($entry)) {
-                $entry = JournalEntry::create($entryData);
-            }
+            $entry = JournalEntry::findByHashOrCreate($entryData);
         }
 
         return true;

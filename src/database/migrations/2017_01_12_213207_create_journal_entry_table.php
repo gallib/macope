@@ -15,10 +15,12 @@ class CreateJournalEntryTable extends Migration
     {
         Schema::create('journal_entries', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('hash', 32)->unique();
             $table->date('date');
             $table->text('text')->nullable();
             $table->decimal('credit', 10, 2)->nullable();
             $table->decimal('debit', 10, 2)->nullable();
+            $table->text('original_values');
             $table->integer('account_id')->unsigned();
             $table->timestamps();
 

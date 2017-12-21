@@ -50,8 +50,6 @@ class MacopeServiceProvider extends ServiceProvider
 
         $this->registerProviders();
 
-        $this->registerAliases();
-
         $this->app->bind('CategorizationService', \Gallib\Macope\App\Services\CategorizationService::class);
         $this->app->bind('JournalEntryService', \Gallib\Macope\App\Services\JournalEntryService::class);
     }
@@ -63,23 +61,7 @@ class MacopeServiceProvider extends ServiceProvider
      */
     protected function registerProviders()
     {
-        $this->app->register(\Collective\Html\HtmlServiceProvider::class);
         $this->app->register(\Felixkiss\UniqueWithValidator\ServiceProvider::class);
-        $this->app->register(\Maatwebsite\Excel\ExcelServiceProvider::class);
-    }
-
-    /**
-     * Register 3rd party aliases.
-     *
-     * @return void
-     */
-    protected function registerAliases()
-    {
-        $loader = AliasLoader::getInstance();
-
-        $loader->alias('Excel', \Maatwebsite\Excel\Facades\Excel::class);
-        $loader->alias('Form', \Collective\Html\FormFacade::class);
-        $loader->alias('Html', \Collective\Html\HtmlFacade::class);
     }
 
     /**

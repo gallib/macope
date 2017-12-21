@@ -3,9 +3,12 @@
 namespace Gallib\Macope\App;
 
 use Illuminate\Database\Eloquent\Model;
+use Gallib\Macope\App\Traits\Hashable;
 
 class JournalEntry extends Model
 {
+    use Hashable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -17,6 +20,19 @@ class JournalEntry extends Model
         'credit',
         'debit',
         'category_id',
+        'account_id'
+    ];
+
+    /**
+     * The attributes we must hash with
+     *
+     * @var array
+     */
+    protected $hashWith = [
+        'date',
+        'text',
+        'credit',
+        'debit',
         'account_id'
     ];
 
