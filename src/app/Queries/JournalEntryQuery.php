@@ -68,8 +68,6 @@ class JournalEntryQuery extends AbstractQuery
      */
     public function getSumByMonth($type = null, DateTime $dateStart = null, DateTime $dateEnd = null)
     {
-        //$type = $type == 'debit' ? 'debit' : 'credit';
-
         $query = \DB::table('journal_entries')
             ->select(\DB::raw('YEAR(journal_entries.date) as year'), \DB::raw('MONTH(journal_entries.date) as month'))
             ->join('categories', 'categories.id', '=', 'journal_entries.category_id')
@@ -78,7 +76,7 @@ class JournalEntryQuery extends AbstractQuery
 
         if (is_null($type)) {
             $query->addSelect(\DB::raw('SUM(journal_entries.debit) as debit'), \DB::raw('SUM(journal_entries.credit) as credit'));
-        } else  {
+        } else {
             $query->addSelect(\DB::raw('SUM(journal_entries.' . $type . ') as ' . $type));
         }
 
