@@ -27,7 +27,7 @@ class CategorizationController extends Controller
      */
     public function index()
     {
-        $categorizations = Categorization::with('category.typeCategory')->get();
+        $categorizations = Categorization::get();
 
         return view('macope::categorizations.index', compact(['categorizations']));
     }
@@ -39,7 +39,7 @@ class CategorizationController extends Controller
      */
     public function create()
     {
-        $categories     = Category::with('typeCategory')->get()->sortBy('name')->pluck('name_with_type_category', 'id');
+        $categories     = Category::get()->sortBy('name')->pluck('name_with_type_category', 'id');
         $categorization = new Categorization();
         $searchTypes    = array_combine($categorization->getSearchTypes(), $categorization->getSearchTypes());
         $entryTypes     = array_combine($categorization->getEntryTypes(), $categorization->getEntryTypes());
@@ -85,7 +85,7 @@ class CategorizationController extends Controller
     public function edit($id)
     {
         $categorization = Categorization::findOrFail($id);
-        $categories     = Category::with('typeCategory')->get()->sortBy('name')->pluck('name_with_type_category', 'id');
+        $categories     = Category::get()->sortBy('name')->pluck('name_with_type_category', 'id');
         $searchTypes    = array_combine($categorization->getSearchTypes(), $categorization->getSearchTypes());
         $entryTypes     = array_combine($categorization->getEntryTypes(), $categorization->getEntryTypes());
 

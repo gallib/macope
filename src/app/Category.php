@@ -18,6 +18,15 @@ class Category extends Model
     ];
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        'typeCategory'
+    ];
+
+    /**
      * Define the one-to-many relationship with JournalEntry
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

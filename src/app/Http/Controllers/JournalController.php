@@ -39,7 +39,7 @@ class JournalController extends Controller
     public function index()
     {
         $account  = null;
-        $entries  = JournalEntry::with('category.typeCategory')->get();
+        $entries  = JournalEntry::get();
         $accounts = ['' => 'All'] + Account::pluck('name', 'id')->toArray();
 
         return view('macope::journal.index', compact(['entries', 'accounts', 'account']));
@@ -54,7 +54,7 @@ class JournalController extends Controller
     public function edit($id)
     {
         $journalEntry = JournalEntry::findOrFail($id);
-        $categories   = Category::with('typeCategory')->get()->sortBy('name')->pluck('name_with_type_category', 'id');
+        $categories   = Category::get()->sortBy('name')->pluck('name_with_type_category', 'id');
 
         return view('macope::journal.edit', compact(['journalEntry', 'categories']));
     }

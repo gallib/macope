@@ -24,6 +24,15 @@ class JournalEntry extends Model
     ];
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        'category'
+    ];
+
+    /**
      * The attributes we must hash with
      *
      * @var array

@@ -20,6 +20,15 @@ class Categorization extends Model
     ];
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        'category'
+    ];
+
+    /**
      * The search types values
      *
      * @var array
