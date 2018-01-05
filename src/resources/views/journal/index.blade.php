@@ -33,26 +33,6 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
-                        @foreach ($entries as $entry)
-                            <tr>
-                                <td>{{ $entry->date }}</td>
-                                <td>{{ $entry->text }}</td>
-                                <td>
-                                @if ($entry->category)
-                                    {{ $entry->category->name }} ({{$entry->category->typeCategory->name}})
-                                @endif
-                                </td>
-                                <td>{{ $entry->credit }}</td>
-                                <td>{{ $entry->debit }}</td>
-                                <td>
-                                    <a href="{{ route('journal.edit', $entry->id) }}" title="Edit">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
                     </table>
                 </div>
             </div>
@@ -64,20 +44,41 @@
 @push('scripts')
 <script>
 $(function() {
-    $.fn.dataTable.moment('DD/MM/YYYY');
-
     $('#journal-table').DataTable({
         order: [[0, 'desc']],
         pageLength: 25,
+        columns: [
+            {data: 'date', type: 'date'},
+            {data: 'text'},
+            {data: 'category'},
+            {data: 'credit'},
+            {data: 'debit'},
+            {data: 'id'},
+        ],
         columnDefs: [
             {
                 render: function (data, type, row) {
-                    return moment(new Date(data)).format('DD/MM/YYYY');
+                    if (!data) {
+                        return '';
+                    }
+
+                    return data.name + ' (' + data.type_category.name + ')';
                 },
-                targets: 0
+                targets: 2
             },
-            {orderable: false, targets: 5}
-        ]
+            {
+                orderable: false,
+                render: function (data, type, row) {
+                    return '<a href="' + window.location.pathname + '/' + data + '/edit" title="Edit"><i class="fa fa-pencil"></i></a>';
+                },
+                targets: 5
+            }
+        ],
+
+        processing: true,
+        deferRender: true,
+        ajax: window.location.pathname,
+        stateSave: true
     });
 });
 </script>

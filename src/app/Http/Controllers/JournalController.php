@@ -34,15 +34,21 @@ class JournalController extends Controller
     /**
      * Show the journal.
      *
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $account  = null;
-        $entries  = JournalEntry::get();
         $accounts = ['' => 'All'] + Account::pluck('name', 'id')->toArray();
 
-        return view('macope::journal.index', compact(['entries', 'accounts', 'account']));
+        if (request()->wantsJson()) {
+            return [
+                'data' => JournalEntry::get()
+            ];
+        }
+
+        return view('macope::journal.index', compact(['accounts', 'account']));
     }
 
     /**
