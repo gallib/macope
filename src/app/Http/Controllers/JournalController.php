@@ -39,16 +39,13 @@ class JournalController extends Controller
      */
     public function index(Request $request)
     {
-        $account  = null;
-        $accounts = ['' => 'All'] + Account::pluck('name', 'id')->toArray();
-
         if (request()->wantsJson()) {
             return [
                 'data' => JournalEntry::get()
             ];
         }
 
-        return view('macope::journal.index', compact(['accounts', 'account']));
+        return view('macope::journal.index');
     }
 
     /**
@@ -81,21 +78,6 @@ class JournalController extends Controller
         return redirect()
                 ->route('journal.index')
                 ->withSuccess(['success' => 'The journal entry has been successfully updated.']);
-    }
-
-    /**
-     * Apply filters and show the journal.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function filter(Request $request)
-    {
-        $account  = $request->get('account', null);
-        $entries  = JournalEntry::where('account_id', $account)->get();
-        $accounts = ['' => 'All'] + Account::pluck('name', 'id')->toArray();
-
-        return view('macope::journal.index', compact(['entries', 'accounts', 'account']));
     }
 
     /**

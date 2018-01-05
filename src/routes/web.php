@@ -33,9 +33,6 @@ Route::group(
 
         Route::resource('/journal', 'JournalController');
 
-        Route::post('/journal', 'JournalController@filter')
-            ->name('journal.filter');
-
         Route::post('/journal/sum-by-month', 'JournalController@sumByMonth')
             ->name('journal.sumbymonth');
 

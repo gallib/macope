@@ -17,11 +17,6 @@
                 </div>
                 <div class="card-body">
                     @include('macope::helpers.form-message')
-                    {{ Form::open(['url' => route('journal.filter'), 'class' => 'form-inline']) }}
-                        {{ Form::label('account', 'Account', ['class' => 'mb-2 mr-sm-2']) }}
-                        {{ Form::select('account', $accounts, $account, ['class' => 'form-control mb-2 mr-sm-2']) }}
-                        {{ Form::submit('Filter', ['class' => 'btn btn-primary mb-2 mr-sm-2']) }}
-                    {{ Form::close() }}
                     <table class="table table-bordered table-condensed" id="journal-table">
                         <thead>
                             <tr>
