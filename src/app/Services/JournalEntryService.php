@@ -27,7 +27,7 @@ class JournalEntryService
      *
      * @param  string  $type
      * @param  integer $year
-     * @return string
+     * @return array
      */
     public function getYearlyBilling($type = 'debit', $year)
     {
