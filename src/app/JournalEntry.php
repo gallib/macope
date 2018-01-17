@@ -64,4 +64,33 @@ class JournalEntry extends Model
     {
         return $this->belongsTo(Account::class);
     }
+
+    /**
+     * Scope a query to get the yearly billing.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param  string                                $type
+     * @param  null|integer                          $year
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeYearlyBilling($query, $type, $year = null)
+    {
+        $monthEndsOn = config('macope.month_ends_on');
+
+        $query = $query
+            ->select('category_id')
+            ->selectRaw('YEAR(date_add(date, interval (day(last_day(date)) - ?) day)) as year', [$monthEndsOn])
+            ->selectRaw('MONTH(date_add(date, interval (day(last_day(journal_entries.date)) - ?) day)) as month', [$monthEndsOn])
+            ->selectRaw("SUM($type) as $type")
+            ->whereNotNull($type)
+            ->whereHas('category', function ($query) {
+                $query->where('is_ignored', '=', 0);
+            })
+            ->groupBy('category_id', 'year', 'month');
+
+        if (!is_null($year)) {
+            $query = $query->whereRaw('YEAR(date_add(journal_entries.date, interval (day(last_day(date)) - ?) day)) = ?', [$monthEndsOn, $year]);
+        }
+    }
+
 }

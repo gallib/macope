@@ -18,35 +18,6 @@ class JournalEntryQuery extends AbstractQuery
     }
 
     /**
-     * Getter for the yearly billing
-     *
-     * @param string       $type
-     * @param integer|null $year
-     * @return \Illuminate\Support\Collection
-     */
-    public function getYearlyBilling($type = 'debit', $year = null)
-    {
-        $monthEndsOn = config('macope.month_ends_on');
-
-        $query = \DB::table('journal_entries')
-            ->select('categories.name as category_name', 'type_categories.name as type_category_name', \DB::raw('YEAR(date_add(journal_entries.date, interval (day(last_day(date)) - ' . $monthEndsOn . ') day)) as year'), \DB::raw('MONTH(date_add(date, interval (day(last_day(journal_entries.date)) - ' . $monthEndsOn . ') day)) as month'), \DB::raw('SUM(journal_entries.credit) as credit'), \DB::raw('SUM(journal_entries.debit) as debit'))
-            ->join('categories', 'categories.id', '=', 'journal_entries.category_id')
-            ->join('type_categories', 'type_categories.id', '=', 'categories.type_category_id')
-            ->where('categories.is_ignored', '=', 0)
-            ->groupBy(\DB::raw('type_categories.name, categories.name, year, month'));
-
-        if (!is_null($type)) {
-            $query->whereNotNull($type);
-        }
-
-        if (!is_null($year)) {
-            $query->whereRaw('YEAR(date_add(journal_entries.date, interval (day(last_day(date)) - ' . $monthEndsOn . ') day)) = ?', [$year]);
-        }
-
-        return $query->get();
-    }
-
-    /**
      * Returns years that have at least one entry
      *
      * @return \Illuminate\Support\Collection

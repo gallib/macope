@@ -25,26 +25,29 @@ class JournalEntryService
     /**
      * Get the yearly billing and format results
      *
-     * @param  string  $type
-     * @param  integer $year
+     * @param  string       $type
+     * @param  null|integer $year
      * @return array
      */
-    public function getYearlyBilling($type = 'debit', $year)
+    public function getYearlyBilling($type, $year = null)
     {
-        $results = $this->journalEntryQuery->getYearlyBilling($type, $year);
+
+        $results = \Gallib\Macope\App\JournalEntry::yearlyBilling($type, $year)->get();
 
         $billing = [];
 
         foreach ($results as $result) {
+            $typeCategoryName = $result->category->typeCategory->name;
+
             foreach (range(1, 12) as $month) {
-                if (!isset($billing[$result->type_category_name][$result->category_name][$month])) {
-                    $billing[$result->type_category_name][$result->category_name][$month] = [
+                if (!isset($billing[$typeCategoryName][$result->category->name][$month])) {
+                    $billing[$typeCategoryName][$result->category->name][$month] = [
                         $type => 0
                     ];
                 }
             }
 
-            $billing[$result->type_category_name][$result->category_name][$result->month] = [
+            $billing[$typeCategoryName][$result->category->name][$result->month] = [
                 $type => $result->{$type}
             ];
         }
