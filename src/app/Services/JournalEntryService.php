@@ -3,6 +3,7 @@
 namespace Gallib\Macope\App\Services;
 
 use DateTime;
+use Gallib\Macope\App\JournalEntry;
 use Gallib\Macope\App\Queries\JournalEntryQuery;
 
 class JournalEntryService
@@ -31,9 +32,7 @@ class JournalEntryService
      */
     public function getYearlyBilling($type, $year = null)
     {
-
-        $results = \Gallib\Macope\App\JournalEntry::yearlyBilling($type, $year)->get();
-
+        $results = JournalEntry::yearlyBilling($type, $year)->get();
         $billing = [];
 
         foreach ($results as $result) {
