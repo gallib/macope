@@ -36,19 +36,23 @@ class JournalEntryService
         $billing = [];
 
         foreach ($results as $result) {
-            $typeCategoryName = $result->category->typeCategory->name;
+            $typeCategory = $result->category->typeCategory;
 
-            foreach (range(1, 12) as $month) {
-                if (!isset($billing[$typeCategoryName][$result->category->name][$month])) {
-                    $billing[$typeCategoryName][$result->category->name][$month] = [
-                        $type => 0
-                    ];
-                }
+            if (!isset($billing[$typeCategory->id])) {
+                $billing[$typeCategory->id] = [
+                    'type_category' => $typeCategory,
+                    'categories'    => []
+                ];
             }
 
-            $billing[$typeCategoryName][$result->category->name][$result->month] = [
-                $type => $result->{$type}
-            ];
+            if (!isset($billing[$typeCategory->id]['categories'][$result->category->id])) {
+                $billing[$typeCategory->id]['categories'][$result->category->id] = [
+                    'category' => $result->category,
+                    'months'   => array_fill(1, 12, 0)
+                ];
+            };
+
+            $billing[$typeCategory->id]['categories'][$result->category->id]['months'][$result->month] = $result->{$type};
         }
 
         return $billing;

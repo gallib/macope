@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    @each('macope::partials.billing', $expenses, 'byCategories')
+                    @each('macope::partials.billing', $expenses, 'typeCategory')
                 </div>
             </div>
         </div>

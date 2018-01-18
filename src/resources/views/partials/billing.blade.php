@@ -1,4 +1,4 @@
-<h2>{{ $key }}</h2>
+<h2>{{ $typeCategory['type_category']->name }}</h2>
 <table class="table table-bordered table-condensed">
     <thead>
         <tr>
@@ -18,11 +18,11 @@
         </tr>
     </thead>
     <tbody>
-    @foreach ($byCategories as $category => $monthly)
+    @foreach ($typeCategory['categories'] as $category)
         <tr>
-            <td>{{ $category }}</td>
-            @foreach ($monthly as $month => $amount)
-                <td>{{ isset($amount['debit']) ? $amount['debit'] : $amount['credit']  }}</td>
+            <td>{{ $category['category']->name }}</td>
+            @foreach ($category['months'] as $month => $amount)
+                <td>{{ $amount  }}</td>
             @endforeach
         </tr>
     @endforeach
