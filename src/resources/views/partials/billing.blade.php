@@ -1,4 +1,13 @@
-<h2>{{ $typeCategory['type_category']->name }}</h2>
+<div class="d-flex">
+    <h2>{{ $typeCategory['type_category']->name }}</h2>
+
+    <div class="ml-auto">
+        <a href="{{ route('type-categories.show', $typeCategory['type_category']->id) }}" title="View details">
+            <i class="fa fa-eye"></i>
+        </a>
+    </div>
+</div>
+
 <table class="table table-bordered table-condensed">
     <thead>
         <tr>
