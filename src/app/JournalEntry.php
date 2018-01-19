@@ -77,7 +77,7 @@ class JournalEntry extends Model
     {
         $monthEndsOn = config('macope.month_ends_on');
 
-        $query = $query
+        $query
             ->select('category_id')
             ->selectRaw('YEAR(date_add(date, interval (day(last_day(date)) - ?) day)) as year', [$monthEndsOn])
             ->selectRaw('MONTH(date_add(date, interval (day(last_day(journal_entries.date)) - ?) day)) as month', [$monthEndsOn])
@@ -89,7 +89,7 @@ class JournalEntry extends Model
             ->groupBy('category_id', 'year', 'month');
 
         if (!is_null($year)) {
-            $query = $query->whereRaw('YEAR(date_add(journal_entries.date, interval (day(last_day(date)) - ?) day)) = ?', [$monthEndsOn, $year]);
+            $query->whereRaw('YEAR(date_add(journal_entries.date, interval (day(last_day(date)) - ?) day)) = ?', [$monthEndsOn, $year]);
         }
     }
 
