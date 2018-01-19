@@ -93,4 +93,21 @@ class JournalEntry extends Model
         }
     }
 
+    /**
+     * Scope a query to get years that have at least one entry
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeAvailableYears($query)
+    {
+        $monthEndsOn = config('macope.month_ends_on');
+
+        $query
+            ->selectRaw('YEAR(date_add(date, interval (day(last_day(date)) - ?) day)) as year', [$monthEndsOn])
+            ->groupBy('year');
+
+        return $query;
+    }
+
 }

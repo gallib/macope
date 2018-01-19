@@ -59,16 +59,6 @@ class JournalEntryService
     }
 
     /**
-     * Returns years that have at least one entry
-     *
-     * @return array
-     */
-    public function getAvailableYears()
-    {
-        return $this->journalEntryQuery->getAvailableYears();
-    }
-
-    /**
      * Get sum group by month
      *
      * @param  \DateTime $dateFrom

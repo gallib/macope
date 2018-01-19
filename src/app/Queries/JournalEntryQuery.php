@@ -18,22 +18,6 @@ class JournalEntryQuery extends AbstractQuery
     }
 
     /**
-     * Returns years that have at least one entry
-     *
-     * @return \Illuminate\Support\Collection
-     */
-    public function getAvailableYears()
-    {
-        $monthEndsOn = config('macope.month_ends_on');
-
-        $query = \DB::table('journal_entries')
-            ->select(\DB::raw('YEAR(date_add(journal_entries.date, interval (day(last_day(date)) - ' . $monthEndsOn . ') day)) as year'))
-            ->groupBy('year');
-
-        return $query->get();
-    }
-
-    /**
      * Get sum of expenses or incomes group by month
      *
      * @param  string|null $type

@@ -4,6 +4,7 @@ namespace Gallib\Macope\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Gallib\Macope\App\JournalEntry;
 use Gallib\Macope\App\Services\JournalEntryService;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,7 @@ class ExpenseController extends Controller
         }
 
         $expenses = $this->journalEntryService->getYearlyBilling('debit', $currentYear);
-        $years    = $this->journalEntryService->getAvailableYears();
+        $years   = JournalEntry::availableYears()->whereNotNull('debit')->get();
 
         return view('macope::expenses.index', compact(['expenses', 'currentYear', 'years']));
     }

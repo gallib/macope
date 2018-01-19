@@ -4,6 +4,7 @@ namespace Gallib\Macope\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Gallib\Macope\App\JournalEntry;
 use Gallib\Macope\App\Services\JournalEntryService;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,7 @@ class IncomeController extends Controller
         }
 
         $incomes = $this->journalEntryService->getYearlyBilling('credit', $currentYear);
-        $years   = $this->journalEntryService->getAvailableYears();
+        $years   = JournalEntry::availableYears()->whereNotNull('credit')->get();
 
         return view('macope::incomes.index', compact(['incomes', 'currentYear', 'years']));
     }
