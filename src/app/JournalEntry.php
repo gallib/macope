@@ -122,9 +122,11 @@ class JournalEntry extends Model
      */
     public function scopeSumByMonth($query, $type = null, DateTime $dateStart = null, DateTime $dateEnd = null)
     {
+        $monthEndsOn = config('macope.month_ends_on');
+
         $query
-            ->selectRaw('YEAR(journal_entries.date) as year')
-            ->selectRaw('MONTH(journal_entries.date) as month')
+            ->selectRaw('YEAR(date_add(date, interval (day(last_day(date)) - ?) day)) as year', [$monthEndsOn])
+            ->selectRaw('MONTH(date_add(date, interval (day(last_day(journal_entries.date)) - ?) day)) as month', [$monthEndsOn])
             ->whereHas('category', function ($query) {
                 $query->where('is_ignored', '=', 0);
             })
