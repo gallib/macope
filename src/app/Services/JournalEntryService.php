@@ -67,15 +67,17 @@ class JournalEntryService
      */
     public function getSumByMonth(DateTime $dateFrom = null, DateTime $dateTo = null)
     {
-        return $this->journalEntryQuery->getSumByMonth(null, $dateFrom, $dateTo)->each(function($entry){
-            if (is_null($entry->debit)) {
-                $entry->debit = 0;
-            }
+        return JournalEntry::sumByMonth(null, $dateFrom, $dateTo)
+            ->get()
+            ->each(function($entry){
+                if (is_null($entry->debit)) {
+                    $entry->debit = 0;
+                }
 
-            if (is_null($entry->credit)) {
-                $entry->credit = 0;
-            }
-        })->reverse()->values();
+                if (is_null($entry->credit)) {
+                    $entry->credit = 0;
+                }
+        })->values();
     }
 
     /**
@@ -87,11 +89,13 @@ class JournalEntryService
      */
     public function getExpensesSumByMonth(DateTime $dateFrom = null, DateTime $dateTo = null)
     {
-        return $this->journalEntryQuery->getSumByMonth('debit', $dateFrom, $dateTo)->each(function($entry){
-            if (is_null($entry->debit)) {
-                $entry->debit = 0;
-            }
-        })->reverse()->values();
+        return JournalEntry::sumByMonth('debit', $dateFrom, $dateTo)
+            ->get()
+            ->each(function($entry){
+                if (is_null($entry->debit)) {
+                    $entry->debit = 0;
+                }
+        })->values();
     }
 
     /**
@@ -103,11 +107,13 @@ class JournalEntryService
      */
     public function getIncomesSumByMonth(DateTime $dateFrom = null, DateTime $dateTo = null)
     {
-        return $this->journalEntryQuery->getSumByMonth('credit', $dateFrom, $dateTo)->each(function($entry){
-            if (is_null($entry->credit)) {
-                $entry->credit = 0;
-            }
-        })->reverse()->values();
+        return JournalEntry::sumByMonth('credit', $dateFrom, $dateTo)
+            ->get()
+            ->each(function($entry){
+                if (is_null($entry->credit)) {
+                    $entry->credit = 0;
+                }
+        })->values();
     }
 
     /**

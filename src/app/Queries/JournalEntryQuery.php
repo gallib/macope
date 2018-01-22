@@ -18,39 +18,6 @@ class JournalEntryQuery extends AbstractQuery
     }
 
     /**
-     * Get sum of expenses or incomes group by month
-     *
-     * @param  string|null $type
-     * @param  \DateTime   $dateStart
-     * @param  \DateTime   $dateEnd
-     * @return \Illuminate\Support\Collection
-     */
-    public function getSumByMonth($type = null, DateTime $dateStart = null, DateTime $dateEnd = null)
-    {
-        $query = \DB::table('journal_entries')
-            ->select(\DB::raw('YEAR(journal_entries.date) as year'), \DB::raw('MONTH(journal_entries.date) as month'))
-            ->join('categories', 'categories.id', '=', 'journal_entries.category_id')
-            ->where('categories.is_ignored', '=', 0)
-            ->groupBy(\DB::raw('YEAR(journal_entries.date) desc, MONTH(journal_entries.date) desc'));
-
-        if (is_null($type)) {
-            $query->addSelect(\DB::raw('SUM(journal_entries.debit) as debit'), \DB::raw('SUM(journal_entries.credit) as credit'));
-        } else {
-            $query->addSelect(\DB::raw('SUM(journal_entries.' . $type . ') as ' . $type));
-        }
-
-        if (!is_null($dateStart)) {
-            $query->where('journal_entries.date', '>=' , $dateStart->format('Y-m-d H:i:s'));
-        }
-
-        if (!is_null($dateEnd)) {
-            $query->where('journal_entries.date', '<=' , $dateEnd->format('Y-m-d H:i:s'));
-        }
-
-        return $query->get();
-    }
-
-    /**
      * Get expenses by type category
      *
      * @param  integer $months

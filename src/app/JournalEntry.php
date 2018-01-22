@@ -4,6 +4,7 @@ namespace Gallib\Macope\App;
 
 use Illuminate\Database\Eloquent\Model;
 use Gallib\Macope\App\Traits\Hashable;
+use \DateTime;
 
 class JournalEntry extends Model
 {
@@ -110,4 +111,41 @@ class JournalEntry extends Model
         return $query;
     }
 
+    /**
+     * Scope a query to qet expenses or incomes group by month
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param  string|null                           $type
+     * @param  \DateTime                             $dateStart
+     * @param  \DateTime                             $dateEnd
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSumByMonth($query, $type = null, DateTime $dateStart = null, DateTime $dateEnd = null)
+    {
+        $query
+            ->selectRaw('YEAR(journal_entries.date) as year')
+            ->selectRaw('MONTH(journal_entries.date) as month')
+            ->whereHas('category', function ($query) {
+                $query->where('is_ignored', '=', 0);
+            })
+            ->groupBy('year', 'month');
+
+        if (is_null($type)) {
+            $query
+                ->selectRaw('SUM(journal_entries.debit) as debit')
+                ->selectRaw('SUM(journal_entries.credit) as credit');
+        } else {
+            $query->selectRaw("SUM(journal_entries.$type) as $type");
+        }
+
+        if (!is_null($dateStart)) {
+            $query->where('journal_entries.date', '>=' , $dateStart->format('Y-m-d H:i:s'));
+        }
+
+        if (!is_null($dateEnd)) {
+            $query->where('journal_entries.date', '<=' , $dateEnd->format('Y-m-d H:i:s'));
+        }
+
+        return $query;
+    }
 }
