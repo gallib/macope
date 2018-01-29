@@ -4,25 +4,9 @@ namespace Gallib\Macope\App\Services;
 
 use DateTime;
 use Gallib\Macope\App\JournalEntry;
-use Gallib\Macope\App\Queries\JournalEntryQuery;
 
 class JournalEntryService
 {
-    /**
-     * @var \Gallib\Macope\App\Queries\JournalEntryQuery
-     */
-    protected $journalEntryQuery;
-
-    /**
-     * The constructor
-     *
-     * @param \Gallib\Macope\App\Queries\JournalEntryQuery $journalEntryQuery
-     */
-    public function __construct(JournalEntryQuery $journalEntryQuery)
-    {
-        $this->journalEntryQuery = $journalEntryQuery;
-    }
-
     /**
      * Get the yearly billing and format results
      *
