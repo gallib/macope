@@ -124,6 +124,6 @@ class JournalEntryService
      */
     public function getExpensesByTypeCategory($months = 12)
     {
-        return $this->journalEntryQuery->getExpensesByTypeCategory($months);
+        return JournalEntry::expensesByTypeCategory($months)->get();
     }
 }

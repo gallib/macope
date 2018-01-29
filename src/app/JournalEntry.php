@@ -150,4 +150,29 @@ class JournalEntry extends Model
 
         return $query;
     }
+
+    /**
+     * Scope a query to get expenses by type category
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param  integer                               $months
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeExpensesByTypeCategory($query, $months = 12)
+    {
+        $query
+            ->select('type_categories.name')
+            ->selectRaw('SUM(journal_entries.debit) as debit')
+            ->join('categories', 'category_id', '=', 'categories.id')
+            ->join('type_categories', 'type_categories.id', '=', 'categories.type_category_id')
+            ->whereHas('category', function ($query) {
+                $query->where('is_ignored', '=', 0);
+            })
+            ->where('journal_entries.date', '>=' , \DB::raw('DATE_SUB(now(), INTERVAL ' . $months . ' MONTH)'))
+            ->where('debit', '>', 0)
+            ->groupBy('type_categories.name')
+            ->orderBy('debit', 'desc');
+
+        return $query;
+    }
 }
