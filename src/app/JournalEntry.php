@@ -155,10 +155,11 @@ class JournalEntry extends Model
      * Scope a query to get expenses by type category
      *
      * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @param  integer                               $months
+     * @param  \DateTime|null                        $dateStart
+     * @param  \DateTime|null                        $dateEnd
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeExpensesByTypeCategory($query, $months = 12)
+    public function scopeExpensesByTypeCategory($query, DateTime $dateStart = null, DateTime $dateEnd = null)
     {
         $query
             ->select('type_categories.name')
@@ -168,10 +169,17 @@ class JournalEntry extends Model
             ->whereHas('category', function ($query) {
                 $query->where('is_ignored', '=', 0);
             })
-            ->where('journal_entries.date', '>=' , \DB::raw('DATE_SUB(now(), INTERVAL ' . $months . ' MONTH)'))
             ->where('debit', '>', 0)
             ->groupBy('type_categories.name')
             ->orderBy('debit', 'desc');
+
+        if (!is_null($dateStart)) {
+            $query->where('journal_entries.date', '>=' , $dateStart->format('Y-m-d H:i:s'));
+        }
+
+        if (!is_null($dateEnd)) {
+            $query->where('journal_entries.date', '<=' , $dateEnd->format('Y-m-d H:i:s'));
+        }
 
         return $query;
     }

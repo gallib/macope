@@ -35,7 +35,10 @@
              */
             getExpenses() {
                 axios
-                    .post('/macope/expenses-by-type-category')
+                    .post('/macope/expenses-by-type-category', {
+                        date_from: moment().subtract(11, 'M').format('Y-M-01'),
+                        date_to: moment().format('Y-M-D')
+                    })
                     .then(response => {
                         response.data.forEach(data => {
                             this.labels.push(data.name);

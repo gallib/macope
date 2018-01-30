@@ -16,9 +16,8 @@ Route::group(
         Route::post('/expenses-sum-by-month', 'ExpenseController@sumByMonth')
             ->name('expenses.sumbymonth');
 
-        Route::post('/expenses-by-type-category/{months?}', 'ExpenseController@expensesByTypeCategory')
-            ->name('expenses.by-type-category')
-            ->where('months', '[0-9]+');
+        Route::post('/expenses-by-type-category', 'ExpenseController@expensesByTypeCategory')
+            ->name('expenses.by-type-category');
 
         Route::get('/incomes/{year?}', 'IncomeController@index')
             ->name('incomes.index')

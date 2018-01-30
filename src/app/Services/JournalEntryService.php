@@ -103,11 +103,12 @@ class JournalEntryService
     /**
      * Get expenses by type category
      *
-     * @param  integer $months
+     * @param  \DateTime $dateFrom
+     * @param  \DateTime $dateTo
      * @return \Illuminate\Support\Collection
      */
-    public function getExpensesByTypeCategory($months = 12)
+    public function getExpensesByTypeCategory(DateTime $dateFrom = null, DateTime $dateTo = null)
     {
-        return JournalEntry::expensesByTypeCategory($months)->get();
+        return JournalEntry::expensesByTypeCategory($dateFrom, $dateTo)->get();
     }
 }

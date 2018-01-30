@@ -62,11 +62,14 @@ class ExpenseController extends Controller
     /**
      * Return expenses group by type category
      *
-     * @param  integer $months
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
-    public function expensesByTypeCategory($months = 12)
+    public function expensesByTypeCategory(Request $request)
     {
-        return $this->journalEntryService->getExpensesByTypeCategory($months);
+        $dateFrom = $request->has('date_from') ? new Carbon($request->get('date_from')) : null;
+        $dateTo   = $request->has('date_to') ? new Carbon($request->get('date_to')) : null;
+
+        return $this->journalEntryService->getExpensesByTypeCategory($dateFrom, $dateTo);
     }
 }
