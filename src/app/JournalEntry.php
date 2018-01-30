@@ -71,7 +71,7 @@ class JournalEntry extends Model
      *
      * @param  \Illuminate\Database\Eloquent\Builder $query
      * @param  string                                $type
-     * @param  null|integer                          $year
+     * @param  int|null                              $year
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeYearlyBilling($query, $type, $year = null)
@@ -116,8 +116,8 @@ class JournalEntry extends Model
      *
      * @param  \Illuminate\Database\Eloquent\Builder $query
      * @param  string|null                           $type
-     * @param  \DateTime                             $dateStart
-     * @param  \DateTime                             $dateEnd
+     * @param  \DateTime|null                        $dateStart
+     * @param  \DateTime|null                        $dateEnd
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSumByMonth($query, $type = null, DateTime $dateStart = null, DateTime $dateEnd = null)
