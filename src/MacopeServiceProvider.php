@@ -46,7 +46,7 @@ class MacopeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/config/macope.php', 'macope');
+        $this->mergeConfigFrom(__DIR__ . '/../config/macope.php', 'macope');
 
         $this->registerProviders();
 
