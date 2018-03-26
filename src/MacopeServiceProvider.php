@@ -34,7 +34,7 @@ class MacopeServiceProvider extends ServiceProvider
             ], 'macope-components');
         }
 
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->loadObservers();
     }
