@@ -71,7 +71,7 @@ class MacopeServiceProvider extends ServiceProvider
      */
     protected function loadRoutes()
     {
-        include __DIR__ . '/routes/web.php';
+        include __DIR__ . '/../routes/web.php';
     }
 
     /**
