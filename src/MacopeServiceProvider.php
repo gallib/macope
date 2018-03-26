@@ -23,7 +23,7 @@ class MacopeServiceProvider extends ServiceProvider
         $this->loadRoutes();
 
         $this->publishes([
-            __DIR__ . '/config/macope.php' => config_path('macope.php'),
+            __DIR__ . '/../config/macope.php' => config_path('macope.php'),
         ]);
 
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'macope');
