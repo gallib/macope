@@ -3,7 +3,7 @@
 Route::group(
     [
         'prefix' => config('macope.route_prefix'),
-        'namespace' => 'Gallib\Macope\App\Http\Controllers',
+        'namespace' => 'Gallib\Macope\Http\Controllers',
         'middleware' => ['web']
     ],
     function() {
