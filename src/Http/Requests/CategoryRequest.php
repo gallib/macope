@@ -3,7 +3,6 @@
 namespace Gallib\Macope\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class CategoryRequest extends FormRequest
 {
@@ -26,8 +25,8 @@ class CategoryRequest extends FormRequest
     {
         $uniqueName = 'unique_with:categories,type_category_id';
 
-        if (!is_null($this->route('category'))) {
-            $uniqueName .= ',' . $this->route('category');
+        if (! is_null($this->route('category'))) {
+            $uniqueName .= ','.$this->route('category');
         }
 
         return [

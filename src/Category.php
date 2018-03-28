@@ -14,7 +14,7 @@ class Category extends Model
     protected $fillable = [
         'name',
         'is_ignored',
-        'type_category_id'
+        'type_category_id',
     ];
 
     /**
@@ -23,11 +23,11 @@ class Category extends Model
      * @var array
      */
     protected $with = [
-        'typeCategory'
+        'typeCategory',
     ];
 
     /**
-     * Define the one-to-many relationship with JournalEntry
+     * Define the one-to-many relationship with JournalEntry.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -37,7 +37,7 @@ class Category extends Model
     }
 
     /**
-     * Define the one-to-many relationship with Categorization
+     * Define the one-to-many relationship with Categorization.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -57,12 +57,12 @@ class Category extends Model
     }
 
     /**
-     * Getter for category name with typ ecategory name
+     * Getter for category name with typ ecategory name.
      *
      * @return string
      */
     public function getNameWithTypeCategoryAttribute()
     {
-        return $this->name . ' (' . $this->typeCategory->name . ')';
+        return $this->name.' ('.$this->typeCategory->name.')';
     }
 }

@@ -2,14 +2,13 @@
 
 namespace Gallib\Macope\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Carbon\Carbon;
-use Gallib\Macope\Account;
 use Gallib\Macope\Category;
-use Gallib\Macope\JournalEntry;
-use Gallib\Macope\Http\Requests\JournalEntryRequest;
-use Gallib\Macope\Services\JournalEntryService;
 use Illuminate\Http\Request;
+use Gallib\Macope\JournalEntry;
+use App\Http\Controllers\Controller;
+use Gallib\Macope\Services\JournalEntryService;
+use Gallib\Macope\Http\Requests\JournalEntryRequest;
 
 class JournalController extends Controller
 {
@@ -41,7 +40,7 @@ class JournalController extends Controller
     {
         if (request()->wantsJson()) {
             return [
-                'data' => JournalEntry::get()
+                'data' => JournalEntry::get(),
             ];
         }
 
@@ -57,7 +56,7 @@ class JournalController extends Controller
     public function edit($id)
     {
         $journalEntry = JournalEntry::findOrFail($id);
-        $categories   = Category::get()->sortBy('name')->pluck('name_with_type_category', 'id');
+        $categories = Category::get()->sortBy('name')->pluck('name_with_type_category', 'id');
 
         return view('macope::journal.edit', compact(['journalEntry', 'categories']));
     }
@@ -81,7 +80,7 @@ class JournalController extends Controller
     }
 
     /**
-     * Return expenses sum group by month
+     * Return expenses sum group by month.
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Support\Collection
@@ -89,7 +88,7 @@ class JournalController extends Controller
     public function sumByMonth(Request $request)
     {
         $dateFrom = $request->has('date_from') ? new Carbon($request->get('date_from')) : null;
-        $dateTo   = $request->has('date_to') ? new Carbon($request->get('date_to')) : null;
+        $dateTo = $request->has('date_to') ? new Carbon($request->get('date_to')) : null;
 
         return $this->journalEntryService->getSumByMonth($dateFrom, $dateTo);
     }

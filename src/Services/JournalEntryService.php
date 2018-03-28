@@ -8,10 +8,10 @@ use Gallib\Macope\JournalEntry;
 class JournalEntryService
 {
     /**
-     * Get the yearly billing and format results
+     * Get the yearly billing and format results.
      *
      * @param  string       $type
-     * @param  null|integer $year
+     * @param  null|int $year
      * @return array
      */
     public function getYearlyBilling($type, $year = null)
@@ -22,19 +22,19 @@ class JournalEntryService
         foreach ($results as $result) {
             $typeCategory = $result->category->typeCategory;
 
-            if (!isset($billing[$typeCategory->id])) {
+            if (! isset($billing[$typeCategory->id])) {
                 $billing[$typeCategory->id] = [
                     'type_category' => $typeCategory,
-                    'categories'    => []
+                    'categories'    => [],
                 ];
             }
 
-            if (!isset($billing[$typeCategory->id]['categories'][$result->category->id])) {
+            if (! isset($billing[$typeCategory->id]['categories'][$result->category->id])) {
                 $billing[$typeCategory->id]['categories'][$result->category->id] = [
                     'category' => $result->category,
-                    'months'   => array_fill(1, 12, 0)
+                    'months'   => array_fill(1, 12, 0),
                 ];
-            };
+            }
 
             $billing[$typeCategory->id]['categories'][$result->category->id]['months'][$result->month] = $result->{$type};
         }
@@ -43,7 +43,7 @@ class JournalEntryService
     }
 
     /**
-     * Get sum group by month
+     * Get sum group by month.
      *
      * @param  \DateTime $dateFrom
      * @param  \DateTime $dateTo
@@ -53,7 +53,7 @@ class JournalEntryService
     {
         return JournalEntry::sumByMonth(null, $dateFrom, $dateTo)
             ->get()
-            ->each(function($entry){
+            ->each(function ($entry) {
                 if (is_null($entry->debit)) {
                     $entry->debit = 0;
                 }
@@ -61,11 +61,11 @@ class JournalEntryService
                 if (is_null($entry->credit)) {
                     $entry->credit = 0;
                 }
-        })->values();
+            })->values();
     }
 
     /**
-     * Get expenses sum group by month
+     * Get expenses sum group by month.
      *
      * @param  \DateTime $dateFrom
      * @param  \DateTime $dateTo
@@ -75,15 +75,15 @@ class JournalEntryService
     {
         return JournalEntry::sumByMonth('debit', $dateFrom, $dateTo)
             ->get()
-            ->each(function($entry){
+            ->each(function ($entry) {
                 if (is_null($entry->debit)) {
                     $entry->debit = 0;
                 }
-        })->values();
+            })->values();
     }
 
     /**
-     * Get incomes sum group by month
+     * Get incomes sum group by month.
      *
      * @param  \DateTime $dateFrom
      * @param  \DateTime $dateTo
@@ -93,15 +93,15 @@ class JournalEntryService
     {
         return JournalEntry::sumByMonth('credit', $dateFrom, $dateTo)
             ->get()
-            ->each(function($entry){
+            ->each(function ($entry) {
                 if (is_null($entry->credit)) {
                     $entry->credit = 0;
                 }
-        })->values();
+            })->values();
     }
 
     /**
-     * Get expenses by type category
+     * Get expenses by type category.
      *
      * @param  \DateTime $dateFrom
      * @param  \DateTime $dateTo

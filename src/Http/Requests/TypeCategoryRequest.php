@@ -2,8 +2,8 @@
 
 namespace Gallib\Macope\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class TypeCategoryRequest extends FormRequest
 {
@@ -26,12 +26,12 @@ class TypeCategoryRequest extends FormRequest
     {
         $uniqueName = Rule::unique('type_categories', 'name');
 
-        if (!is_null($this->route('type_category'))) {
+        if (! is_null($this->route('type_category'))) {
             $uniqueName->ignore($this->route('type_category'));
         }
 
         return [
-            'name' => ['required', $uniqueName, 'max:255']
+            'name' => ['required', $uniqueName, 'max:255'],
         ];
     }
 }

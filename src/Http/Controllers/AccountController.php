@@ -2,8 +2,8 @@
 
 namespace Gallib\Macope\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Gallib\Macope\Account;
+use App\Http\Controllers\Controller;
 use Gallib\Macope\Http\Requests\AccountRequest;
 
 class AccountController extends Controller
@@ -53,7 +53,6 @@ class AccountController extends Controller
         return redirect()
             ->route('accounts.index')
             ->withSuccess(['success' => 'The account has been added']);
-
     }
 
     /**
@@ -64,7 +63,7 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        $account  = Account::findOrFail($id);
+        $account = Account::findOrFail($id);
 
         return view('macope::accounts.show', compact(['account']));
     }

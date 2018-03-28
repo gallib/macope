@@ -2,9 +2,9 @@
 
 namespace Gallib\Macope\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Gallib\Macope\Category;
 use Gallib\Macope\TypeCategory;
+use App\Http\Controllers\Controller;
 use Gallib\Macope\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
@@ -56,7 +56,6 @@ class CategoryController extends Controller
         return redirect()
             ->route('categories.index')
             ->withSuccess(['success' => 'The category has been added']);
-
     }
 
     /**
@@ -80,7 +79,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category       = Category::findOrFail($id);
+        $category = Category::findOrFail($id);
         $typeCategories = TypeCategory::pluck('name', 'id')->all();
 
         return view('macope::categories.edit', compact(['category', 'typeCategories']));

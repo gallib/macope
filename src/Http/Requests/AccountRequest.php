@@ -2,8 +2,8 @@
 
 namespace Gallib\Macope\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class AccountRequest extends FormRequest
 {
@@ -24,11 +24,11 @@ class AccountRequest extends FormRequest
      */
     public function rules()
     {
-        $uniqueName          = Rule::unique('accounts', 'name');
+        $uniqueName = Rule::unique('accounts', 'name');
         $uniqueAccountNumber = Rule::unique('accounts', 'account_number');
-        $uniqueIban          = Rule::unique('accounts', 'iban');
+        $uniqueIban = Rule::unique('accounts', 'iban');
 
-        if (!is_null($this->route('account'))) {
+        if (! is_null($this->route('account'))) {
             $uniqueName->ignore($this->route('account'));
             $uniqueAccountNumber->ignore($this->route('account_number'));
             $uniqueIban->ignore($this->route('account'));
@@ -39,7 +39,7 @@ class AccountRequest extends FormRequest
             'description'    => ['max:255'],
             'account_number' => ['required', $uniqueAccountNumber, 'max:255'],
             'iban'           => ['required', $uniqueIban, 'max:255'],
-            'currency'       => ['required', 'max:3']
+            'currency'       => ['required', 'max:3'],
         ];
     }
 }

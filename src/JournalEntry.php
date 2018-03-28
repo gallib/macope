@@ -2,9 +2,9 @@
 
 namespace Gallib\Macope;
 
-use Illuminate\Database\Eloquent\Model;
+use DateTime;
 use Gallib\Macope\Traits\Hashable;
-use \DateTime;
+use Illuminate\Database\Eloquent\Model;
 
 class JournalEntry extends Model
 {
@@ -21,7 +21,7 @@ class JournalEntry extends Model
         'credit',
         'debit',
         'category_id',
-        'account_id'
+        'account_id',
     ];
 
     /**
@@ -30,11 +30,11 @@ class JournalEntry extends Model
      * @var array
      */
     protected $with = [
-        'category'
+        'category',
     ];
 
     /**
-     * The attributes we must hash with
+     * The attributes we must hash with.
      *
      * @var array
      */
@@ -43,7 +43,7 @@ class JournalEntry extends Model
         'text',
         'credit',
         'debit',
-        'account_id'
+        'account_id',
     ];
 
     /**
@@ -89,13 +89,13 @@ class JournalEntry extends Model
             })
             ->groupBy('category_id', 'year', 'month');
 
-        if (!is_null($year)) {
+        if (! is_null($year)) {
             $query->whereRaw('YEAR(date_add(journal_entries.date, interval (day(last_day(date)) - ?) day)) = ?', [$monthEndsOn, $year]);
         }
     }
 
     /**
-     * Scope a query to get years that have at least one entry
+     * Scope a query to get years that have at least one entry.
      *
      * @param  \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
@@ -112,7 +112,7 @@ class JournalEntry extends Model
     }
 
     /**
-     * Scope a query to qet expenses or incomes group by month
+     * Scope a query to qet expenses or incomes group by month.
      *
      * @param  \Illuminate\Database\Eloquent\Builder $query
      * @param  string|null                           $type
@@ -140,19 +140,19 @@ class JournalEntry extends Model
             $query->selectRaw("SUM(journal_entries.$type) as $type");
         }
 
-        if (!is_null($dateStart)) {
-            $query->where('journal_entries.date', '>=' , $dateStart->format('Y-m-d H:i:s'));
+        if (! is_null($dateStart)) {
+            $query->where('journal_entries.date', '>=', $dateStart->format('Y-m-d H:i:s'));
         }
 
-        if (!is_null($dateEnd)) {
-            $query->where('journal_entries.date', '<=' , $dateEnd->format('Y-m-d H:i:s'));
+        if (! is_null($dateEnd)) {
+            $query->where('journal_entries.date', '<=', $dateEnd->format('Y-m-d H:i:s'));
         }
 
         return $query;
     }
 
     /**
-     * Scope a query to get expenses by type category
+     * Scope a query to get expenses by type category.
      *
      * @param  \Illuminate\Database\Eloquent\Builder $query
      * @param  \DateTime|null                        $dateStart
@@ -173,12 +173,12 @@ class JournalEntry extends Model
             ->groupBy('type_categories.name')
             ->orderBy('debit', 'desc');
 
-        if (!is_null($dateStart)) {
-            $query->where('journal_entries.date', '>=' , $dateStart->format('Y-m-d H:i:s'));
+        if (! is_null($dateStart)) {
+            $query->where('journal_entries.date', '>=', $dateStart->format('Y-m-d H:i:s'));
         }
 
-        if (!is_null($dateEnd)) {
-            $query->where('journal_entries.date', '<=' , $dateEnd->format('Y-m-d H:i:s'));
+        if (! is_null($dateEnd)) {
+            $query->where('journal_entries.date', '<=', $dateEnd->format('Y-m-d H:i:s'));
         }
 
         return $query;

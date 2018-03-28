@@ -16,11 +16,11 @@ class Account extends Model
         'description',
         'account_number',
         'iban',
-        'currency'
+        'currency',
     ];
 
     /**
-     * Define the one-to-many relationship with JournalEntry
+     * Define the one-to-many relationship with JournalEntry.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

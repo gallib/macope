@@ -2,8 +2,8 @@
 
 namespace Gallib\Macope\Observers;
 
-use Gallib\Macope\Categorize\Categorizer;
 use Gallib\Macope\JournalEntry;
+use Gallib\Macope\Categorize\Categorizer;
 
 class JournalEntryObserver
 {
@@ -25,7 +25,7 @@ class JournalEntryObserver
     }
 
     /**
-     * Call the categorizer to categorize the given JournalEntry
+     * Call the categorizer to categorize the given JournalEntry.
      *
      * @param  \Gallib\Macope\JournalEntry $entry
      * @return void
@@ -38,7 +38,7 @@ class JournalEntryObserver
     }
 
     /**
-     * Generate a unique hash for the given journal entry
+     * Generate a unique hash for the given journal entry.
      *
      * @param  \Gallib\Macope\JournalEntry $entry
      * @return \Gallib\Macope\Observers\JournalEntryObserver
@@ -51,7 +51,7 @@ class JournalEntryObserver
     }
 
     /**
-     * Save the original values
+     * Save the original values.
      *
      * @param  \Gallib\Macope\JournalEntry $entry
      * @return \Gallib\Macope\Observers\JournalEntryObserver

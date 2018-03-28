@@ -16,7 +16,7 @@ class TypeCategory extends Model
     ];
 
     /**
-     * Define the one-to-many relationship with Category
+     * Define the one-to-many relationship with Category.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

@@ -2,10 +2,10 @@
 
 namespace Gallib\Macope\Importer;
 
+use Excel;
 use Carbon\Carbon;
 use Gallib\Macope\Account;
 use Gallib\Macope\JournalEntry;
-use Excel;
 use Illuminate\Http\UploadedFile;
 
 class ImportMigrosBankData implements ImportDataInterface
@@ -16,14 +16,14 @@ class ImportMigrosBankData implements ImportDataInterface
     protected $uploadedFile;
 
     /**
-     * Create a new instance
+     * Create a new instance.
      *
      * @param \Illuminate\Http\UploadedFile $uploadedFile
      * @return void
      */
     public function __construct(UploadedFile $uploadedFile)
     {
-        if (!self::isFileValid($uploadedFile)) {
+        if (! self::isFileValid($uploadedFile)) {
             $filename = $uploadedFile->getClientOriginalName();
             throw new \InvalidArgumentException("$filename is not a valid file.");
         }
@@ -32,10 +32,10 @@ class ImportMigrosBankData implements ImportDataInterface
     }
 
     /**
-     * Return whether the given file is valid or not
+     * Return whether the given file is valid or not.
      *
      * @param  \Illuminate\Http\UploadedFile $uploadedFile
-     * @return boolean
+     * @return bool
      */
     public static function isFileValid(UploadedFile $uploadedFile)
     {
@@ -45,7 +45,7 @@ class ImportMigrosBankData implements ImportDataInterface
 
         $account = Account::where('account_number', $accountNumber)->first();
 
-        if (!($account instanceof Account)) {
+        if (! ($account instanceof Account)) {
             return false;
         }
 
@@ -53,13 +53,13 @@ class ImportMigrosBankData implements ImportDataInterface
     }
 
     /**
-     * Import accounting entries in the given file
+     * Import accounting entries in the given file.
      *
-     * @return boolean
+     * @return bool
      */
     public function import()
     {
-        $data    = Excel::load($this->uploadedFile->path(), 'Windows-1252')->get()->toArray();
+        $data = Excel::load($this->uploadedFile->path(), 'Windows-1252')->get()->toArray();
         $accountNumber = explode(': ', $data[2][0])[1];
 
         $account = Account::where('account_number', $accountNumber)->first();
@@ -75,7 +75,7 @@ class ImportMigrosBankData implements ImportDataInterface
                 'text'       => $value[1],
                 'credit'     => $value[2] >= 0 ? number_format(abs($value[2]), 2, '.', '') : null,
                 'debit'      => $value[2] < 0 ? number_format(abs($value[2]), 2, '.', '') : null,
-                'account_id' => $account->id
+                'account_id' => $account->id,
             ];
 
             $entry = JournalEntry::findByHashOrCreate($entryData);

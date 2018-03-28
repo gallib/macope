@@ -7,7 +7,7 @@ use Illuminate\Http\UploadedFile;
 class ImportDataFactory
 {
     /**
-     * Instanciate an import data class depending on given file
+     * Instanciate an import data class depending on given file.
      *
      * @param  \Illuminate\Http\UploadedFile $uploadedFile
      * @return \Gallib\Macope\Importer\ImportDataInterface
