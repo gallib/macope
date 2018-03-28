@@ -3,7 +3,6 @@
 namespace Gallib\Macope\Observers;
 
 use Gallib\Macope\Category;
-use Gallib\Macope\Services\CategorizationService;
 use Illuminate\Http\Request;
 
 class CategoryObserver

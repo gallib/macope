@@ -16,7 +16,7 @@ class Categorization extends Model
         'search_type',
         'entry_type',
         'amount',
-        'category_id'
+        'category_id',
     ];
 
     /**
@@ -25,31 +25,31 @@ class Categorization extends Model
      * @var array
      */
     protected $with = [
-        'category'
+        'category',
     ];
 
     /**
-     * The search types values
+     * The search types values.
      *
      * @var array
      */
     protected $searchTypes = [
         'contains',
-        'match'
+        'match',
     ];
 
     /**
-     * The entry types values
+     * The entry types values.
      *
      * @var array
      */
     protected $entryTypes = [
         'debit',
-        'credit'
+        'credit',
     ];
 
     /**
-     * Getter for search types
+     * Getter for search types.
      *
      * @return array
      */
@@ -59,7 +59,7 @@ class Categorization extends Model
     }
 
     /**
-     * Getter for entry types
+     * Getter for entry types.
      *
      * @return array
      */

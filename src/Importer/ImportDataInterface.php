@@ -7,17 +7,17 @@ use Illuminate\Http\UploadedFile;
 interface ImportDataInterface
 {
     /**
-     * Return whether the given file is valid or not
+     * Return whether the given file is valid or not.
      *
      * @param  \Illuminate\Http\UploadedFile $uploadedFile
-     * @return boolean
+     * @return bool
      */
     public static function isFileValid(UploadedFile $uploadedFile);
 
     /**
-     * Import the given file
+     * Import the given file.
      *
-     * @return boolean
+     * @return bool
      */
     public function import();
 }

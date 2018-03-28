@@ -2,8 +2,8 @@
 
 namespace Gallib\Macope\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Gallib\Macope\TypeCategory;
+use App\Http\Controllers\Controller;
 use Gallib\Macope\Http\Requests\TypeCategoryRequest;
 
 class TypeCategoryController extends Controller

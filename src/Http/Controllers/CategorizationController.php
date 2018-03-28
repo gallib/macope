@@ -2,14 +2,13 @@
 
 namespace Gallib\Macope\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Gallib\Macope\Categorization;
 use Gallib\Macope\Category;
+use Gallib\Macope\Categorization;
+use App\Http\Controllers\Controller;
 use Gallib\Macope\Http\Requests\CategorizationRequest;
 
 class CategorizationController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -39,10 +38,10 @@ class CategorizationController extends Controller
      */
     public function create()
     {
-        $categories     = Category::get()->sortBy('name')->pluck('name_with_type_category', 'id');
+        $categories = Category::get()->sortBy('name')->pluck('name_with_type_category', 'id');
         $categorization = new Categorization();
-        $searchTypes    = array_combine($categorization->getSearchTypes(), $categorization->getSearchTypes());
-        $entryTypes     = array_combine($categorization->getEntryTypes(), $categorization->getEntryTypes());
+        $searchTypes = array_combine($categorization->getSearchTypes(), $categorization->getSearchTypes());
+        $entryTypes = array_combine($categorization->getEntryTypes(), $categorization->getEntryTypes());
 
         return view('macope::categorizations.create', compact(['categories', 'searchTypes', 'entryTypes']));
     }
@@ -60,7 +59,6 @@ class CategorizationController extends Controller
         return redirect()
             ->route('categorizations.index')
             ->withSuccess(['success' => 'The categorization has been added']);
-
     }
 
     /**
@@ -85,9 +83,9 @@ class CategorizationController extends Controller
     public function edit($id)
     {
         $categorization = Categorization::findOrFail($id);
-        $categories     = Category::get()->sortBy('name')->pluck('name_with_type_category', 'id');
-        $searchTypes    = array_combine($categorization->getSearchTypes(), $categorization->getSearchTypes());
-        $entryTypes     = array_combine($categorization->getEntryTypes(), $categorization->getEntryTypes());
+        $categories = Category::get()->sortBy('name')->pluck('name_with_type_category', 'id');
+        $searchTypes = array_combine($categorization->getSearchTypes(), $categorization->getSearchTypes());
+        $entryTypes = array_combine($categorization->getEntryTypes(), $categorization->getEntryTypes());
 
         return view('macope::categorizations.edit', compact(['categorization', 'categories', 'searchTypes', 'entryTypes']));
     }

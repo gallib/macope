@@ -3,7 +3,6 @@
 namespace Gallib\Macope\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class JournalEntryRequest extends FormRequest
 {
@@ -29,7 +28,7 @@ class JournalEntryRequest extends FormRequest
             'text' => ['required'],
             'category_id' => 'nullable|exists:categories,id',
             'credit' => ['nullable', 'numeric'],
-            'debit' => ['nullable', 'numeric']
+            'debit' => ['nullable', 'numeric'],
         ];
     }
 }

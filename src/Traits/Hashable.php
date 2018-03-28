@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 trait Hashable
 {
     /**
-     * Generate a hash based on model values
+     * Generate a hash based on model values.
      *
      * @return string
      */
@@ -17,14 +17,14 @@ trait Hashable
     }
 
     /**
-     * Get the hash for given attributes
+     * Get the hash for given attributes.
      *
      * @param  array $attributes
      * @return string
      */
     protected function getHashByAttributes(array $attributes)
     {
-        if (!property_exists($this, 'hashWith') || !is_array($this->hashWith)) {
+        if (! property_exists($this, 'hashWith') || ! is_array($this->hashWith)) {
             $this->hashWith = [];
         }
 
@@ -34,7 +34,7 @@ trait Hashable
     }
 
     /**
-     * find a model by its hash or create a new instance
+     * find a model by its hash or create a new instance.
      *
      * @param  \Illuminate\Database\Eloquent\Builder $builder
      * @param  array $attributes
@@ -44,7 +44,7 @@ trait Hashable
     {
         $hash = $this->getHashByAttributes($attributes);
 
-        if (!is_null($instance = $this->where(['hash' => $hash])->first())) {
+        if (! is_null($instance = $this->where(['hash' => $hash])->first())) {
             return $instance;
         }
 

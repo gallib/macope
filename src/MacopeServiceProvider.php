@@ -2,14 +2,10 @@
 
 namespace Gallib\Macope;
 
-use Gallib\Macope\Categorization;
-use Gallib\Macope\Category;
-use Gallib\Macope\JournalEntry;
-use Gallib\Macope\Observers\CategorizationObserver;
+use Illuminate\Support\ServiceProvider;
 use Gallib\Macope\Observers\CategoryObserver;
 use Gallib\Macope\Observers\JournalEntryObserver;
-use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\ServiceProvider;
+use Gallib\Macope\Observers\CategorizationObserver;
 
 class MacopeServiceProvider extends ServiceProvider
 {
@@ -23,10 +19,10 @@ class MacopeServiceProvider extends ServiceProvider
         $this->loadRoutes();
 
         $this->publishes([
-            __DIR__ . '/../config/macope.php' => config_path('macope.php'),
+            __DIR__.'/../config/macope.php' => config_path('macope.php'),
         ]);
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'macope');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'macope');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -34,7 +30,7 @@ class MacopeServiceProvider extends ServiceProvider
             ], 'macope-components');
         }
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->loadObservers();
     }
@@ -46,7 +42,7 @@ class MacopeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/macope.php', 'macope');
+        $this->mergeConfigFrom(__DIR__.'/../config/macope.php', 'macope');
 
         $this->registerProviders();
 
@@ -65,17 +61,17 @@ class MacopeServiceProvider extends ServiceProvider
     }
 
     /**
-     * Load packages routes
+     * Load packages routes.
      *
      * @return void
      */
     protected function loadRoutes()
     {
-        include __DIR__ . '/../routes/web.php';
+        include __DIR__.'/../routes/web.php';
     }
 
     /**
-     * Load observers
+     * Load observers.
      *
      * @return void
      */

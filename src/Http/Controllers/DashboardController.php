@@ -2,9 +2,9 @@
 
 namespace Gallib\Macope\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Gallib\Macope\JournalEntry;
+use App\Http\Controllers\Controller;
 use Gallib\Macope\Services\JournalEntryService;
 
 class DashboardController extends Controller
@@ -34,12 +34,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $startOfMonth         = Carbon::now()->startOfMonth();
+        $startOfMonth = Carbon::now()->startOfMonth();
         $currentMonthExpenses = $this->journalEntryService->getExpensesSumByMonth($startOfMonth);
         $currentMonthExpenses = $currentMonthExpenses->isNotEmpty() ? $currentMonthExpenses->first()->debit : 0;
-        $lastMonthIncomes     = $this->journalEntryService->getIncomesSumByMonth($startOfMonth->subMonth());
-        $lastMonthIncomes     = $lastMonthIncomes->isNotEmpty() ? $lastMonthIncomes->first()->credit : 0;
-        $entryToCategorize    = JournalEntry::whereNull('category_id')->count();
+        $lastMonthIncomes = $this->journalEntryService->getIncomesSumByMonth($startOfMonth->subMonth());
+        $lastMonthIncomes = $lastMonthIncomes->isNotEmpty() ? $lastMonthIncomes->first()->credit : 0;
+        $entryToCategorize = JournalEntry::whereNull('category_id')->count();
 
         return view('macope::dashboard.index', compact(['currentMonthExpenses', 'lastMonthIncomes', 'entryToCategorize']));
     }

@@ -2,9 +2,9 @@
 
 namespace Gallib\Macope\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Gallib\Macope\Account;
+use App\Http\Controllers\Controller;
 use Gallib\Macope\Importer\ImportDataFactory;
 use Gallib\Macope\Http\Requests\ImportFileRequest;
 

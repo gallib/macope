@@ -24,10 +24,10 @@ class CreateCategoriesTable extends Migration
         });
 
         Schema::table('journal_entries', function (Blueprint $table) {
-           $table->integer('category_id')->nullable()->unsigned()->after('debit');
+            $table->integer('category_id')->nullable()->unsigned()->after('debit');
 
-           $table->foreign('category_id')->references('id')->on('categories');
-       });
+            $table->foreign('category_id')->references('id')->on('categories');
+        });
     }
 
     /**

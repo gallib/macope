@@ -4,9 +4,9 @@ Route::group(
     [
         'prefix' => config('macope.route_prefix'),
         'namespace' => 'Gallib\Macope\Http\Controllers',
-        'middleware' => ['web']
+        'middleware' => ['web'],
     ],
-    function() {
+    function () {
         Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
         Route::get('/expenses/{year?}', 'ExpenseController@index')
