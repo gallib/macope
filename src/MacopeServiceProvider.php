@@ -2,14 +2,10 @@
 
 namespace Gallib\Macope;
 
-use Gallib\Macope\App\Categorization;
-use Gallib\Macope\App\Category;
-use Gallib\Macope\App\JournalEntry;
-use Gallib\Macope\App\Observers\CategorizationObserver;
-use Gallib\Macope\App\Observers\CategoryObserver;
-use Gallib\Macope\App\Observers\JournalEntryObserver;
-use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Gallib\Macope\Observers\CategoryObserver;
+use Gallib\Macope\Observers\JournalEntryObserver;
+use Gallib\Macope\Observers\CategorizationObserver;
 
 class MacopeServiceProvider extends ServiceProvider
 {
@@ -23,18 +19,18 @@ class MacopeServiceProvider extends ServiceProvider
         $this->loadRoutes();
 
         $this->publishes([
-            __DIR__ . '/config/macope.php' => config_path('macope.php'),
+            __DIR__.'/../config/macope.php' => config_path('macope.php'),
         ]);
 
-        $this->loadViewsFrom(__DIR__ . '/resources/views', 'macope');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'macope');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/resources/assets/js/components' => base_path('resources/assets/js/components/macope'),
+                __DIR__.'/../resources/assets/js/components' => base_path('resources/assets/js/components/macope'),
             ], 'macope-components');
         }
 
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->loadObservers();
     }
@@ -46,12 +42,12 @@ class MacopeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/config/macope.php', 'macope');
+        $this->mergeConfigFrom(__DIR__.'/../config/macope.php', 'macope');
 
         $this->registerProviders();
 
-        $this->app->bind('CategorizationService', \Gallib\Macope\App\Services\CategorizationService::class);
-        $this->app->bind('JournalEntryService', \Gallib\Macope\App\Services\JournalEntryService::class);
+        $this->app->bind('CategorizationService', \Gallib\Macope\Services\CategorizationService::class);
+        $this->app->bind('JournalEntryService', \Gallib\Macope\Services\JournalEntryService::class);
     }
 
     /**
@@ -65,17 +61,17 @@ class MacopeServiceProvider extends ServiceProvider
     }
 
     /**
-     * Load packages routes
+     * Load packages routes.
      *
      * @return void
      */
     protected function loadRoutes()
     {
-        include __DIR__ . '/routes/web.php';
+        include __DIR__.'/../routes/web.php';
     }
 
     /**
-     * Load observers
+     * Load observers.
      *
      * @return void
      */
