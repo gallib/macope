@@ -23,7 +23,7 @@
                             </ul>
                         </div>
                     @endif
-                    @include('macope::helpers.form-message')
+                    @include('helpers.form-message')
                     {{ Form::open(['url' => route('import-file.import'), 'files' => true]) }}
                     <div class="form-group">
                         {{ Form::label('file', 'File') }}

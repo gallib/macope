@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <macope-entries-sum-by-month></macope-entries-sum-by-month>
+                    <entries-sum-by-month></entries-sum-by-month>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <macope-expenses-by-type-category></macope-expenses-by-type-category>
+                    <expenses-by-type-category></expenses-by-type-category>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    @include('macope::helpers.form-message')
+                    @include('helpers.form-message')
                     {{ Form::model($account, ['url' => route('accounts.update', $account->id), 'method' => 'PUT']) }}
                     <div class="form-group">
                         {{ Form::label('name', 'Name') }}

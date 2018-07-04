@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    @include('macope::helpers.form-message')
+                    @include('helpers.form-message')
                     <table class="table table-bordered table-condensed" id="journal-table">
                         <thead>
                             <tr>

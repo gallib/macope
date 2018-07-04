@@ -35,7 +35,7 @@
              */
             getExpenses() {
                 axios
-                    .post('/macope/expenses-by-type-category', {
+                    .post('/expenses-by-type-category', {
                         date_from: moment().subtract(11, 'M').format('Y-M-01'),
                         date_to: moment().format('Y-M-D')
                     })
