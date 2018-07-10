@@ -1,8 +1,21 @@
-
 // Body
-$body-bg: #f5f8fa;
+$body-bg: #eeeeee;
 
 // Typography
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+$font-family-sans-serif: "Lato", sans-serif;
+$font-size-base:         0.9rem;
+$line-height-base:       1.6;
+
+// Theme colors
+$teal:   #00bfa5;
+$blue:   #00b8d4;
+$green:  #00c853;
+$purple: #6200ea;
+$yellow: #ffd600;
+$red:    #d50000;
+
+$primary:   $teal;
+$secondary: $blue;
+$info:      $purple;
+$light:     #bdbdbd;
+$dark:      #212121;

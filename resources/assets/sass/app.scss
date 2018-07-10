@@ -1,6 +1,5 @@
-
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 
 // Variables
 @import "variables";
@@ -8,7 +7,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+// Nav
+.nav-link.active {
+    font-weight: bold;
+}
+
+// Card
+.card {
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
