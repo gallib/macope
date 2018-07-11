@@ -7,6 +7,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Font awesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/fa-solid';
+
 // Nav
 .nav-link.active {
     font-weight: bold;
@@ -15,4 +19,17 @@
 // Card
 .card {
     box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+// Button
+.btn-icon {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: $primary;
+
+    &:hover {
+        color: $link-hover-color;
+    }
 }
