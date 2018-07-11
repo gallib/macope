@@ -4,18 +4,9 @@
 <div class="containe-fluid">
     <div class="row">
         <div class="col">
-            <h1>{{ $category->name }}</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        Informations
-                    </div>
-                </div>
                 <div class="card-body">
+                    <h5 class="card-title">Category details</h5>
                     <p><span class="font-weight-bold">Name: </span>{{ $category->name }}</p>
                     <p>
                         <span class="font-weight-bold">Type category: </span>

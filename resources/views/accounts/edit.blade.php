@@ -4,18 +4,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>{{ $account->name }}</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        {{ $account->name }}
-                    </div>
-                </div>
                 <div class="card-body">
+                    <h5 class="card-title">Edit account</h5>
                     @include('helpers.form-message')
                     {{ Form::model($account, ['url' => route('accounts.update', $account->id), 'method' => 'PUT']) }}
                     <div class="form-group">

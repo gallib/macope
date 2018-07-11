@@ -4,18 +4,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>Journal</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        Journal
-                    </div>
-                </div>
                 <div class="card-body">
+                    <h5 class="card-title">Journal</h5>
                     @include('helpers.form-message')
                     <table class="table table-bordered table-condensed" id="journal-table">
                         <thead>

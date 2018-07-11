@@ -4,18 +4,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>Create a categorization</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        Create a categorization
-                    </div>
-                </div>
                 <div class="card-body">
+                    <h5 class="card-title">Add a categorization</h5>
                     @include('helpers.form-message')
                     {{ Form::open(['url' => route('categorizations.store')]) }}
                     <div class="form-group">

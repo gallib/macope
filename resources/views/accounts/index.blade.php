@@ -4,19 +4,14 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>Accounts</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        Accounts
-                        <a href="{{ route('accounts.create') }}" title="Add an account" class="btn btn-primary btn-sm pull-right">Add</a>
-                    </div>
-                </div>
                 <div class="card-body">
+                    <div class="d-flex">
+                        <h5 class="card-title">Accounts</h5>
+                        <div class="ml-auto">
+                            <a href="{{ route('accounts.create') }}" title="Add an account" class="btn btn-primary btn-sm">Add</a>
+                        </div>
+                    </div>
                     @include('helpers.form-message')
                     <table class="table table-bordered table-condensed" id="account-table">
                         <thead>

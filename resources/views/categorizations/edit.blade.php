@@ -4,18 +4,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>Edit a categorization</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        Edit a categorization
-                    </div>
-                </div>
                 <div class="card-body">
+                    <h5 class="card-title">Edit categorization</h5>
                     @include('helpers.form-message')
                     {{ Form::model($categorization, ['url' => route('categorizations.update', $categorization->id), 'method' => 'PUT']) }}
                     <div class="form-group">

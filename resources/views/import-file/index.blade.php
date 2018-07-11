@@ -4,18 +4,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>Import a file</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        Import a file
-                    </div>
-                </div>
                 <div class="card-body">
+                    <h5 class="card-title">Import a file</h5>
                     @if ($accounts->count() == 0)
                         <div class="alert alert-warning">
                             <ul>

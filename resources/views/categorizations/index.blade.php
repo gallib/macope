@@ -4,19 +4,14 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>Categorizations</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        Categorizations
-                        <a href="{{ route('categorizations.create') }}" title="Add a categorization" class="btn btn-primary btn-sm pull-right">Add</a>
-                    </div>
-                </div>
                 <div class="card-body">
+                    <div class="d-flex">
+                        <h5 class="card-title">Categorizations</h5>
+                        <div class="ml-auto">
+                            <a href="{{ route('categorizations.create') }}" title="Add a categorization" class="btn btn-primary btn-sm">Add</a>
+                        </div>
+                    </div>
                     @include('helpers.form-message')
                     <table class="table table-bordered table-condensed" id="categorizations-table">
                         <thead>

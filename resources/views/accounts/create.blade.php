@@ -4,18 +4,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>Create an account</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        Create an account
-                    </div>
-                </div>
                 <div class="card-body">
+                    <h5 class="card-title">Add an account</h5>
                     @include('helpers.form-message')
                     {{ Form::open(['url' => route('accounts.store')]) }}
                     <div class="form-group">
