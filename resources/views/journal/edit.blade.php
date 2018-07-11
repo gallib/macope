@@ -4,18 +4,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>{{ str_limit($journalEntry->text, 25) }}</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        {{ $journalEntry->text }}
-                    </div>
-                </div>
                 <div class="card-body">
+                    <h5 class="card-title">Edit journal entry</h5>
                     @include('helpers.form-message')
                     {{ Form::model($journalEntry, ['url' => route('journal.update', $journalEntry->id), 'method' => 'PUT']) }}
                     <div class="form-group">
