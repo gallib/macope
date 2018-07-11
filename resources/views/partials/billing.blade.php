@@ -6,8 +6,7 @@
 
                     <div class="ml-auto">
                         <a href="{{ route('type-categories.show', $typeCategory['type_category']->id) }}" title="View details">
-                            <i class="fa fa-eye"></i>
-                            Details
+                            <i class="fas fa-eye"></i>
                         </a>
                     </div>
                 </div>

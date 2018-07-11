@@ -34,10 +34,10 @@
                                 <td>{{ $account->currency }}</td>
                                 <td>
                                     <a href="{{ route('accounts.show', $account->id) }}" title="View details">
-                                        <i class="fa fa-eye"></i>
+                                        <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="{{ route('accounts.edit', $account->id) }}" title="Edit">
-                                        <i class="fa fa-pencil"></i>
+                                        <i class="fas fa-edit"></i>
                                     </a>
                                     @if ($account->journalEntries()->count() === 0)
                                         {{ Form::open(['method' => 'DELETE','route' => ['accounts.destroy', $account->id], 'style'=>'display:inline']) }}

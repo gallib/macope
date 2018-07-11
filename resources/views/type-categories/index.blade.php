@@ -26,15 +26,15 @@
                                 <td>{{ $typeCategory->name }}</td>
                                 <td>
                                     <a href="{{ route('type-categories.show', $typeCategory->id) }}" title="View details">
-                                        <i class="fa fa-eye"></i>
+                                        <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="{{ route('type-categories.edit', $typeCategory->id) }}" title="Edit">
-                                        <i class="fa fa-pencil"></i>
+                                        <i class="fas fa-edit"></i>
                                     </a>
                                     @if ($typeCategory->categories()->count() === 0)
                                         {{ Form::open(['method' => 'DELETE','route' => ['type-categories.destroy', $typeCategory->id], 'style'=>'display:inline']) }}
-                                            <button class="macope-delete" type="submit">
-                                                <i class="fa fa-trash"></i>
+                                            <button class="btn-icon" type="submit">
+                                                <i class="fas fa-trash-alt"></i>
                                             </button>
                                         {{ Form::close() }}
                                     @endif

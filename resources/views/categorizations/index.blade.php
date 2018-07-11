@@ -34,14 +34,14 @@
                                 <td>{{ $categorization->category->name }} ({{$categorization->category->typeCategory->name}})</td>
                                 <td>
                                     <a href="{{ route('categorizations.show', $categorization->id) }}" title="View details">
-                                        <i class="fa fa-eye"></i>
+                                        <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="{{ route('categorizations.edit', $categorization->id) }}" title="Edit">
-                                        <i class="fa fa-pencil"></i>
+                                        <i class="fas fa-edit"></i>
                                     </a>
                                     {{ Form::open(['method' => 'DELETE','route' => ['categorizations.destroy', $categorization->id], 'style'=>'display:inline']) }}
-                                        <button class="macope-delete" type="submit">
-                                            <i class="fa fa-trash"></i>
+                                        <button class="btn-icon" type="submit">
+                                            <i class="fas fa-trash-alt"></i>
                                         </button>
                                     {{ Form::close() }}
                                 </td>

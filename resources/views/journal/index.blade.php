@@ -55,7 +55,7 @@ $(function() {
             {
                 orderable: false,
                 render: function (data, type, row) {
-                    return '<a href="' + window.location.pathname + '/' + data + '/edit" title="Edit"><i class="fa fa-pencil"></i></a>';
+                    return '<a href="' + window.location.pathname + '/' + data + '/edit" title="Edit"><i class="fas fa-edit"></i></a>';
                 },
                 targets: 5
             }
