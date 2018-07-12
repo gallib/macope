@@ -15369,6 +15369,10 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
   padding-right: 0;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 .nav-link.active {
   font-weight: bold;
 }
@@ -15388,5 +15392,9 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 
 .btn-icon:hover {
   color: #007363;
+}
+
+.table th {
+  white-space: nowrap;
 }
 

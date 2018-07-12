@@ -13,36 +13,38 @@
                         </div>
                     </div>
                     @include('helpers.form-message')
-                    <table class="table table-bordered table-condensed" id="type-categories-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($typeCategories as $typeCategory)
-                            <tr>
-                                <td>{{ $typeCategory->name }}</td>
-                                <td>
-                                    <a href="{{ route('type-categories.show', $typeCategory->id) }}" title="View details">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('type-categories.edit', $typeCategory->id) }}" title="Edit">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    @if ($typeCategory->categories()->count() === 0)
-                                        {{ Form::open(['method' => 'DELETE','route' => ['type-categories.destroy', $typeCategory->id], 'style'=>'display:inline']) }}
-                                            <button class="btn-icon" type="submit">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        {{ Form::close() }}
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="type-categories-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($typeCategories as $typeCategory)
+                                <tr>
+                                    <td>{{ $typeCategory->name }}</td>
+                                    <td class="nowrap">
+                                        <a href="{{ route('type-categories.show', $typeCategory->id) }}" title="View details">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('type-categories.edit', $typeCategory->id) }}" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        @if ($typeCategory->categories()->count() === 0)
+                                            {{ Form::open(['method' => 'DELETE','route' => ['type-categories.destroy', $typeCategory->id], 'style'=>'display:inline']) }}
+                                                <button class="btn-icon" type="submit">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            {{ Form::close() }}
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -8,18 +8,20 @@
                 <div class="card-body">
                     <h5 class="card-title">Journal</h5>
                     @include('helpers.form-message')
-                    <table class="table table-bordered table-condensed" id="journal-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Text</th>
-                                <th>Category</th>
-                                <th>Credit</th>
-                                <th>Debit</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="journal-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Text</th>
+                                    <th>Category</th>
+                                    <th>Credit</th>
+                                    <th>Debit</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

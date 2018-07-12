@@ -13,42 +13,45 @@
                         </div>
                     </div>
                     @include('helpers.form-message')
-                    <table class="table table-bordered table-condensed" id="categorizations-table">
-                        <thead>
-                            <tr>
-                                <th>Search</th>
-                                <th>Search type</th>
-                                <th>Entry type</th>
-                                <th>Amount</th>
-                                <th>Category</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($categorizations as $categorization)
-                            <tr>
-                                <td width="40%">{{ $categorization->search }}</td>
-                                <td>{{ $categorization->search_type }}</td>
-                                <td>{{ $categorization->entry_type }}</td>
-                                <td>{{ $categorization->amount }}</td>
-                                <td>{{ $categorization->category->name }} ({{$categorization->category->typeCategory->name}})</td>
-                                <td>
-                                    <a href="{{ route('categorizations.show', $categorization->id) }}" title="View details">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('categorizations.edit', $categorization->id) }}" title="Edit">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    {{ Form::open(['method' => 'DELETE','route' => ['categorizations.destroy', $categorization->id], 'style'=>'display:inline']) }}
-                                        <button class="btn-icon" type="submit">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    {{ Form::close() }}
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="categorizations-table">
+                            <thead>
+                                <tr>
+                                    <th>Search</th>
+                                    <th>Search type</th>
+                                    <th>Entry type</th>
+                                    <th>Amount</th>
+                                    <th>Category</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($categorizations as $categorization)
+                                <tr>
+                                    <td>{{ $categorization->search }}</td>
+                                    <td>{{ $categorization->search_type }}</td>
+                                    <td>{{ $categorization->entry_type }}</td>
+                                    <td>{{ $categorization->amount }}</td>
+                                    <td>{{ $categorization->category->name }} ({{$categorization->category->typeCategory->name}})</td>
+                                    <td class="nowrap">
+                                        <a href="{{ route('categorizations.show', $categorization->id) }}" title="View details">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('categorizations.edit', $categorization->id) }}" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        {{ Form::open(['method' => 'DELETE','route' => ['categorizations.destroy', $categorization->id], 'style'=>'display:inline']) }}
+                                            <button class="btn-icon" type="submit">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        {{ Form::close() }}
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
         </div>
