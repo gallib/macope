@@ -15377,6 +15377,10 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
   font-weight: bold;
 }
 
+.nav-item .fas {
+  margin-right: .25rem;
+}
+
 .card {
   -webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);

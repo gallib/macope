@@ -1,67 +1,49 @@
 <nav class="col-md-3 col-lg-2">
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('dashboard.index') }}">Dashboard</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('expenses.index') }}">Expenses</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('incomes.index') }}">Incomes</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('journal.index') }}">Journal</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('import-file.index') }}">Import file</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('accounts.index') }}">Accounts</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('type-categories.index') }}">Type Categories</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('categorizations.index') }}">Categorizations</a>
-        </li>
-        <!--/<li class="nav-item">
-            <a class="nav-link active" href="#">
-                <span data-feather="home"></span>
-                Dashboard
+            <a class="nav-link" href="{{ route('dashboard.index') }}">
+                <i class="fas fa-fw fa-home"></i> Dashboard
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span data-feather="file"></span>
-                Orders
+            <a class="nav-link" href="{{ route('expenses.index') }}">
+                <i class="fas fa-fw fa-sort-amount-down"></i> Expenses
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span data-feather="shopping-cart"></span>
-                Products
+            <a class="nav-link" href="{{ route('incomes.index') }}">
+                <i class="fas fa-fw fa-sort-amount-up"></i> Incomes
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span data-feather="users"></span>
-                Customers
+            <a class="nav-link" href="{{ route('journal.index') }}">
+                <i class="fas fa-fw fa-clipboard-list"></i> Journal
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span data-feather="bar-chart-2"></span>
-                Reports
+            <a class="nav-link" href="{{ route('import-file.index') }}">
+                <i class="fas fa-fw fa-file-import"></i> Import file
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span data-feather="layers"></span>
-                Integrations
+            <a class="nav-link" href="{{ route('accounts.index') }}">
+                <i class="fas fa-fw fa-folder"></i> Accounts
             </a>
-        </li>-->
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('categories.index') }}">
+                <i class="fas fa-fw fa-tag"></i> Categories
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('type-categories.index') }}">
+                <i class="fas fa-fw fa-tags"></i> Type Categories
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('categorizations.index') }}">
+                <i class="fas fa-fw fa-book"></i> Categorizations
+            </a>
+        </li>
     </ul>
 </nav>
