@@ -11,6 +11,9 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/fa-solid';
 
+// Datatables
+@import '~datatables.net-bs4/css/dataTables.bootstrap4.min';
+
 // Nav
 .nav-link.active {
     font-weight: bold;
