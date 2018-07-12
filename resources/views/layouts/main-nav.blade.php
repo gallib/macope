@@ -1,8 +1,8 @@
 <nav class="col-md-3 col-lg-2">
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('dashboard.index') }}">
-                <i class="fas fa-fw fa-home"></i> Dashboard
+            <a class="nav-link" href="{{ route('home') }}">
+                <i class="fas fa-fw fa-home"></i> Home
             </a>
         </li>
         <li class="nav-item">

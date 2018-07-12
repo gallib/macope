@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'DashboardController@index')->name('dashboard.index');
+Route::get('/', 'DashboardController@index')->name('home');
 
 Route::get('/expenses/{year?}', 'ExpenseController@index')
     ->name('expenses.index')
