@@ -7,6 +7,7 @@ $font-size-base:         0.9rem;
 $line-height-base:       1.6;
 
 // Theme colors
+$white:  #fff;
 $teal:   #00bfa5;
 $blue:   #00b8d4;
 $green:  #00c853;
@@ -19,3 +20,5 @@ $secondary: $blue;
 $info:      $purple;
 $light:     #bdbdbd;
 $dark:      #212121;
+
+$breadcrumb-bg: $white;

@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
+    @include('layouts.breadcrumbs')
     <div class="row">
         <div class="col">
             <div class="card">

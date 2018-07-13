@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
+    @include('layouts.breadcrumbs')
     <div class="row">
         <nav class="col">
             <ul class="nav justify-content-end">
