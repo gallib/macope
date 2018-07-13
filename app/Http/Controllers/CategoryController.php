@@ -60,25 +60,22 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Category $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        $category = Category::findOrFail($id);
-
         return view('categories.show', compact(['category']));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Category $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category = Category::findOrFail($id);
         $typeCategories = TypeCategory::pluck('name', 'id')->all();
 
         return view('categories.edit', compact(['category', 'typeCategories']));
@@ -88,13 +85,11 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\CategoryRequest  $request
-     * @param  int  $id
+     * @param  \App\Category $category
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(CategoryRequest $request, Category $category)
     {
-        $category = Category::findOrFail($id);
-
         $category->update($request->all());
 
         return redirect()
@@ -105,10 +100,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Category $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         $category = Category::findOrFail($id);
 

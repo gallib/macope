@@ -49,29 +49,26 @@ class JournalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\JournalEntry $journal
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(JournalEntry $journal)
     {
-        $journalEntry = JournalEntry::findOrFail($id);
         $categories = Category::get()->sortBy('name')->pluck('name_with_type_category', 'id');
 
-        return view('journal.edit', compact(['journalEntry', 'categories']));
+        return view('journal.edit', compact(['journal', 'categories']));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\JournalEntryRequest  $request
-     * @param  int  $id
+     * @param  \App\JournalEntry $journal
      * @return \Illuminate\Http\Response
      */
-    public function update(JournalEntryRequest $request, $id)
+    public function update(JournalEntryRequest $request, JournalEntry $journal)
     {
-        $entry = JournalEntry::findOrFail($id);
-
-        $entry->update($request->all());
+        $journal->update($request->all());
 
         return redirect()
                 ->route('journal.index')

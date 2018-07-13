@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Edit journal entry</h5>
                     @include('helpers.form-message')
-                    {{ Form::model($journalEntry, ['url' => route('journal.update', $journalEntry->id), 'method' => 'PUT']) }}
+                    {{ Form::model($journal, ['url' => route('journal.update', $journal->id), 'method' => 'PUT']) }}
                     <div class="form-group">
                         {{ Form::label('date', 'Date') }}
                         {{ Form::text('date', null, ['class' => 'form-control']) }}

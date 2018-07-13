@@ -63,26 +63,22 @@ class TypeCategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\TypeCategory $typeCategory
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TypeCategory $typeCategory)
     {
-        $typeCategory = TypeCategory::findOrFail($id);
-
         return view('type-categories.show', compact(['typeCategory']));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\TypeCategory $typeCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(TypeCategory $typeCategory)
     {
-        $typeCategory = TypeCategory::findOrFail($id);
-
         return view('type-categories.edit', compact(['typeCategory']));
     }
 
@@ -90,13 +86,11 @@ class TypeCategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\TypeCategoryRequest  $request
-     * @param  int  $id
+     * @param  \App\TypeCategory $typeCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(TypeCategoryRequest $request, $id)
+    public function update(TypeCategoryRequest $request, TypeCategory $typeCategory)
     {
-        $typeCategory = TypeCategory::findOrFail($id);
-
         $typeCategory->update($request->all());
 
         return redirect()
@@ -107,13 +101,11 @@ class TypeCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\TypeCategory $typeCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TypeCategory $typeCategory)
     {
-        $typeCategory = TypeCategory::findOrFail($id);
-
         if ($typeCategory->categories()->count() > 0) {
             throw new \Exception('The type category can\'t be deleted.');
         }

@@ -63,25 +63,22 @@ class CategorizationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Categorization $categorization
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Categorization $categorization)
     {
-        $categorization = Categorization::findOrFail($id);
-
         return view('categorizations.show', compact(['categorization']));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Categorization $categorization
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Categorization $categorization)
     {
-        $categorization = Categorization::findOrFail($id);
         $categories = Category::get()->sortBy('name')->pluck('name_with_type_category', 'id');
         $searchTypes = array_combine($categorization->getSearchTypes(), $categorization->getSearchTypes());
         $entryTypes = array_combine($categorization->getEntryTypes(), $categorization->getEntryTypes());
@@ -93,13 +90,11 @@ class CategorizationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\CategorizationRequest  $request
-     * @param  int  $id
+     * @param  \App\Categorization $categorization
      * @return \Illuminate\Http\Response
      */
-    public function update(CategorizationRequest $request, $id)
+    public function update(CategorizationRequest $request, Categorization $categorization)
     {
-        $categorization = Categorization::findOrFail($id);
-
         $categorization->update($request->all());
 
         return redirect()
@@ -110,13 +105,11 @@ class CategorizationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Categorization $categorization
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Categorization $categorization)
     {
-        $categorization = Categorization::findOrFail($id);
-
         $categorization->delete();
 
         return redirect()

@@ -57,26 +57,22 @@ class AccountController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Account $account
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Account $account)
     {
-        $account = Account::findOrFail($id);
-
         return view('accounts.show', compact(['account']));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Account $account
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Account $account)
     {
-        $account = Account::findOrFail($id);
-
         return view('accounts.edit', compact(['account']));
     }
 
@@ -84,13 +80,11 @@ class AccountController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\AccountRequest  $request
-     * @param  int  $id
+     * @param  \App\Account $account
      * @return \Illuminate\Http\Response
      */
-    public function update(AccountRequest $request, $id)
+    public function update(AccountRequest $request, Account $account)
     {
-        $account = Account::findOrFail($id);
-
         $account->update($request->all());
 
         return redirect()
@@ -101,13 +95,11 @@ class AccountController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Account $account
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Account $account)
     {
-        $account = Account::findOrFail($id);
-
         if ($account->journalEntries()->count() > 0) {
             throw new \Exception('The account can\'t be deleted.');
         }
