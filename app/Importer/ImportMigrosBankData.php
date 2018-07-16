@@ -4,8 +4,8 @@ namespace App\Importer;
 
 use Excel;
 use Carbon\Carbon;
-use Gallib\Macope\Account;
-use Gallib\Macope\JournalEntry;
+use App\Account;
+use App\JournalEntry;
 use Illuminate\Http\UploadedFile;
 
 class ImportMigrosBankData implements ImportDataInterface
