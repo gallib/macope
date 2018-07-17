@@ -43,8 +43,8 @@
                                         </a>
                                         @if ($account->journalEntries()->count() === 0)
                                             {{ Form::open(['method' => 'DELETE','route' => ['accounts.destroy', $account->id], 'style'=>'display:inline']) }}
-                                                <button class="macope-delete" type="submit">
-                                                    <i class="fa fa-trash"></i>
+                                                <button class="btn-icon" type="submit">
+                                                    <i class="fas fa-trash-alt"></i>
                                                 </button>
                                             {{ Form::close() }}
                                         @endif
