@@ -71,8 +71,8 @@ class JournalController extends Controller
         $journal->update($request->all());
 
         return redirect()
-                ->route('journal.index')
-                ->withSuccess(['success' => 'The journal entry has been successfully updated.']);
+            ->route('journal.index')
+            ->with('flash', 'The journal entry has been updated!');
     }
 
     /**

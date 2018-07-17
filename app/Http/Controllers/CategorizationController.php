@@ -57,7 +57,7 @@ class CategorizationController extends Controller
 
         return redirect()
             ->route('categorizations.index')
-            ->withSuccess(['success' => 'The categorization has been added']);
+            ->with('flash', 'The categorization has been added!');
     }
 
     /**
@@ -98,8 +98,8 @@ class CategorizationController extends Controller
         $categorization->update($request->all());
 
         return redirect()
-                ->route('categorizations.index')
-                ->withSuccess(['success' => 'The categorization has been successfully updated.']);
+            ->route('categorizations.index')
+            ->with('flash', 'The categorization has been updated!');
     }
 
     /**
@@ -113,6 +113,7 @@ class CategorizationController extends Controller
         $categorization->delete();
 
         return redirect()
-                ->route('categorizations.index');
+            ->route('categorizations.index')
+            ->with('flash', 'The account has been deleted!');
     }
 }

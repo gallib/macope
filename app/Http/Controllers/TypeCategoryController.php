@@ -47,17 +47,12 @@ class TypeCategoryController extends Controller
      */
     public function store(TypeCategoryRequest $request)
     {
-        try {
-            TypeCategory::create($request->all());
+        TypeCategory::create($request->all());
 
-            return redirect()
-                ->route('type-categories.index')
-                ->withSuccess(['success' => 'The type category has been added']);
-        } catch (\Exception $e) {
-            return redirect()
-                ->route('type-categories.create')
-                ->withErrors(['error' => $e->getMessage()]);
-        }
+        return redirect()
+            ->route('type-categories.index')
+            ->with('flash', 'The type category has been added!');
+
     }
 
     /**
@@ -94,8 +89,8 @@ class TypeCategoryController extends Controller
         $typeCategory->update($request->all());
 
         return redirect()
-                ->route('type-categories.index')
-                ->withSuccess(['success' => 'The type category has been successfully updated.']);
+            ->route('type-categories.index')
+            ->with('flash', 'The type category has been updated!');
     }
 
     /**
@@ -113,6 +108,7 @@ class TypeCategoryController extends Controller
         $typeCategory->delete();
 
         return redirect()
-                ->route('type-categories.index');
+            ->route('type-categories.index')
+            ->with('flash', 'The type category has been deleted!');
     }
 }

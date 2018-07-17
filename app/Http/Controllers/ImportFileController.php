@@ -50,7 +50,7 @@ class ImportFileController extends Controller
 
             return redirect()
                 ->route('import-file.index')
-                ->withSuccess(['success' => 'The file has been imported successfully']);
+                ->with('flash', 'The file has been imported!');
         } catch (\Exception $e) {
             return redirect()
                 ->route('import-file.index')

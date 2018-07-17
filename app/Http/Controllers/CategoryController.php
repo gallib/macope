@@ -54,7 +54,7 @@ class CategoryController extends Controller
 
         return redirect()
             ->route('categories.index')
-            ->withSuccess(['success' => 'The category has been added']);
+            ->with('flash', 'The category has been added!');
     }
 
     /**
@@ -93,8 +93,8 @@ class CategoryController extends Controller
         $category->update($request->all());
 
         return redirect()
-                ->route('categories.index')
-                ->withSuccess(['success' => 'The category has been successfully updated.']);
+            ->route('categories.index')
+            ->with('flash', 'The category has been updated!');
     }
 
     /**
@@ -114,6 +114,7 @@ class CategoryController extends Controller
         $category->delete();
 
         return redirect()
-                ->route('categories.index');
+            ->route('categories.index')
+            ->with('flash', 'The category has been deleted!');
     }
 }

@@ -51,7 +51,7 @@ class AccountController extends Controller
 
         return redirect()
             ->route('accounts.index')
-            ->withSuccess(['success' => 'The account has been added']);
+            ->with('flash', 'The account has been added!');
     }
 
     /**
@@ -89,7 +89,7 @@ class AccountController extends Controller
 
         return redirect()
                 ->route('accounts.index')
-                ->withSuccess(['success' => 'The account has been successfully updated.']);
+                ->with('flash', 'The account has been updated!');
     }
 
     /**
@@ -107,6 +107,7 @@ class AccountController extends Controller
         $account->delete();
 
         return redirect()
-                ->route('accounts.index');
+                ->route('accounts.index')
+                ->with('flash', 'The account has been deleted!');
     }
 }
