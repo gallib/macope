@@ -15402,3 +15402,9 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
   white-space: nowrap;
 }
 
+.alert-flash {
+  position: fixed;
+  right: 25px;
+  top: 25px;
+}
+

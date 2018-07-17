@@ -20,14 +20,18 @@
 <body>
     @include('layouts.navbar')
 
-    <div id="app" class="container-fluid">
-        <div class="row">
-            @include('layouts.main-nav')
+    <div id="app">
+        <div class="container-fluid">
+            <div class="row">
+                @include('layouts.main-nav')
 
-            <main role="main" class="col-md-9 col-lg-10">
-                @yield('content')
-            </main>
+                <main role="main" class="col-md-9 col-lg-10">
+                    @yield('content')
+                </main>
+            </div>
         </div>
+
+        <flash message="{{ session('flash') }}"></flash>
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
