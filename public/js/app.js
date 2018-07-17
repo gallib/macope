@@ -94437,7 +94437,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             body: this.message,
             level: 'success',
-            show: true
+            show: false
         };
     },
     created: function created() {
