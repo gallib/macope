@@ -50,8 +50,8 @@ class ImportPostFinanceData implements ImportDataInterface
     public static function isFileValid(UploadedFile $uploadedFile)
     {
         // Get original config
-        $delimiter = \Config::get('excel.csv.delimiter');
-        $heading = \Config::get('excel.import.heading');
+        $delimiter = \config('excel.csv.delimiter');
+        $heading = \config('excel.import.heading');
 
         // Set config for that file
         \Config::set('excel.csv.delimiter', self::DELIMITER);
@@ -86,8 +86,8 @@ class ImportPostFinanceData implements ImportDataInterface
     public function import()
     {
         // Get original config
-        $delimiter = \Config::get('excel.csv.delimiter');
-        $heading = \Config::get('excel.import.heading');
+        $delimiter = \config('excel.csv.delimiter');
+        $heading = \config('excel.import.heading');
 
         // Set config for that file
         \Config::set('excel.csv.delimiter', self::DELIMITER);
