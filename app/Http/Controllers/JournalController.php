@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Category;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\JournalEntry;
+use Illuminate\Http\Request;
 use App\Services\JournalEntryService;
 use App\Http\Requests\JournalEntryRequest;
 
