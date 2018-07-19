@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\JournalEntry;
 use App\Services\JournalEntryService;
-use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
