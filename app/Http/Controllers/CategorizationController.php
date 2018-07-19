@@ -114,6 +114,6 @@ class CategorizationController extends Controller
 
         return redirect()
             ->route('categorizations.index')
-            ->with('flash', 'The account has been deleted!');
+            ->with('flash', 'The categorization has been deleted!');
     }
 }
