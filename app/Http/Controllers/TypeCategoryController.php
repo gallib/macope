@@ -52,7 +52,6 @@ class TypeCategoryController extends Controller
         return redirect()
             ->route('type-categories.index')
             ->with('flash', 'The type category has been added!');
-
     }
 
     /**
