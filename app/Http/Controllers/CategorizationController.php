@@ -39,10 +39,8 @@ class CategorizationController extends Controller
     {
         $categories = Category::get()->sortBy('name')->pluck('name_with_type_category', 'id');
         $categorization = new Categorization();
-        $searchTypes = array_combine($categorization->getSearchTypes(), $categorization->getSearchTypes());
-        $entryTypes = array_combine($categorization->getEntryTypes(), $categorization->getEntryTypes());
 
-        return view('categorizations.create', compact(['categories', 'searchTypes', 'entryTypes']));
+        return view('categorizations.create', compact(['categories', 'categorization']));
     }
 
     /**

@@ -13,7 +13,6 @@
                             <a href="{{ route('accounts.create') }}" title="Add an account" class="btn btn-primary btn-sm">Add</a>
                         </div>
                     </div>
-                    @include('helpers.form-message')
                     <div class="table-responsive">
                         <table class="table table-hover" id="account-table">
                             <thead>
@@ -42,11 +41,13 @@
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         @if ($account->journalEntries()->count() === 0)
-                                            {{ Form::open(['method' => 'DELETE','route' => ['accounts.destroy', $account->id], 'style'=>'display:inline']) }}
+                                            <form method="POST" action="{{ route('accounts.destroy', $account->id) }}" style="display:inline">
+                                                @method('DELETE')
+                                                @csrf
                                                 <button class="btn-icon" type="submit">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
-                                            {{ Form::close() }}
+                                            </form>
                                         @endif
                                     </td>
                                 </tr>

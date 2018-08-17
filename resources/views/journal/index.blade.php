@@ -8,7 +8,6 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Journal</h5>
-                    @include('helpers.form-message')
                     <div class="table-responsive">
                         <table class="table table-hover" id="journal-table">
                             <thead>

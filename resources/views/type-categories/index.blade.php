@@ -13,7 +13,6 @@
                             <a href="{{ route('type-categories.create') }}" title="Add a type category" class="btn btn-primary btn-sm">Add</a>
                         </div>
                     </div>
-                    @include('helpers.form-message')
                     <div class="table-responsive">
                         <table class="table table-hover" id="type-categories-table">
                             <thead>
@@ -34,11 +33,13 @@
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         @if ($typeCategory->categories()->count() === 0)
-                                            {{ Form::open(['method' => 'DELETE','route' => ['type-categories.destroy', $typeCategory->id], 'style'=>'display:inline']) }}
+                                            <form method="POST" action="{{ route('type-categories.destroy', $typeCategory->id) }}" style="display:inline">
+                                                @method('DELETE')
+                                                @csrf
                                                 <button class="btn-icon" type="submit">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
-                                            {{ Form::close() }}
+                                            </form>
                                         @endif
                                     </td>
                                 </tr>

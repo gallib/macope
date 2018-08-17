@@ -36,7 +36,9 @@ class AccountController extends Controller
      */
     public function create()
     {
-        return view('accounts.create');
+        $account = new Account();
+
+        return view('accounts.create', compact(['account']));
     }
 
     /**

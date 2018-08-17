@@ -13,7 +13,6 @@
                             <a href="{{ route('categories.create') }}" title="Add a category" class="btn btn-primary btn-sm">Add</a>
                         </div>
                     </div>
-                    @include('helpers.form-message')
                     <div class="table-responsive">
                         <table class="table table-hover" id="categories-table">
                             <thead>
@@ -36,11 +35,13 @@
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         @if ($category->journal_entries_count === 0)
-                                            {{ Form::open(['method' => 'DELETE','route' => ['categories.destroy', $category->id], 'style'=>'display:inline']) }}
+                                            <form method="POST" action="{{ route('categories.destroy', $category->id) }}" style="display:inline">
+                                                @method('DELETE')
+                                                @csrf
                                                 <button class="btn-icon" type="submit">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
-                                            {{ Form::close() }}
+                                            </form>
                                         @endif
                                     </td>
                                 </tr>

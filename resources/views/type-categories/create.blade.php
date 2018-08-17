@@ -8,14 +8,10 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Add a type category</h5>
-                    @include('helpers.form-message')
-                    {{ Form::open(['url' => route('type-categories.store')]) }}
-                    <div class="form-group">
-                        {{ Form::label('name', 'Name') }}
-                        {{ Form::text('name', null, ['class' => 'form-control']) }}
-                    </div>
-                    {{ Form::submit('Create', ['class' => 'btn btn-primary']) }}
-                    {{ Form::close() }}
+                    <form method="POST" action="{{ route('type-categories.store') }}">
+                        @include('type-categories.form')
+                        <input type="submit" name="submit" class="btn btn-primary" value="Create">
+                    </form>
                 </div>
             </div>
         </div>

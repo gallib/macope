@@ -15,14 +15,21 @@
                             </ul>
                         </div>
                     @endif
-                    @include('helpers.form-message')
-                    {{ Form::open(['url' => route('import-file.import'), 'files' => true]) }}
-                    <div class="form-group">
-                        {{ Form::label('file', 'File') }}
-                        {{ Form::file('file') }}
-                    </div>
-                    {{ Form::submit('Import', ['class' => 'btn btn-primary']) }}
-                    {{ Form::close() }}
+                    <form method="POST" action="{{ route('import-file.import') }}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input {{ $errors->has('file') ? 'is-invalid' : '' }}" id="file">
+                                <label class="custom-file-label" for="file">Choose file</label>
+                            </div>
+                            @if ($errors->has('file'))
+                                <small class="form-text text-danger">
+                                    {{ $errors->first('file') }}
+                                </small>
+                            @endif
+                        </div>
+                        <input type="submit" name="submit" class="btn btn-primary" value="Import">
+                    </form>
                 </div>
             </div>
         </div>

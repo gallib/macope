@@ -8,14 +8,11 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Edit type category</h5>
-                    @include('helpers.form-message')
-                    {{ Form::model($typeCategory, ['url' => route('type-categories.update', $typeCategory->id), 'method' => 'PUT']) }}
-                    <div class="form-group">
-                        {{ Form::label('name', 'Name') }}
-                        {{ Form::text('name', null, ['class' => 'form-control']) }}
-                    </div>
-                    {{ Form::submit('Edit', ['class' => 'btn btn-primary']) }}
-                    {{ Form::close() }}
+                    <form method="POST" action="{{ route('type-categories.update', $typeCategory->id) }}">
+                        @method('PUT')
+                        @include('type-categories.form')
+                        <input type="submit" name="submit" class="btn btn-primary" value="Edit">
+                    </form>
                 </div>
             </div>
         </div>

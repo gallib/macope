@@ -13,7 +13,6 @@
                             <a href="{{ route('categorizations.create') }}" title="Add a categorization" class="btn btn-primary btn-sm">Add</a>
                         </div>
                     </div>
-                    @include('helpers.form-message')
                     <div class="table-responsive">
                         <table class="table table-hover" id="categorizations-table">
                             <thead>
@@ -41,11 +40,13 @@
                                         <a href="{{ route('categorizations.edit', $categorization->id) }}" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        {{ Form::open(['method' => 'DELETE','route' => ['categorizations.destroy', $categorization->id], 'style'=>'display:inline']) }}
+                                        <form method="POST" action="{{ route('categorizations.destroy', $categorization->id) }}" style="display:inline">
+                                            @method('DELETE')
+                                            @csrf
                                             <button class="btn-icon" type="submit">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
-                                        {{ Form::close() }}
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
