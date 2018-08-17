@@ -19,7 +19,7 @@
                         @csrf
                         <div class="form-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input {{ $errors->has('file') ? 'is-invalid' : '' }}" id="file">
+                                <input type="file" class="custom-file-input {{ $errors->has('file') ? 'is-invalid' : '' }}"name="file" id="file">
                                 <label class="custom-file-label" for="file">Choose file</label>
                             </div>
                             @if ($errors->has('file'))
