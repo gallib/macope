@@ -37,9 +37,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $category = new Category();
         $typeCategories = TypeCategory::pluck('name', 'id')->all();
 
-        return view('categories.create', compact(['typeCategories']));
+        return view('categories.create', compact(['category', 'typeCategories']));
     }
 
     /**
