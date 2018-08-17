@@ -15408,3 +15408,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
   top: 25px;
 }
 
+.form-control-file.is-invalid {
+  color: #d50000;
+}
+

@@ -61,3 +61,8 @@
     right: 25px;
     top: 25px;
 }
+
+// Form
+.form-control-file.is-invalid {
+    color: $red;
+}
