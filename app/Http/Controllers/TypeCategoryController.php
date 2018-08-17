@@ -36,7 +36,9 @@ class TypeCategoryController extends Controller
      */
     public function create()
     {
-        return view('type-categories.create');
+        $typeCategory = new TypeCategory();
+
+        return view('type-categories.create', compact(['typeCategory']));
     }
 
     /**
