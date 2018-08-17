@@ -18,9 +18,9 @@
                     <form method="POST" action="{{ route('import-file.import') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input {{ $errors->has('file') ? 'is-invalid' : '' }}"name="file" id="file">
-                                <label class="custom-file-label" for="file">Choose file</label>
+                            <div class="form-group">
+                                <label for="file">File</label>
+                                <input type="file" class="form-control-file {{ $errors->has('file') ? 'is-invalid' : '' }}" name="file" id="file">
                             </div>
                             @if ($errors->has('file'))
                                 <small class="form-text text-danger">
