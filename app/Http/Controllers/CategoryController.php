@@ -105,8 +105,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category = Category::findOrFail($id);
-
         if ($category->journalEntries()->count() > 0) {
             throw new \Exception('The category can\'t be deleted.');
         }
