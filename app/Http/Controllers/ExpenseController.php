@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\JournalEntry;
-use App\Services\JournalEntryService;
 use Carbon\Carbon;
+use App\JournalEntry;
 use Illuminate\Http\Request;
+use App\Services\JournalEntryService;
 
 class ExpenseController extends Controller
 {
