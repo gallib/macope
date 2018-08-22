@@ -26,7 +26,7 @@ class CategoryRequest extends FormRequest
         $uniqueName = 'unique_with:categories,type_category_id';
 
         if (! is_null($this->route('category'))) {
-            $uniqueName .= ','.$this->route('category');
+            $uniqueName .= ','.$this->route('category')->id;
         }
 
         return [
