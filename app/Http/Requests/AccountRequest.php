@@ -30,7 +30,7 @@ class AccountRequest extends FormRequest
 
         if (! is_null($this->route('account'))) {
             $uniqueName->ignore($this->route('account'));
-            $uniqueAccountNumber->ignore($this->route('account_number'));
+            $uniqueAccountNumber->ignore($this->route('account'));
             $uniqueIban->ignore($this->route('account'));
         }
 
