@@ -4,11 +4,12 @@ namespace App\Importer;
 
 use Excel;
 use App\Account;
+use App\Contracts\Importers\ImportData;
 use Carbon\Carbon;
 use App\JournalEntry;
 use Illuminate\Http\UploadedFile;
 
-class ImportMigrosBankData implements ImportDataInterface
+class ImportMigrosBankData implements ImportData
 {
     /**
      * @var \Illuminate\Http\UploadedFile

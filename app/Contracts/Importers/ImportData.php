@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Importer;
+namespace App\Contracts\Importers;
 
 use Illuminate\Http\UploadedFile;
 
-interface ImportDataInterface
+interface ImportData
 {
     /**
      * Return whether the given file is valid or not.
