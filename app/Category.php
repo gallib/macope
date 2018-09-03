@@ -65,4 +65,17 @@ class Category extends Model
     {
         return $this->name.' ('.$this->typeCategory->name.')';
     }
+
+    /**
+     * Scope a query to get unignored categories.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeUnignored($query)
+    {
+        $query->where('is_ignored', '=', 0);
+
+        return $query;
+    }
 }
