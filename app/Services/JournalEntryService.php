@@ -109,6 +109,19 @@ class JournalEntryService
      */
     public function getExpensesByTypeCategory(DateTime $dateFrom = null, DateTime $dateTo = null)
     {
-        return JournalEntry::expensesByTypeCategory($dateFrom, $dateTo)->get();
+        $query = JournalEntry::expensesByTypeCategory()
+            ->whereHas('category', function ($query) {
+                $query->unignored();
+            });
+
+        if (! is_null($dateFrom)) {
+            $query->where('journal_entries.date', '>=', $dateFrom->format('Y-m-d H:i:s'));
+        }
+
+        if (! is_null($dateTo)) {
+            $query->where('journal_entries.date', '<=', $dateTo->format('Y-m-d H:i:s'));
+        }
+
+        return $query->get();
     }
 }
