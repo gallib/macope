@@ -165,8 +165,7 @@ class JournalEntry extends Model
             ->join('categories', 'category_id', '=', 'categories.id')
             ->join('type_categories', 'type_categories.id', '=', 'categories.type_category_id')
             ->where('debit', '>', 0)
-            ->groupBy('type_categories.name')
-            ->orderBy('debit', 'desc');
+            ->groupBy('type_categories.name');
 
         return $query;
     }

@@ -112,7 +112,8 @@ class JournalEntryService
         $query = JournalEntry::expensesByTypeCategory()
             ->whereHas('category', function ($query) {
                 $query->unignored();
-            });
+            })
+            ->orderBy('debit', 'desc');
 
         if (! is_null($dateFrom)) {
             $query->where('journal_entries.date', '>=', $dateFrom->format('Y-m-d H:i:s'));
