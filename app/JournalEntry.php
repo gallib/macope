@@ -92,6 +92,8 @@ class JournalEntry extends Model
         if (! is_null($year)) {
             $query->whereRaw('YEAR(date_add(journal_entries.date, interval (day(last_day(date)) - ?) day)) = ?', [$monthEndsOn, $year]);
         }
+
+        return $query;
     }
 
     /**
