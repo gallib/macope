@@ -36,4 +36,6 @@ Route::resource('categories', 'CategoryController');
 
 Route::resource('type-categories', 'TypeCategoryController');
 
+Route::post('/monthly-expenses-type-category', 'ExpenseController@monthlyExpensesByTypeCategory');
+
 Auth::routes();

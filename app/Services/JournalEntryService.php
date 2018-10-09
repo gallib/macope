@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use Carbon\Carbon;
 use DateTime;
 use App\JournalEntry;
+use Illuminate\Http\Request;
 
 class JournalEntryService
 {
@@ -121,6 +123,39 @@ class JournalEntryService
 
         if (! is_null($dateTo)) {
             $query->where('journal_entries.date', '<=', $dateTo->format('Y-m-d H:i:s'));
+        }
+
+        return $query->get();
+    }
+
+    /**
+     * Get expenses by type category.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Support\Collection
+     */
+    public function getMonthlyExpensesByTypeCategory(Request $request)
+    {
+        $monthEndsOn = config('macope.month_ends_on');
+
+        $query = JournalEntry::expensesByTypeCategory()
+            ->selectRaw('YEAR(date_add(date, interval (day(last_day(date)) - ?) day)) as year', [$monthEndsOn])
+            ->selectRaw('MONTH(date_add(date, interval (day(last_day(journal_entries.date)) - ?) day)) as month', [$monthEndsOn])
+            ->whereHas('category', function ($query) {
+                $query->unignored();
+            })
+            ->groupBy('year', 'month');
+
+        if ($request->has('date_from')) {
+            $query->where('journal_entries.date', '>=', (new Carbon($request->get('date_from')))->format('Y-m-d H:i:s'));
+        }
+
+        if ($request->has('date_to')) {
+            $query->where('journal_entries.date', '<=', (new Carbon($request->get('date_to')))->format('Y-m-d H:i:s'));
+        }
+
+        if ($request->has('type_category')) {
+            $query->where('type_categories.id', $request->get('type_category'));
         }
 
         return $query->get();

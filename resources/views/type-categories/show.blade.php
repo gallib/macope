@@ -23,5 +23,15 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Monthly expenses</h5>
+                    <monthly-expenses-by-type-category type-category="{{ $typeCategory->id }}"></monthly-expenses-by-type-category>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

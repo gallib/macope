@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\JournalEntry;
+use App\TypeCategory;
 use Illuminate\Http\Request;
 use App\Services\JournalEntryService;
 
@@ -70,5 +71,16 @@ class ExpenseController extends Controller
         $dateTo = $request->has('date_to') ? new Carbon($request->get('date_to')) : null;
 
         return $this->journalEntryService->getExpensesByTypeCategory($dateFrom, $dateTo);
+    }
+
+    /**
+     * Return monthly expenses group by type category.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return array
+     */
+    public function monthlyExpensesByTypeCategory(Request $request)
+    {
+        return $this->journalEntryService->getMonthlyExpensesByTypeCategory($request);
     }
 }
