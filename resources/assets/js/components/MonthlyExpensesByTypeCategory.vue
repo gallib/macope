@@ -6,9 +6,7 @@
 
 <script>
     export default {
-        props: {
-            typeCategory: Number
-        },
+        props: ['typeCategory'],
         data() {
             return {
                 labels: [],
