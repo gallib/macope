@@ -1,6 +1,7 @@
 <template>
     <div>
-        <canvas id="monthly-expenses-type-category"></canvas>
+        <canvas v-if="hasExpenses" id="monthly-expenses-type-category"></canvas>
+        <div v-else>There is no expenses for this type category</div>
     </div>
 </template>
 
@@ -9,6 +10,7 @@
         props: ['typeCategory'],
         data() {
             return {
+                hasExpenses: true,
                 labels: [],
                 amounts: []
             };
@@ -42,11 +44,15 @@
                         date_to: moment().format('Y-M-D')
                     })
                     .then(response => {
-                        response.data.forEach(data => {
-                            this.labels.push(moment(`${data.year} - ${data.month}`, 'Y-M').format('MM/Y'));
-                            this.amounts.push(data.debit);
-                        });
-                        this.buildChart();
+                        if (response.data.length) {
+                            response.data.forEach(data => {
+                                this.labels.push(moment(`${data.year} - ${data.month}`, 'Y-M').format('MM/Y'));
+                                this.amounts.push(data.debit);
+                            });
+                            this.buildChart();
+                        } else {
+                            this.hasExpenses = false;
+                        }
                     });
             },
             /*

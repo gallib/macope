@@ -94384,11 +94384,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['typeCategory'],
     data: function data() {
         return {
+            hasExpenses: true,
             labels: [],
             amounts: []
         };
@@ -94423,11 +94425,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 date_from: moment().subtract(11, 'M').format('Y-M-01'),
                 date_to: moment().format('Y-M-D')
             }).then(function (response) {
-                response.data.forEach(function (data) {
-                    _this.labels.push(moment(data.year + ' - ' + data.month, 'Y-M').format('MM/Y'));
-                    _this.amounts.push(data.debit);
-                });
-                _this.buildChart();
+                if (response.data.length) {
+                    response.data.forEach(function (data) {
+                        _this.labels.push(moment(data.year + ' - ' + data.month, 'Y-M').format('MM/Y'));
+                        _this.amounts.push(data.debit);
+                    });
+                    _this.buildChart();
+                } else {
+                    _this.hasExpenses = false;
+                }
             });
         },
 
@@ -94459,18 +94465,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm.hasExpenses
+      ? _c("canvas", { attrs: { id: "monthly-expenses-type-category" } })
+      : _c("div", [_vm._v("There is no expenses for this type category")])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("canvas", { attrs: { id: "monthly-expenses-type-category" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
