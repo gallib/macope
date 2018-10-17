@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\JournalEntry;
-use App\TypeCategory;
 use Illuminate\Http\Request;
 use App\Services\JournalEntryService;
 
