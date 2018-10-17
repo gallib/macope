@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use Carbon\Carbon;
 use DateTime;
+use Carbon\Carbon;
 use App\JournalEntry;
 use Illuminate\Http\Request;
 
