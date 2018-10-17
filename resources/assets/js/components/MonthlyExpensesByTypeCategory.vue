@@ -70,6 +70,15 @@
                             backgroundColor: 'rgba(0, 191, 165, 1)'
                         }]
                     },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    },
                 });
             }
         }

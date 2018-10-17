@@ -94453,6 +94453,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         fill: false,
                         backgroundColor: 'rgba(0, 191, 165, 1)'
                     }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
                 }
             });
         }
