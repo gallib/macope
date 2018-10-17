@@ -171,4 +171,22 @@ class JournalEntry extends Model
 
         return $query;
     }
+
+    /**
+     * Scope a query to get expenses by category.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeExpensesByCategory($query)
+    {
+        $query
+            ->select('categories.name')
+            ->selectRaw('SUM(journal_entries.debit) as debit')
+            ->join('categories', 'category_id', '=', 'categories.id')
+            ->where('debit', '>', 0)
+            ->groupBy('categories.name');
+
+        return $query;
+    }
 }

@@ -83,4 +83,15 @@ class ExpenseController extends Controller
     {
         return $this->journalEntryService->getMonthlyExpensesByTypeCategory($request);
     }
+
+    /**
+     * Return monthly expenses group by category.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return array
+     */
+    public function monthlyExpensesByCategory(Request $request)
+    {
+        return $this->journalEntryService->getMonthlyExpensesByCategory($request);
+    }
 }

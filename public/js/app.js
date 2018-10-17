@@ -48008,6 +48008,8 @@ Vue.component('expenses-by-type-category', __webpack_require__(227));
 
 Vue.component('monthly-expenses-by-type-category', __webpack_require__(230));
 
+Vue.component('monthly-expenses-by-category', __webpack_require__(247));
+
 Vue.component('flash', __webpack_require__(233));
 
 var app = new Vue({
@@ -94621,6 +94623,181 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(11)
+/* script */
+var __vue_script__ = __webpack_require__(248)
+/* template */
+var __vue_template__ = __webpack_require__(249)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\MonthlyExpensesByCategory.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-14db44f6", Component.options)
+  } else {
+    hotAPI.reload("data-v-14db44f6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 248 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['category'],
+    data: function data() {
+        return {
+            hasExpenses: true,
+            labels: [],
+            amounts: []
+        };
+    },
+    mounted: function mounted() {
+        this.getExpenses();
+    },
+
+    methods: {
+        /*
+         * Generate random colors
+         */
+        getColors: function getColors() {
+            var colors = [];
+            this.amounts.forEach(function (data) {
+                var r = Math.floor(Math.random() * 255);
+                var g = Math.floor(Math.random() * 255);
+                var b = Math.floor(Math.random() * 255);
+
+                colors.push('rgb(' + r + ',' + g + ',' + b + ')');
+            });
+            return colors;
+        },
+        /*
+         * Get latest expenses
+         */
+        getExpenses: function getExpenses() {
+            var _this = this;
+
+            axios.post('/monthly-expenses-category', {
+                category: this.category,
+                date_from: moment().subtract(11, 'M').format('Y-M-01'),
+                date_to: moment().format('Y-M-D')
+            }).then(function (response) {
+                if (response.data.length) {
+                    response.data.forEach(function (data) {
+                        _this.labels.push(moment(data.year + ' - ' + data.month, 'Y-M').format('MM/Y'));
+                        _this.amounts.push(data.debit);
+                    });
+                    _this.buildChart();
+                } else {
+                    _this.hasExpenses = false;
+                }
+            });
+        },
+
+        /*
+         * Build the chart
+         */
+        buildChart: function buildChart() {
+            var myBarChart = new Chart(document.getElementById("monthly-expenses-category"), {
+                type: 'line',
+                data: {
+                    labels: this.labels,
+                    datasets: [{
+                        label: 'Expenses',
+                        data: this.amounts,
+                        fill: false,
+                        backgroundColor: 'rgba(0, 191, 165, 1)'
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 249 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.hasExpenses
+      ? _c("canvas", { attrs: { id: "monthly-expenses-category" } })
+      : _c("div", [_vm._v("There is no expenses for this category")])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-14db44f6", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

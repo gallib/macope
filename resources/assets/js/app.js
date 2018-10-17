@@ -29,6 +29,11 @@ Vue.component(
 );
 
 Vue.component(
+    'monthly-expenses-by-category',
+    require('./components/MonthlyExpensesByCategory.vue')
+);
+
+Vue.component(
     'flash',
     require('./components/Flash.vue')
 );

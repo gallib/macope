@@ -160,4 +160,34 @@ class JournalEntryService
 
         return $query->get();
     }
+
+    /**
+     * Get expenses by category.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Support\Collection
+     */
+    public function getMonthlyExpensesByCategory(Request $request)
+    {
+        $monthEndsOn = config('macope.month_ends_on');
+
+        $query = JournalEntry::expensesByCategory()
+            ->selectRaw('YEAR(date_add(date, interval (day(last_day(date)) - ?) day)) as year', [$monthEndsOn])
+            ->selectRaw('MONTH(date_add(date, interval (day(last_day(journal_entries.date)) - ?) day)) as month', [$monthEndsOn])
+            ->groupBy('year', 'month');
+
+        if ($request->has('date_from')) {
+            $query->where('journal_entries.date', '>=', (new Carbon($request->get('date_from')))->format('Y-m-d H:i:s'));
+        }
+
+        if ($request->has('date_to')) {
+            $query->where('journal_entries.date', '<=', (new Carbon($request->get('date_to')))->format('Y-m-d H:i:s'));
+        }
+
+        if ($request->has('category')) {
+            $query->where('categories.id', $request->get('category'));
+        }
+
+        return $query->get();
+    }
 }
