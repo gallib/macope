@@ -2,45 +2,37 @@
 
 namespace App\Importer;
 
-use Excel;
 use App\Account;
-use Carbon\Carbon;
 use App\JournalEntry;
-use Illuminate\Http\UploadedFile;
 use App\Contracts\Importers\ImportData;
+use Carbon\Carbon;
+use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
+use Maatwebsite\Excel\Concerns\Importable;
 
-class ImportMigrosBankData implements ImportData
+class MigrosBankImport implements ImportData, WithCustomCsvSettings
 {
-    /**
-     * @var \Illuminate\Http\UploadedFile
-     */
-    protected $uploadedFile;
+    use Importable;
 
     /**
      * Create a new instance.
      *
-     * @param \Illuminate\Http\UploadedFile $uploadedFile
+     * @param string $filepath
      * @return void
      */
-    public function __construct(UploadedFile $uploadedFile)
+    public function __construct($filepath)
     {
-        if (! self::isFileValid($uploadedFile)) {
-            $filename = $uploadedFile->getClientOriginalName();
-            throw new \InvalidArgumentException("$filename is not a valid file.");
-        }
-
-        $this->uploadedFile = $uploadedFile;
+        $this->filepath = $filepath;
     }
 
     /**
      * Return whether the given file is valid or not.
      *
-     * @param  \Illuminate\Http\UploadedFile $uploadedFile
      * @return bool
      */
-    public static function isFileValid(UploadedFile $uploadedFile)
+    public function isValid(): bool
     {
-        $data = Excel::load($uploadedFile->path(), 'Windows-1252')->get()->toArray();
+        $data = $this->toArray($this->filepath);
+        $data = reset($data);
 
         $accountNumber = isset($data[2][0]) && strpos($data[2][0], ': ') !== false ? explode(': ', $data[2][0])[1] : null;
 
@@ -54,13 +46,19 @@ class ImportMigrosBankData implements ImportData
     }
 
     /**
-     * Import accounting entries in the given file.
+     * Import entries from file.
      *
      * @return bool
      */
-    public function import()
+    public function import(): bool
     {
-        $data = Excel::load($this->uploadedFile->path(), 'Windows-1252')->get()->toArray();
+        if (! $this->isValid(true)) {
+            throw new \InvalidArgumentException("{$this->filepath->getClientOriginalName()} is not a valid file.");
+        }
+
+        $data = $this->toArray($this->filepath);
+        $data = reset($data);
+
         $accountNumber = explode(': ', $data[2][0])[1];
 
         $account = Account::where('account_number', $accountNumber)->first();
@@ -83,5 +81,18 @@ class ImportMigrosBankData implements ImportData
         }
 
         return true;
+    }
+
+    /**
+     * Getter for csv settings.
+     *
+     * @return array
+     */
+    public function getCsvSettings(): array
+    {
+        return [
+            'input_encoding' => 'Windows-1252',
+            'delimiter' => ';'
+        ];
     }
 }

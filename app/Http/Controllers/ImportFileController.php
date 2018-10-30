@@ -43,8 +43,9 @@ class ImportFileController extends Controller
         $date = Carbon::now();
 
         try {
-            $importer = ImportDataFactory::create($file);
-            $uploaded = $file->storeAs($date->format(config('macope.upload_folder')), $file->getClientOriginalName());
+            $filepath = $file->storeAs($date->format(config('macope.upload_folder')), $file->getClientOriginalName());
+
+            $importer = ImportDataFactory::create($filepath);
 
             $importer->import();
 

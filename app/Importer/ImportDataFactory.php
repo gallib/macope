@@ -2,6 +2,7 @@
 
 namespace App\Importer;
 
+use App\Importer\PostFinanceImport;
 use Illuminate\Http\UploadedFile;
 
 class ImportDataFactory
@@ -9,22 +10,23 @@ class ImportDataFactory
     /**
      * Instanciate an import data class depending on given file.
      *
-     * @param  \Illuminate\Http\UploadedFile $uploadedFile
+     * @param  string $filepath
      * @return \Gallib\Macope\Importer\ImportDataInterface
      */
-    public static function create(UploadedFile $uploadedFile)
+    public static function create($filepath)
     {
-        $factory = null;
+        $factory = new PostFinanceImport($filepath);
 
-        if (ImportPostFinanceData::isFileValid($uploadedFile)) {
-            $factory = new ImportPostFinanceData($uploadedFile);
-        } elseif (ImportMigrosBankData::isFileValid($uploadedFile)) {
-            $factory = new ImportMigrosBankData($uploadedFile);
-        } else {
-            $filename = $uploadedFile->getClientOriginalName();
-            throw new \InvalidArgumentException("$filename is not a valid file");
+        if ($factory->isValid()) {
+            return $factory;
         }
 
-        return $factory;
+        $factory = new MigrosBankImport($filepath);
+
+        if ($factory->isValid()) {
+            return $factory;
+        }
+
+        throw new \InvalidArgumentException("{$filepath->getClientOriginalName()} is not a valid file");
     }
 }

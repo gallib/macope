@@ -2,22 +2,19 @@
 
 namespace App\Contracts\Importers;
 
-use Illuminate\Http\UploadedFile;
-
 interface ImportData
 {
     /**
      * Return whether the given file is valid or not.
      *
-     * @param  \Illuminate\Http\UploadedFile $uploadedFile
      * @return bool
      */
-    public static function isFileValid(UploadedFile $uploadedFile);
+    public function isValid(): bool;
 
     /**
-     * Import the given file.
+     * Import entries from file.
      *
      * @return bool
      */
-    public function import();
+    public function import(): bool;
 }
