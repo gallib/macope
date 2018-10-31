@@ -76,12 +76,10 @@ class JournalEntry extends Model
      */
     public function scopeYearlyBilling($query, $type, $year = null)
     {
-        $monthEndsOn = config('macope.month_ends_on');
-
         $query
             ->select('category_id')
-            ->selectRaw('YEAR(date_add(date, interval (day(last_day(date)) - ?) day)) as year', [$monthEndsOn])
-            ->selectRaw('MONTH(date_add(date, interval (day(last_day(journal_entries.date)) - ?) day)) as month', [$monthEndsOn])
+            ->selectRaw('YEAR(date) as year')
+            ->selectRaw('MONTH(date) as month')
             ->selectRaw("SUM($type) as $type")
             ->whereNotNull($type)
             ->whereHas('category', function ($query) {
@@ -90,7 +88,7 @@ class JournalEntry extends Model
             ->groupBy('category_id', 'year', 'month');
 
         if (! is_null($year)) {
-            $query->whereRaw('YEAR(date_add(journal_entries.date, interval (day(last_day(date)) - ?) day)) = ?', [$monthEndsOn, $year]);
+            $query->whereYear('journal_entries.date', $year);
         }
 
         return $query;
@@ -104,10 +102,8 @@ class JournalEntry extends Model
      */
     public function scopeAvailableYears($query)
     {
-        $monthEndsOn = config('macope.month_ends_on');
-
         $query
-            ->selectRaw('YEAR(date_add(date, interval (day(last_day(date)) - ?) day)) as year', [$monthEndsOn])
+            ->selectRaw('YEAR(date) as year')
             ->groupBy('year');
 
         return $query;
@@ -124,11 +120,9 @@ class JournalEntry extends Model
      */
     public function scopeSumByMonth($query, $type = null, DateTime $dateStart = null, DateTime $dateEnd = null)
     {
-        $monthEndsOn = config('macope.month_ends_on');
-
         $query
-            ->selectRaw('YEAR(date_add(date, interval (day(last_day(date)) - ?) day)) as year', [$monthEndsOn])
-            ->selectRaw('MONTH(date_add(date, interval (day(last_day(journal_entries.date)) - ?) day)) as month', [$monthEndsOn])
+            ->selectRaw('YEAR(date) as year')
+            ->selectRaw('MONTH(date) as month')
             ->whereHas('category', function ($query) {
                 $query->where('is_ignored', '=', 0);
             })

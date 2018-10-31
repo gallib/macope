@@ -136,11 +136,9 @@ class JournalEntryService
      */
     public function getMonthlyExpensesByTypeCategory(Request $request)
     {
-        $monthEndsOn = config('macope.month_ends_on');
-
         $query = JournalEntry::expensesByTypeCategory()
-            ->selectRaw('YEAR(date_add(date, interval (day(last_day(date)) - ?) day)) as year', [$monthEndsOn])
-            ->selectRaw('MONTH(date_add(date, interval (day(last_day(journal_entries.date)) - ?) day)) as month', [$monthEndsOn])
+            ->selectRaw('YEAR(date) as year')
+            ->selectRaw('MONTH(date) as month')
             ->whereHas('category', function ($query) {
                 $query->unignored();
             })
@@ -169,11 +167,9 @@ class JournalEntryService
      */
     public function getMonthlyExpensesByCategory(Request $request)
     {
-        $monthEndsOn = config('macope.month_ends_on');
-
         $query = JournalEntry::expensesByCategory()
-            ->selectRaw('YEAR(date_add(date, interval (day(last_day(date)) - ?) day)) as year', [$monthEndsOn])
-            ->selectRaw('MONTH(date_add(date, interval (day(last_day(journal_entries.date)) - ?) day)) as month', [$monthEndsOn])
+            ->selectRaw('YEAR(date) as year')
+            ->selectRaw('MONTH(date) as month')
             ->groupBy('year', 'month');
 
         if ($request->has('date_from')) {
