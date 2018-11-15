@@ -3,11 +3,11 @@
 namespace App\Importer;
 
 use App\Account;
+use Carbon\Carbon;
 use App\JournalEntry;
 use App\Contracts\Importers\ImportData;
-use Carbon\Carbon;
-use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 
 class MigrosBankImport implements ImportData, WithCustomCsvSettings
 {
@@ -92,7 +92,7 @@ class MigrosBankImport implements ImportData, WithCustomCsvSettings
     {
         return [
             'input_encoding' => 'Windows-1252',
-            'delimiter' => ';'
+            'delimiter' => ';',
         ];
     }
 }

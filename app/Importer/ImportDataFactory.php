@@ -2,9 +2,6 @@
 
 namespace App\Importer;
 
-use App\Importer\PostFinanceImport;
-use Illuminate\Http\UploadedFile;
-
 class ImportDataFactory
 {
     /**
