@@ -2,11 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <h1>Dashboard</h1>
-        </div>
-    </div>
+    @include('layouts.breadcrumbs')
     <div class="row mb-4">
         <div class="col-4">
             <div class="card">
@@ -36,25 +32,18 @@
     <div class="row">
         <div class="col-6">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        Sum of expenses/incomes by month
-                    </div>
-                </div>
                 <div class="card-body">
-                    <macope-entries-sum-by-month></macope-entries-sum-by-month>
+                    <h5 class="card-title">Sum of expenses/incomes by month</h5>
+                    <entries-sum-by-month></entries-sum-by-month>
                 </div>
             </div>
         </div>
         <div class="col-6">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        Average of expenses by type category (last 12 months)
-                    </div>
-                </div>
                 <div class="card-body">
-                    <macope-expenses-by-type-category></macope-expenses-by-type-category>
+                    <h5 class="card-title">Average of expenses by type category</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">on last 12 months</h6>
+                    <expenses-by-type-category></expenses-by-type-category>
                 </div>
             </div>
         </div>

@@ -7,10 +7,3 @@
         </ul>
     </div>
 @endif
-@if (session('success') > 0)
-    <div class="alert alert-success">
-        @foreach (session('success') as $success)
-            <p>{{ $success }}</p>
-        @endforeach
-    </div>
-@endif

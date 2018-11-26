@@ -2,20 +2,12 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <h1>{{ $account->name }}</h1>
-        </div>
-    </div>
+    @include('layouts.breadcrumbs')
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        Informations
-                    </div>
-                </div>
                 <div class="card-body">
+                    <h5 class="card-title">Account details</h5>
                     <p><span class="font-weight-bold">Description: </span>{{ $account->description }}</p>
                     <p><span class="font-weight-bold">Account number: </span>{{ $account->account_number }}</p>
                     <p><span class="font-weight-bold">Iban: </span>{{ $account->iban }}</p>

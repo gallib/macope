@@ -2,20 +2,12 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <h1>Import a file</h1>
-        </div>
-    </div>
+    @include('layouts.breadcrumbs')
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        Import a file
-                    </div>
-                </div>
                 <div class="card-body">
+                    <h5 class="card-title">Import a file</h5>
                     @if ($accounts->count() == 0)
                         <div class="alert alert-warning">
                             <ul>
@@ -23,14 +15,21 @@
                             </ul>
                         </div>
                     @endif
-                    @include('macope::helpers.form-message')
-                    {{ Form::open(['url' => route('import-file.import'), 'files' => true]) }}
-                    <div class="form-group">
-                        {{ Form::label('file', 'File') }}
-                        {{ Form::file('file') }}
-                    </div>
-                    {{ Form::submit('Import', ['class' => 'btn btn-primary']) }}
-                    {{ Form::close() }}
+                    <form method="POST" action="{{ route('import-file.import') }}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="file">File</label>
+                                <input type="file" class="form-control-file {{ $errors->has('file') ? 'is-invalid' : '' }}" name="file" id="file">
+                            </div>
+                            @if ($errors->has('file'))
+                                <small class="form-text text-danger">
+                                    {{ $errors->first('file') }}
+                                </small>
+                            @endif
+                        </div>
+                        <input type="submit" name="submit" class="btn btn-primary" value="Import">
+                    </form>
                 </div>
             </div>
         </div>

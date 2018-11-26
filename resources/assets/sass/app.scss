@@ -1,0 +1,68 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Font awesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/fa-solid';
+
+// Datatables
+@import '~datatables.net-bs4/css/dataTables.bootstrap4.min';
+
+// Utilities
+.nowrap {
+    white-space: nowrap;
+}
+
+// Nav
+.nav-link.active {
+    font-weight: bold;
+}
+
+.nav-item {
+    .fas {
+        margin-right: .25rem;
+    }
+}
+
+// Card
+.card {
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+// Button
+.btn-icon {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: $primary;
+
+    &:hover {
+        color: $link-hover-color;
+    }
+}
+
+// Table
+.table {
+    th {
+        white-space: nowrap;
+    }
+}
+
+// Alert flash
+.alert-flash {
+    position: fixed;
+    right: 25px;
+    top: 25px;
+}
+
+// Form
+.form-control-file.is-invalid {
+    color: $red;
+}

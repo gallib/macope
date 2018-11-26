@@ -22,7 +22,7 @@
              */
             getEntries() {
                 axios
-                    .post('/macope/journal/sum-by-month', {
+                    .post('/journal/sum-by-month', {
                         date_from: moment().subtract(11, 'M').format('Y-M-01'),
                         date_to: moment().format('Y-M-D')
                     })

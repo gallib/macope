@@ -2,33 +2,26 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <h1>Journal</h1>
-        </div>
-    </div>
+    @include('layouts.breadcrumbs')
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-header">
-                    <div class="header-block">
-                        Journal
-                    </div>
-                </div>
                 <div class="card-body">
-                    @include('macope::helpers.form-message')
-                    <table class="table table-bordered table-condensed" id="journal-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Text</th>
-                                <th>Category</th>
-                                <th>Credit</th>
-                                <th>Debit</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                    </table>
+                    <h5 class="card-title">Journal</h5>
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="journal-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Text</th>
+                                    <th>Category</th>
+                                    <th>Credit</th>
+                                    <th>Debit</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -64,7 +57,7 @@ $(function() {
             {
                 orderable: false,
                 render: function (data, type, row) {
-                    return '<a href="' + window.location.pathname + '/' + data + '/edit" title="Edit"><i class="fa fa-pencil"></i></a>';
+                    return '<a href="' + window.location.pathname + '/' + data + '/edit" title="Edit"><i class="fas fa-edit"></i></a>';
                 },
                 targets: 5
             }
