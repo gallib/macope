@@ -23,11 +23,17 @@
     <div id="app">
         <div class="container-fluid">
             <div class="row">
-                @include('layouts.main-nav')
+                @auth
+                    @include('layouts.main-nav')
 
-                <main role="main" class="col-md-9 col-lg-10">
-                    @yield('content')
-                </main>
+                    <main role="main" class="col-md-9 col-lg-10">
+                        @yield('content')
+                    </main>
+                @else
+                    <main role="main" class="col">
+                        @yield('content')
+                    </main>
+                @endauth
             </div>
         </div>
 
