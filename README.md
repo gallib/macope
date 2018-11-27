@@ -1,36 +1,14 @@
 # Macope
 
-Macope is a Laravel package to manage your online finance.
+Macope is a Laravel application to manage your online finance.
 
 ## Installation
 
 Using Composer
 
 ```
-composer require gallib/macope
+composer install
 ```
-
-then run
-
-```
-php artisan vendor:publish
-php artisan migrate
-```
-
-next you have to register components by copying the following lines on `resources/assets/js/app.js`
-
-```javascript
-Vue.component(
-    'macope-entries-sum-by-month',
-    require('./components/macope/EntriesSumByMonth.vue')
-);
-
-Vue.component(
-    'macope-expenses-by-type-category',
-    require('./components/macope/ExpensesByTypeCategory.vue')
-);
-```
-Macope is also using [laravel authentication](https://laravel.com/docs/authentication) to secure your data against visitors.
 
 ## Import files
 
@@ -45,7 +23,3 @@ Import this file on Macope and... that's all!
 
 Once connected to your Migros Bank account, go on download statements under files transfer. On the first box, choose your account and select **.csv** as file format and click on download button.
 Import this file on Macope and... that's all!
-
-## Note
-
-The package has been (basically) designed to work with [Bootstrap 4](https://v4-alpha.getbootstrap.com/). [Datatables](https://datatables.net/), [Chart.js](http://www.chartjs.org/) and [Moment.js](https://momentjs.com/) are also required if you want use default views.
