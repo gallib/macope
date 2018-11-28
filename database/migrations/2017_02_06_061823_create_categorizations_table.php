@@ -1,7 +1,9 @@
 <?php
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+
 class CreateCategorizationsTable extends Migration
 {
     /**
@@ -22,6 +24,7 @@ class CreateCategorizationsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
+
     /**
      * Reverse the migrations.
      *
