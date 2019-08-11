@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4>{{ $entryToCategorize }}</h4>
-                    <p>{{ str_plural('entry', $entryToCategorize) }} to categorize</p>
+                    <p>{{ Str::plural('entry', $entryToCategorize) }} to categorize</p>
                 </div>
             </div>
         </div>
