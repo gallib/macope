@@ -97589,11 +97589,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
-Vue.component('entries-sum-by-month', __webpack_require__(/*! ./components/EntriesSumByMonth.vue */ "./resources/js/components/EntriesSumByMonth.vue"));
-Vue.component('expenses-by-type-category', __webpack_require__(/*! ./components/ExpensesByTypeCategory.vue */ "./resources/js/components/ExpensesByTypeCategory.vue"));
-Vue.component('monthly-expenses-by-type-category', __webpack_require__(/*! ./components/MonthlyExpensesByTypeCategory.vue */ "./resources/js/components/MonthlyExpensesByTypeCategory.vue"));
-Vue.component('monthly-expenses-by-category', __webpack_require__(/*! ./components/MonthlyExpensesByCategory.vue */ "./resources/js/components/MonthlyExpensesByCategory.vue"));
-Vue.component('flash', __webpack_require__(/*! ./components/Flash.vue */ "./resources/js/components/Flash.vue"));
+Vue.component('entries-sum-by-month', __webpack_require__(/*! ./components/EntriesSumByMonth.vue */ "./resources/js/components/EntriesSumByMonth.vue")["default"]);
+Vue.component('expenses-by-type-category', __webpack_require__(/*! ./components/ExpensesByTypeCategory.vue */ "./resources/js/components/ExpensesByTypeCategory.vue")["default"]);
+Vue.component('monthly-expenses-by-type-category', __webpack_require__(/*! ./components/MonthlyExpensesByTypeCategory.vue */ "./resources/js/components/MonthlyExpensesByTypeCategory.vue")["default"]);
+Vue.component('monthly-expenses-by-category', __webpack_require__(/*! ./components/MonthlyExpensesByCategory.vue */ "./resources/js/components/MonthlyExpensesByCategory.vue")["default"]);
+Vue.component('flash', __webpack_require__(/*! ./components/Flash.vue */ "./resources/js/components/Flash.vue")["default"]);
 var app = new Vue({
   el: '#app'
 });
