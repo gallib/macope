@@ -15,27 +15,27 @@ require('./bootstrap');
 
 Vue.component(
     'entries-sum-by-month',
-    require('./components/EntriesSumByMonth.vue')
+    require('./components/EntriesSumByMonth.vue').default
 );
 
 Vue.component(
     'expenses-by-type-category',
-    require('./components/ExpensesByTypeCategory.vue')
+    require('./components/ExpensesByTypeCategory.vue').default
 );
 
 Vue.component(
     'monthly-expenses-by-type-category',
-    require('./components/MonthlyExpensesByTypeCategory.vue')
+    require('./components/MonthlyExpensesByTypeCategory.vue').default
 );
 
 Vue.component(
     'monthly-expenses-by-category',
-    require('./components/MonthlyExpensesByCategory.vue')
+    require('./components/MonthlyExpensesByCategory.vue').default
 );
 
 Vue.component(
     'flash',
-    require('./components/Flash.vue')
+    require('./components/Flash.vue').default
 );
 
 const app = new Vue({
