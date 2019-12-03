@@ -2,8 +2,8 @@
 
 namespace App;
 
-use DateTime;
 use App\Traits\Hashable;
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
 
 class JournalEntry extends Model

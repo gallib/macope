@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use DateTime;
-use Carbon\Carbon;
 use App\JournalEntry;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 
 class JournalEntryService

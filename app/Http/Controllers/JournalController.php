@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use Carbon\Carbon;
-use App\JournalEntry;
-use Illuminate\Http\Request;
-use App\Services\JournalEntryService;
 use App\Http\Requests\JournalEntryRequest;
+use App\JournalEntry;
+use App\Services\JournalEntryService;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {

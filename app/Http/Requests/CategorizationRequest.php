@@ -3,8 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Categorization;
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CategorizationRequest extends FormRequest
 {
