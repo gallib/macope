@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Categorization;
+use App\Category;
 use App\Http\Requests\CategorizationRequest;
 
 class CategorizationController extends Controller

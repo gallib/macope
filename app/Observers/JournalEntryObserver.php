@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
-use App\JournalEntry;
 use App\Categorize\Categorizer;
+use App\JournalEntry;
 
 class JournalEntryObserver
 {
