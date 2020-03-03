@@ -2,13 +2,13 @@
 
 namespace App\Providers;
 
+use App\Categorization;
 use App\Category;
 use App\JournalEntry;
-use App\Categorization;
+use App\Observers\CategorizationObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\JournalEntryObserver;
 use Illuminate\Support\ServiceProvider;
-use App\Observers\CategorizationObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
