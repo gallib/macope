@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\TypeCategory;
 use App\Http\Requests\TypeCategoryRequest;
+use App\TypeCategory;
 
 class TypeCategoryController extends Controller
 {

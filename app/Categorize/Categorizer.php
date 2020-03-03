@@ -2,8 +2,8 @@
 
 namespace App\Categorize;
 
-use App\JournalEntry;
 use App\Categorization;
+use App\JournalEntry;
 
 class Categorizer
 {
