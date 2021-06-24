@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Account;
+use App\Models\Account;
 use App\Http\Requests\ImportFileRequest;
 use App\Importer\ImportDataFactory;
 use Carbon\Carbon;

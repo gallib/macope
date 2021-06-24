@@ -2,9 +2,9 @@
 
 namespace App\Importer;
 
-use App\Account;
+use App\Models\Account;
 use App\Contracts\Importers\ImportData;
-use App\JournalEntry;
+use App\Models\JournalEntry;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
