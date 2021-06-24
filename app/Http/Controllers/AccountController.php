@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Account;
 use App\Http\Requests\AccountRequest;
+use App\Models\Account;
 
 class AccountController extends Controller
 {
