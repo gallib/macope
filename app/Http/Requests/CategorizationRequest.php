@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Categorization;
+use App\Models\Categorization;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 

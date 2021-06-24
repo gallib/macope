@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Categorization;
+use App\Models\Categorization;
 use App\Services\CategorizationService;
 
 class CategorizationObserver
@@ -25,7 +25,7 @@ class CategorizationObserver
     /**
      * Listen to the Categorization created event.
      *
-     * @param  \App\Categorization $categorization
+     * @param  \App\Models\Categorization $categorization
      * @return void
      */
     public function created(Categorization $categorization)
@@ -36,7 +36,7 @@ class CategorizationObserver
     /**
      * Listen to the Categorization updated event.
      *
-     * @param  \App\Categorization $categorization
+     * @param  \App\Models\Categorization $categorization
      * @return void
      */
     public function updated(Categorization $categorization)

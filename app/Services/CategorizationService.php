@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use App\Categorization;
+use App\Models\Categorization;
 use App\Categorize\Categorizer;
-use App\JournalEntry;
+use App\Models\JournalEntry;
 
 class CategorizationService
 {

@@ -3,14 +3,14 @@
 namespace App\Observers;
 
 use App\Categorize\Categorizer;
-use App\JournalEntry;
+use App\Models\JournalEntry;
 
 class JournalEntryObserver
 {
     /**
      * Listen to the JournalEntry created event.
      *
-     * @param  \App\JournalEntry  $entry
+     * @param  \App\Models\JournalEntry  $entry
      * @return void
      */
     public function creating(JournalEntry $entry)
@@ -27,7 +27,7 @@ class JournalEntryObserver
     /**
      * Call the categorizer to categorize the given JournalEntry.
      *
-     * @param  \App\JournalEntry $entry
+     * @param  \App\Models\JournalEntry $entry
      * @return void
      */
     protected function categorize(JournalEntry $entry)
@@ -40,7 +40,7 @@ class JournalEntryObserver
     /**
      * Generate a unique hash for the given journal entry.
      *
-     * @param  \App\JournalEntry $entry
+     * @param  \App\Models\JournalEntry $entry
      * @return \App\Observers\JournalEntryObserver
      */
     protected function generateHash(JournalEntry $entry)
@@ -53,7 +53,7 @@ class JournalEntryObserver
     /**
      * Save the original values.
      *
-     * @param  \App\JournalEntry $entry
+     * @param  \App\Models\JournalEntry $entry
      * @return \App\Observers\JournalEntryObserver
      */
     protected function saveOriginalValues(JournalEntry $entry)

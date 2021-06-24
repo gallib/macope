@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Categorization;
-use App\Category;
-use App\JournalEntry;
+use App\Models\Categorization;
+use App\Models\Category;
+use App\Models\JournalEntry;
 use App\Observers\CategorizationObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\JournalEntryObserver;

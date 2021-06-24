@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Models\Category;
 use App\Http\Requests\JournalEntryRequest;
-use App\JournalEntry;
+use App\Models\JournalEntry;
 use App\Services\JournalEntryService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -49,7 +49,7 @@ class JournalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\JournalEntry $journal
+     * @param  \App\Models\JournalEntry $journal
      * @return \Illuminate\Http\Response
      */
     public function edit(JournalEntry $journal)
@@ -63,7 +63,7 @@ class JournalController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\JournalEntryRequest  $request
-     * @param  \App\JournalEntry $journal
+     * @param  \App\Models\JournalEntry $journal
      * @return \Illuminate\Http\Response
      */
     public function update(JournalEntryRequest $request, JournalEntry $journal)

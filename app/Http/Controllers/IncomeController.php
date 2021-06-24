@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\JournalEntry;
+use App\Models\JournalEntry;
 use App\Services\JournalEntryService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;

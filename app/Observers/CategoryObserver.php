@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Category;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryObserver
@@ -25,7 +25,7 @@ class CategoryObserver
     /**
      * Listen to the Category saving event.
      *
-     * @param  \App\Category $category
+     * @param  \App\Models\Category $category
      * @return void
      */
     public function saving(Category $category)
