@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Http\Requests\JournalEntryRequest;
+use App\Models\Category;
 use App\Models\JournalEntry;
 use App\Services\JournalEntryService;
 use Carbon\Carbon;

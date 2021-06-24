@@ -2,8 +2,8 @@
 
 namespace App\Importer;
 
-use App\Models\Account;
 use App\Contracts\Importers\ImportData;
+use App\Models\Account;
 use App\Models\JournalEntry;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\Importable;

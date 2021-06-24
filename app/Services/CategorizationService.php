@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\Categorization;
 use App\Categorize\Categorizer;
+use App\Models\Categorization;
 use App\Models\JournalEntry;
 
 class CategorizationService

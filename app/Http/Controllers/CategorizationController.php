@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategorizationRequest;
 use App\Models\Categorization;
 use App\Models\Category;
-use App\Http\Requests\CategorizationRequest;
 
 class CategorizationController extends Controller
 {
