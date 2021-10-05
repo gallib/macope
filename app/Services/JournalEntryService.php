@@ -12,8 +12,8 @@ class JournalEntryService
     /**
      * Get the yearly billing and format results.
      *
-     * @param  string       $type
-     * @param  null|int $year
+     * @param  string  $type
+     * @param  null|int  $year
      * @return array
      */
     public function getYearlyBilling($type, $year = null)
@@ -47,8 +47,8 @@ class JournalEntryService
     /**
      * Get sum group by month.
      *
-     * @param  \DateTime $dateFrom
-     * @param  \DateTime $dateTo
+     * @param  \DateTime  $dateFrom
+     * @param  \DateTime  $dateTo
      * @return \Illuminate\Support\Collection
      */
     public function getSumByMonth(DateTime $dateFrom = null, DateTime $dateTo = null)
@@ -69,8 +69,8 @@ class JournalEntryService
     /**
      * Get expenses sum group by month.
      *
-     * @param  \DateTime $dateFrom
-     * @param  \DateTime $dateTo
+     * @param  \DateTime  $dateFrom
+     * @param  \DateTime  $dateTo
      * @return \Illuminate\Support\Collection
      */
     public function getExpensesSumByMonth(DateTime $dateFrom = null, DateTime $dateTo = null)
@@ -87,8 +87,8 @@ class JournalEntryService
     /**
      * Get incomes sum group by month.
      *
-     * @param  \DateTime $dateFrom
-     * @param  \DateTime $dateTo
+     * @param  \DateTime  $dateFrom
+     * @param  \DateTime  $dateTo
      * @return \Illuminate\Support\Collection
      */
     public function getIncomesSumByMonth(DateTime $dateFrom = null, DateTime $dateTo = null)
@@ -105,8 +105,8 @@ class JournalEntryService
     /**
      * Get expenses by type category.
      *
-     * @param  \DateTime $dateFrom
-     * @param  \DateTime $dateTo
+     * @param  \DateTime  $dateFrom
+     * @param  \DateTime  $dateTo
      * @return \Illuminate\Support\Collection
      */
     public function getExpensesByTypeCategory(DateTime $dateFrom = null, DateTime $dateTo = null)
@@ -131,7 +131,7 @@ class JournalEntryService
     /**
      * Get expenses by type category.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Support\Collection
      */
     public function getMonthlyExpensesByTypeCategory(Request $request)
@@ -162,7 +162,7 @@ class JournalEntryService
     /**
      * Get expenses by category.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Support\Collection
      */
     public function getMonthlyExpensesByCategory(Request $request)

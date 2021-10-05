@@ -27,7 +27,7 @@ class JournalEntryObserver
     /**
      * Call the categorizer to categorize the given JournalEntry.
      *
-     * @param  \App\JournalEntry $entry
+     * @param  \App\JournalEntry  $entry
      * @return void
      */
     protected function categorize(JournalEntry $entry)
@@ -40,7 +40,7 @@ class JournalEntryObserver
     /**
      * Generate a unique hash for the given journal entry.
      *
-     * @param  \App\JournalEntry $entry
+     * @param  \App\JournalEntry  $entry
      * @return \App\Observers\JournalEntryObserver
      */
     protected function generateHash(JournalEntry $entry)
@@ -53,7 +53,7 @@ class JournalEntryObserver
     /**
      * Save the original values.
      *
-     * @param  \App\JournalEntry $entry
+     * @param  \App\JournalEntry  $entry
      * @return \App\Observers\JournalEntryObserver
      */
     protected function saveOriginalValues(JournalEntry $entry)

@@ -69,9 +69,9 @@ class JournalEntry extends Model
     /**
      * Scope a query to get the yearly billing.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @param  string                                $type
-     * @param  int|null                              $year
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $type
+     * @param  int|null  $year
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeYearlyBilling($query, $type, $year = null)
@@ -97,7 +97,7 @@ class JournalEntry extends Model
     /**
      * Scope a query to get years that have at least one entry.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeAvailableYears($query)
@@ -112,10 +112,10 @@ class JournalEntry extends Model
     /**
      * Scope a query to qet expenses or incomes group by month.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @param  string|null                           $type
-     * @param  \DateTime|null                        $dateStart
-     * @param  \DateTime|null                        $dateEnd
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string|null  $type
+     * @param  \DateTime|null  $dateStart
+     * @param  \DateTime|null  $dateEnd
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSumByMonth($query, $type = null, DateTime $dateStart = null, DateTime $dateEnd = null)
@@ -150,7 +150,7 @@ class JournalEntry extends Model
     /**
      * Scope a query to get expenses by type category.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeExpensesByTypeCategory($query)
@@ -169,7 +169,7 @@ class JournalEntry extends Model
     /**
      * Scope a query to get expenses by category.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeExpensesByCategory($query)

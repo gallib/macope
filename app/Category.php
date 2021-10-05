@@ -69,7 +69,7 @@ class Category extends Model
     /**
      * Scope a query to get unignored categories.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeUnignored($query)

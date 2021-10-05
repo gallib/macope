@@ -19,7 +19,7 @@ class JournalController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @param \App\Services\JournalEntryService $journalEntryService
+     * @param  \App\Services\JournalEntryService  $journalEntryService
      * @return void
      */
     public function __construct(JournalEntryService $journalEntryService)
@@ -32,7 +32,7 @@ class JournalController extends Controller
     /**
      * Show the journal.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -49,7 +49,7 @@ class JournalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\JournalEntry $journal
+     * @param  \App\JournalEntry  $journal
      * @return \Illuminate\Http\Response
      */
     public function edit(JournalEntry $journal)
@@ -63,7 +63,7 @@ class JournalController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\JournalEntryRequest  $request
-     * @param  \App\JournalEntry $journal
+     * @param  \App\JournalEntry  $journal
      * @return \Illuminate\Http\Response
      */
     public function update(JournalEntryRequest $request, JournalEntry $journal)
@@ -78,7 +78,7 @@ class JournalController extends Controller
     /**
      * Return expenses sum group by month.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Support\Collection
      */
     public function sumByMonth(Request $request)

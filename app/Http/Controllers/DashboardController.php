@@ -16,7 +16,7 @@ class DashboardController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @param  \App\Services\JournalEntryService $journalEntryService
+     * @param  \App\Services\JournalEntryService  $journalEntryService
      * @return void
      */
     public function __construct(JournalEntryService $journalEntryService)
