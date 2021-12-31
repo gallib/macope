@@ -61,7 +61,7 @@ class CategorizationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Categorization $categorization
+     * @param  \App\Models\Categorization  $categorization
      * @return \Illuminate\Http\Response
      */
     public function show(Categorization $categorization)
@@ -72,7 +72,7 @@ class CategorizationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Categorization $categorization
+     * @param  \App\Models\Categorization  $categorization
      * @return \Illuminate\Http\Response
      */
     public function edit(Categorization $categorization)
@@ -88,7 +88,7 @@ class CategorizationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\CategorizationRequest  $request
-     * @param  \App\Models\Categorization $categorization
+     * @param  \App\Models\Categorization  $categorization
      * @return \Illuminate\Http\Response
      */
     public function update(CategorizationRequest $request, Categorization $categorization)
@@ -103,7 +103,7 @@ class CategorizationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Categorization $categorization
+     * @param  \App\Models\Categorization  $categorization
      * @return \Illuminate\Http\Response
      */
     public function destroy(Categorization $categorization)

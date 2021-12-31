@@ -10,7 +10,7 @@ class Categorizer
     /**
      * Try to categorize the given journal entry.
      *
-     * @param  \Gallib\Macope\JournalEntry $entry
+     * @param  \Gallib\Macope\JournalEntry  $entry
      * @return void
      */
     public function categorize(JournalEntry $entry)
@@ -27,8 +27,8 @@ class Categorizer
     /**
      * Try to apply given categorization to journal entries.
      *
-     * @param  \Gallib\Macope\Categorization $categorization
-     * @param  \Gallib\Macope\JournalEntry $entry
+     * @param  \Gallib\Macope\Categorization  $categorization
+     * @param  \Gallib\Macope\JournalEntry  $entry
      * @return bool
      */
     public function applyCategorization(Categorization $categorization, JournalEntry $entry)
@@ -57,8 +57,8 @@ class Categorizer
     /**
      * Check if the categorization search string is found in the journal entry text.
      *
-     * @param  \Gallib\Macope\JournalEntry   $entry
-     * @param  \Gallib\Macope\Categorization $categorization
+     * @param  \Gallib\Macope\JournalEntry  $entry
+     * @param  \Gallib\Macope\Categorization  $categorization
      * @return bool
      */
     protected function contains(JournalEntry $entry, Categorization $categorization)
@@ -69,8 +69,8 @@ class Categorizer
     /**
      * Check if the categorization match with the journal entry.
      *
-     * @param  \Gallib\Macope\JournalEntry   $entry
-     * @param  \Gallib\Macope\Categorization $categorization
+     * @param  \Gallib\Macope\JournalEntry  $entry
+     * @param  \Gallib\Macope\Categorization  $categorization
      * @return bool
      */
     protected function match(JournalEntry $entry, Categorization $categorization)
@@ -81,8 +81,8 @@ class Categorizer
     /**
      * Check if the amount match between the journal entry and the categorization.
      *
-     * @param  \Gallib\Macope\JournalEntry   $entry
-     * @param  \Gallib\Macope\Categorization $categorization
+     * @param  \Gallib\Macope\JournalEntry  $entry
+     * @param  \Gallib\Macope\Categorization  $categorization
      * @return bool
      */
     protected function checkAmount(JournalEntry $entry, Categorization $categorization)
@@ -97,8 +97,8 @@ class Categorizer
     /**
      * Check if the given entry match with the categorization entry type.
      *
-     * @param  \Gallib\Macope\JournalEntry   $entry
-     * @param  \Gallib\Macope\Categorization $categorization
+     * @param  \Gallib\Macope\JournalEntry  $entry
+     * @param  \Gallib\Macope\Categorization  $categorization
      * @return bool
      */
     protected function checkEntryType(JournalEntry $entry, Categorization $categorization)

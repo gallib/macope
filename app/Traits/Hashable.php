@@ -19,7 +19,7 @@ trait Hashable
     /**
      * Get the hash for given attributes.
      *
-     * @param  array $attributes
+     * @param  array  $attributes
      * @return string
      */
     protected function getHashByAttributes(array $attributes)
@@ -36,8 +36,8 @@ trait Hashable
     /**
      * find a model by its hash or create a new instance.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $builder
-     * @param  array $attributes
+     * @param  \Illuminate\Database\Eloquent\Builder  $builder
+     * @param  array  $attributes
      * @return mixed
      */
     public function scopeFindByHashOrCreate(Builder $builder, array $attributes)

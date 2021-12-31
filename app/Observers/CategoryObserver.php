@@ -25,7 +25,7 @@ class CategoryObserver
     /**
      * Listen to the Category saving event.
      *
-     * @param  \App\Models\Category $category
+     * @param  \App\Models\Category  $category
      * @return void
      */
     public function saving(Category $category)

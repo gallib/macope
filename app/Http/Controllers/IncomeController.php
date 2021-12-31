@@ -29,7 +29,7 @@ class IncomeController extends Controller
     /**
      * Show the yearly income.
      *
-     * @param  int $currentYear
+     * @param  int  $currentYear
      * @return \Illuminate\Http\Response
      */
     public function index($currentYear = null)
@@ -47,7 +47,7 @@ class IncomeController extends Controller
     /**
      * Return incomes sum group by month.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function sumByMonth(Request $request)

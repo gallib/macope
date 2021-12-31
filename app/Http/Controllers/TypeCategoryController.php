@@ -59,7 +59,7 @@ class TypeCategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TypeCategory $typeCategory
+     * @param  \App\Models\TypeCategory  $typeCategory
      * @return \Illuminate\Http\Response
      */
     public function show(TypeCategory $typeCategory)
@@ -70,7 +70,7 @@ class TypeCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TypeCategory $typeCategory
+     * @param  \App\Models\TypeCategory  $typeCategory
      * @return \Illuminate\Http\Response
      */
     public function edit(TypeCategory $typeCategory)
@@ -82,7 +82,7 @@ class TypeCategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\TypeCategoryRequest  $request
-     * @param  \App\Models\TypeCategory $typeCategory
+     * @param  \App\Models\TypeCategory  $typeCategory
      * @return \Illuminate\Http\Response
      */
     public function update(TypeCategoryRequest $request, TypeCategory $typeCategory)
@@ -97,7 +97,7 @@ class TypeCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TypeCategory $typeCategory
+     * @param  \App\Models\TypeCategory  $typeCategory
      * @return \Illuminate\Http\Response
      */
     public function destroy(TypeCategory $typeCategory)
