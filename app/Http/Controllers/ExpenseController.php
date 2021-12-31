@@ -29,7 +29,7 @@ class ExpenseController extends Controller
     /**
      * Show the yearly billing.
      *
-     * @param  int $currentYear
+     * @param  int  $currentYear
      * @return \Illuminate\Http\Response
      */
     public function index($currentYear = null)
@@ -47,7 +47,7 @@ class ExpenseController extends Controller
     /**
      * Return expenses sum group by month.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function sumByMonth(Request $request)
@@ -61,7 +61,7 @@ class ExpenseController extends Controller
     /**
      * Return expenses group by type category.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function expensesByTypeCategory(Request $request)
@@ -75,7 +75,7 @@ class ExpenseController extends Controller
     /**
      * Return monthly expenses group by type category.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function monthlyExpensesByTypeCategory(Request $request)
@@ -86,7 +86,7 @@ class ExpenseController extends Controller
     /**
      * Return monthly expenses group by category.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function monthlyExpensesByCategory(Request $request)

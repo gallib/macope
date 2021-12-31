@@ -16,7 +16,7 @@ class MigrosBankImport implements ImportData, WithCustomCsvSettings
     /**
      * Create a new instance.
      *
-     * @param string $filepath
+     * @param  string  $filepath
      * @return void
      */
     public function __construct($filepath)

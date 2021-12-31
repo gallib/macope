@@ -7,7 +7,7 @@ class ImportDataFactory
     /**
      * Instanciate an import data class depending on given file.
      *
-     * @param  string $filepath
+     * @param  string  $filepath
      * @return \Gallib\Macope\Importer\ImportDataInterface
      */
     public static function create($filepath)

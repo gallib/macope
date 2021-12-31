@@ -11,7 +11,7 @@ class CategorizationService
     /**
      * Try to apply given categorization to journal entries without categories.
      *
-     * @param  \Gallib\Macope\Categorization $categorization
+     * @param  \Gallib\Macope\Categorization  $categorization
      * @return void
      */
     public function applyCategorization(Categorization $categorization)
