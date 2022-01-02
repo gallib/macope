@@ -36,7 +36,12 @@ class PostFinanceImport implements ImportData, WithCustomCsvSettings
      */
     public function isValid(): bool
     {
-        $data = $this->toArray($this->filepath);
+        try {
+            $data = $this->toArray($this->filepath);
+        } catch (\Exception $e) {
+            return false;
+        }
+
         $data = reset($data);
 
         $iban = isset($data[1][1]) ? $data[1][1] : null;

@@ -31,7 +31,12 @@ class MigrosBankImport implements ImportData, WithCustomCsvSettings
      */
     public function isValid(): bool
     {
-        $data = $this->toArray($this->filepath);
+        try {
+            $data = $this->toArray($this->filepath);
+        } catch (\Exception $e) {
+            return false;
+        }
+
         $data = reset($data);
 
         $accountNumber = isset($data[2][0]) && strpos($data[2][0], ': ') !== false ? explode(': ', $data[2][0])[1] : null;
