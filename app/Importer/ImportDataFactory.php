@@ -24,6 +24,6 @@ class ImportDataFactory
             return $factory;
         }
 
-        throw new \InvalidArgumentException("File is not valid");
+        throw new \InvalidArgumentException('File is not valid');
     }
 }
