@@ -71,6 +71,8 @@ class MigrosBankImport implements ImportData, WithCustomCsvSettings
         $data = array_slice($data, 12);
         $data = array_reverse($data);
 
+        $batch = uniqid('', true);
+
         foreach ($data as $key => $value) {
             $date = Carbon::createFromFormat('d.m.y', $value[3]);
 
@@ -79,6 +81,7 @@ class MigrosBankImport implements ImportData, WithCustomCsvSettings
                 'text'       => $value[1],
                 'credit'     => $value[2] >= 0 ? number_format(abs($value[2]), 2, '.', '') : null,
                 'debit'      => $value[2] < 0 ? number_format(abs($value[2]), 2, '.', '') : null,
+                'batch'      => $batch,
                 'account_id' => $account->id,
             ];
 

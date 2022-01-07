@@ -79,6 +79,8 @@ class PostFinanceImport implements ImportData, WithCustomCsvSettings
         array_splice($data, -3);
         $data = array_reverse($data);
 
+        $batch = uniqid('', true);
+
         foreach ($data as $value) {
             try {
                 $format = strpos($value[0], '-') !== false ? 'Y-m-d' : 'd.m.Y';
@@ -92,6 +94,7 @@ class PostFinanceImport implements ImportData, WithCustomCsvSettings
                 'text'       => $value[1],
                 'credit'     => is_null($value[2]) ? null : number_format($value[2], 2, '.', ''),
                 'debit'      => is_null($value[3]) ? null : number_format(abs($value[3]), 2, '.', ''),
+                'batch'      => $batch,
                 'account_id' => $account->id,
             ];
 

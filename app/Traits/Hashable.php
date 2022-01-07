@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 
 trait Hashable
 {
@@ -40,11 +41,17 @@ trait Hashable
      * @param  array  $attributes
      * @return mixed
      */
-    public function scopeFindByHashOrCreate(Builder $builder, array $attributes)
+    public function scopeFindByHashOrCreate(Builder $query, array $attributes)
     {
         $hash = $this->getHashByAttributes($attributes);
 
-        if (! is_null($instance = $this->where(['hash' => $hash])->first())) {
+        $query->where(['hash' => $hash]);
+
+        if (Arr::exists($attributes, 'batch')) {
+            $query->where('batch', '<>', $attributes['batch']);
+        }
+
+        if (! is_null($instance = $query->first())) {
             return $instance;
         }
 
