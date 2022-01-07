@@ -75,7 +75,7 @@ class PostFinanceImport implements ImportData, WithCustomCsvSettings
         $account = Account::where('iban', $data[1][1])->first();
 
         // Clean data and sort by asc order
-        $data = array_slice($data, 5);
+        $data = array_slice($data, 4);
         array_splice($data, -3);
         $data = array_reverse($data);
 
