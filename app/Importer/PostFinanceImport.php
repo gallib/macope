@@ -13,6 +13,8 @@ class PostFinanceImport implements ImportData, WithCustomCsvSettings
 {
     use Importable;
 
+    const ENTRY_DATE_TEXT = 'Date de comptabilisation';
+
     /**
      * @var string
      */
@@ -47,12 +49,14 @@ class PostFinanceImport implements ImportData, WithCustomCsvSettings
         $iban = isset($data[1][1]) ? $data[1][1] : null;
         $currency = isset($data[2][1]) ? $data[2][1] : null;
 
+        $header = $data[3][0] ?? null;
+
         end($data);
 
         $disclaimer = prev($data);
         $account = Account::where('iban', $iban)->first();
 
-        if (! ($account instanceof Account) || $account->currency !== $currency || $disclaimer[0] !== 'Disclaimer:') {
+        if (! ($account instanceof Account) || $account->currency !== $currency || $header !== self::ENTRY_DATE_TEXT || $disclaimer[0] !== 'Disclaimer:') {
             return false;
         }
 
