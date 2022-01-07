@@ -24,6 +24,6 @@ class ImportDataFactory
             return $factory;
         }
 
-        throw new \InvalidArgumentException("{$filepath->getClientOriginalName()} is not a valid file");
+        throw new \InvalidArgumentException("File is not valid");
     }
 }
