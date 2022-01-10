@@ -51,19 +51,19 @@ $(function() {
                 targets: 1
             },
             {
-                render: function (data, type, row) {
+                render: (data, type, row) => {
                     if (!data) {
                         return '';
                     }
 
-                    return data.name + ' (' + data.type_category.name + ')';
+                    return `${data.name} (${data.type_category.name})`;
                 },
                 targets: 2
             },
             {
                 orderable: false,
-                render: function (data, type, row) {
-                    return '<a href="' + window.location.pathname + '/' + data + '/edit" title="Edit"><i class="fas fa-edit"></i></a>';
+                render: (data, type, row) => {
+                    return `<a href="${window.location.pathname}/${data}/edit" title="Edit"><i class="fas fa-edit"></i></a>`;
                 },
                 targets: 5
             }
