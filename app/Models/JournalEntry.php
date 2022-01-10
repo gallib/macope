@@ -31,6 +31,7 @@ class JournalEntry extends Model
      * @var array
      */
     protected $with = [
+        'account',
         'category',
     ];
 

@@ -45,6 +45,12 @@ $(function() {
         ],
         columnDefs: [
             {
+                render: (data, type, row) => {
+                    return `<div>${data}</div><div class="text-light font-italic">${row.account.name}</div>`;
+                },
+                targets: 1
+            },
+            {
                 render: function (data, type, row) {
                     if (!data) {
                         return '';
