@@ -32,7 +32,7 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-window.Vue = require('vue');
+window.Vue = require('vue').default;
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that

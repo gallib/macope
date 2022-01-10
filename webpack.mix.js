@@ -1,5 +1,11 @@
 let mix = require('laravel-mix');
 
+mix.options({
+   terser: {
+      extractComments: false,
+   }
+});
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,5 +17,5 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').vue();
-mix.sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/js/app.js', 'public/js').vue()
+   .sass('resources/sass/app.scss', 'public/css');
