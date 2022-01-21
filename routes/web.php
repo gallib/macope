@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\TypeCategoryController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CategorizationController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\CategorizationController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\ImportFileController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\JournalController;
+use App\Http\Controllers\TypeCategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])->name('home');
