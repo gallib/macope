@@ -19,7 +19,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.3",
-        "felixkiss/uniquewith-validator": "^3.1.0",
+        "gallib/uniquewith-validator": "dev-master",
         "laravel/framework": "^9.0",
         "laravel/tinker": "^2.7",
         "maatwebsite/excel": "^3.1.19",
@@ -38,6 +38,12 @@
         "spatie/laravel-ignition": "^1.0",
         "laravel/sail": "^1.13"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:gallib/uniquewith-validator.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",
