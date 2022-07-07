@@ -26,6 +26,6 @@
         "@fortawesome/fontawesome-free": "^5.10.2",
         "chart.js": "^2.8.0",
         "datatables.net-bs4": "^1.10.19",
-        "moment": "^2.24.0"
+        "moment": "^2.29.4"
     }
 }
